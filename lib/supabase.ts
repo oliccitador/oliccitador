@@ -1,0 +1,85 @@
+import { createBrowserClient } from '@supabase/ssr'
+
+export function createClient() {
+    // Use process.env with fallback to hardcoded values for client-side
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://bcqusrvpyfirnzsoctvt.supabase.co';
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjcXVzcnZweWZpcm56c29jdHZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNTk1MjgsImV4cCI6MjA3OTYzNTUyOH0.x09aSU6SgyEu9vHJET68wxf_AEqvguBZO92BILmsvlM';
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+        throw new Error(
+            'Missing Supabase environment variables'
+        );
+    }
+
+    return createBrowserClient(supabaseUrl, supabaseAnonKey);
+}
+
+
+export async function getCurrentUser() {
+    const supabase = createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+    return user
+}
+
+// Helper to get user subscription
+export async function getUserSubscription(userId: string) {
+    const supabase = createClient()
+    const { data, error } = await supabase
+        .from('subscriptions')
+        .select('*')
+        .eq('user_id', userId)
+        .single()
+
+    if (error) {
+        console.error('Error fetching subscription:', error)
+        return null
+    }
+
+    return data
+}
+
+// Helper to check if user can make request
+export async function canMakeRequest(userId: string) {
+    const subscription = await getUserSubscription(userId)
+
+    if (!subscription) {
+        return { allowed: false, reason: 'No subscription found' }
+    }
+
+    if (subscription.status !== 'active') {
+        return { allowed: false, reason: 'Subscription not active' }
+    }
+
+    if (subscription.quota_used >= subscription.quota_limit) {
+        return {
+            allowed: false,
+            reason: 'Quota exceeded',
+            quota: {
+                used: subscription.quota_used,
+                limit: subscription.quota_limit
+            }
+        }
+    }
+
+    return {
+        allowed: true,
+        quota: {
+            used: subscription.quota_used,
+            limit: subscription.quota_limit,
+            remaining: subscription.quota_limit - subscription.quota_used
+        }
+    }
+}
+
+// Helper to increment usage
+export async function incrementUsage(userId: string) {
+    const supabase = createClient()
+
+    const { error } = await supabase.rpc('increment_quota', {
+        p_user_id: userId
+    })
+
+    if (error) {
+        console.error('Error incrementing quota:', error)
+    }
+}
