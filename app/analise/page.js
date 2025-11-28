@@ -197,6 +197,15 @@ export default function Home() {
                                 <h2>📦 Produto de Referência de Mercado</h2>
                             </div>
 
+                            {/* Query Semântica Limpa */}
+                            <div className="mt-2 p-3 bg-green-50 border border-green-200 rounded">
+                                <p className="text-sm font-medium text-green-800">Query Semântica Limpa:</p>
+                                <p className="text-sm text-gray-700 mt-1">
+                                    {result.query_semantica_limpa || 'Aguardando análise...'}
+                                </p>
+                            </div>
+
+                            {/* Produto de Referência */}
                             {result.produto_referencia && result.produto_referencia.marca && result.produto_referencia.modelo ? (
                                 <div className="mt-4 p-6 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg">
                                     <div className="flex items-start gap-4">
