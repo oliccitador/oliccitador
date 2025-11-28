@@ -24,8 +24,8 @@ export async function POST(request) {
         if (!description) return NextResponse.json({ error: 'Description is required' }, { status: 400 });
 
         const cacheKey = `analyze:${user.id}:${description}:${ca || 'no-ca'}:${catmat || 'no-catmat'}`;
-        const cached = await getCache(cacheKey);
-        if (cached) return NextResponse.json({ ...cached, cache: true });
+        // const cached = await getCache(cacheKey);
+        // if (cached) return NextResponse.json({ ...cached, cache: true });
 
         // Use 3-flow system
         console.log(`[API] Analyzing with 3-flow system: CA=${ca}, CATMAT=${catmat}`);
