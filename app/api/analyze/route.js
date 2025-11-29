@@ -23,7 +23,7 @@ export async function POST(request) {
         const { description, ca, catmat } = body;
         if (!description) return NextResponse.json({ error: 'Description is required' }, { status: 400 });
 
-        const cacheKey = `analyze:${user.id}:${description}:${ca || 'no-ca'}:${catmat || 'no-catmat'}`;
+        const cacheKey = `analyze:v2:${user.id}:${description}:${ca || 'no-ca'}:${catmat || 'no-catmat'}`;
         const cached = await getCache(cacheKey);
         if (cached) return NextResponse.json({ ...cached, cache: true });
 
