@@ -166,9 +166,9 @@ export default function Home() {
                                 <div>
                                     <span className="text-xs font-bold text-slate-500 uppercase">CA Detectado</span>
                                     <div className="flex flex-wrap gap-2 mt-1">
-                                        {result.detetive_de_codigos?.ca_detectado && result.detetive_de_codigos.ca_detectado !== "Nenhum detectado" ? (
+                                        {result.codigos_detectados?.ca ? (
                                             <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded text-sm font-medium">
-                                                {result.detetive_de_codigos.ca_detectado}
+                                                {result.codigos_detectados.ca}
                                             </span>
                                         ) : (
                                             <span className="text-sm text-slate-400 italic">Nenhum CA detectado</span>
@@ -178,9 +178,9 @@ export default function Home() {
                                 <div>
                                     <span className="text-xs font-bold text-slate-500 uppercase">CATMAT / BR</span>
                                     <div className="flex flex-wrap gap-2 mt-1">
-                                        {result.detetive_de_codigos?.catmat_br && result.detetive_de_codigos.catmat_br !== "Nenhum detectado" ? (
+                                        {result.codigos_detectados?.catmat ? (
                                             <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded text-sm font-medium">
-                                                {result.detetive_de_codigos.catmat_br}
+                                                CATMAT {result.codigos_detectados.catmat}
                                             </span>
                                         ) : (
                                             <span className="text-sm text-slate-400 italic">Nenhum código detectado</span>
@@ -190,66 +190,78 @@ export default function Home() {
                             </div>
                         </div>
 
-                        {/* CATMAT Information Card - ALWAYS VISIBLE with mock data for now */}
+                        {/* CATMAT Information Card - Sempre visível */}
                         <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6 rounded-xl shadow-lg border-2 border-blue-300 space-y-4 md:col-span-2">
                             <div className="flex items-center gap-3 text-blue-700 font-bold text-xl mb-4">
                                 <span className="text-3xl">📋</span>
                                 <h3>Informações do CATMAT (Oficial)</h3>
                             </div>
 
-                            {/* Grid principal com 2 colunas */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {/* Código do Item */}
-                                <div className="bg-white/80 p-5 rounded-lg border-2 border-blue-300 shadow-sm hover:shadow-md transition-shadow">
-                                    <p className="text-xs font-bold text-blue-700 uppercase mb-2 tracking-wide">📍 Código do Item</p>
-                                    <p className="text-2xl font-mono font-extrabold text-gray-900 tracking-tight">
-                                        {result.catmat_data?.codigo || '628378'}
-                                    </p>
-                                </div>
+                            {result.catmat_data && result.codigos_detectados?.catmat ? (
+                                <>
+                                    {/* Grid principal com 2 colunas */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        {/* Código do Item */}
+                                        <div className="bg-white/80 p-5 rounded-lg border-2 border-blue-300 shadow-sm hover:shadow-md transition-shadow">
+                                            <p className="text-xs font-bold text-blue-700 uppercase mb-2 tracking-wide">📍 Código do Item</p>
+                                            <p className="text-2xl font-mono font-extrabold text-gray-900 tracking-tight">
+                                                {result.codigos_detectados.catmat}
+                                            </p>
+                                        </div>
 
-                                {/* Nome do Item (PDM) */}
-                                <div className="bg-white/80 p-5 rounded-lg border-2 border-blue-300 shadow-sm hover:shadow-md transition-shadow">
-                                    <p className="text-xs font-bold text-blue-700 uppercase mb-2 tracking-wide">🏷️ Nome do Item (PDM)</p>
-                                    <p className="text-base font-bold text-gray-900 leading-tight">
-                                        {result.catmat_data?.nome || 'ATADURA CREPOM'}
-                                    </p>
-                                </div>
+                                        {/* Nome do Item (PDM) */}
+                                        <div className="bg-white/80 p-5 rounded-lg border-2 border-blue-300 shadow-sm hover:shadow-md transition-shadow">
+                                            <p className="text-xs font-bold text-blue-700 uppercase mb-2 tracking-wide">🏷️ Nome do Item (PDM)</p>
+                                            <p className="text-base font-bold text-gray-900 leading-tight">
+                                                {result.catmat_data.nome}
+                                            </p>
+                                        </div>
 
-                                {/* Classe */}
-                                <div className="bg-white/80 p-5 rounded-lg border-2 border-indigo-300 shadow-sm hover:shadow-md transition-shadow">
-                                    <p className="text-xs font-bold text-indigo-700 uppercase mb-2 tracking-wide">📂 Classe do Material</p>
-                                    <p className="text-sm font-semibold text-gray-900">
-                                        {result.catmat_data?.classe || 'MATERIAIS CIRÚRGICOS PARA CURATIVOS'}
-                                    </p>
-                                </div>
+                                        {/* Classe */}
+                                        <div className="bg-white/80 p-5 rounded-lg border-2 border-indigo-300 shadow-sm hover:shadow-md transition-shadow">
+                                            <p className="text-xs font-bold text-indigo-700 uppercase mb-2 tracking-wide">📂 Classe do Material</p>
+                                            <p className="text-sm font-semibold text-gray-900">
+                                                {result.catmat_data.classe}
+                                            </p>
+                                        </div>
 
-                                {/* Unidade Padrão */}
-                                <div className="bg-white/80 p-5 rounded-lg border-2 border-purple-300 shadow-sm hover:shadow-md transition-shadow">
-                                    <p className="text-xs font-bold text-purple-700 uppercase mb-2 tracking-wide">📦 Unidade de Fornecimento</p>
-                                    <p className="text-xl font-bold text-gray-900">
-                                        {result.catmat_data?.unidade_padrao || 'UN (Unidade)'}
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Descrição Completa (span full width) */}
-                            <div className="bg-white/80 p-5 rounded-lg border-2 border-blue-300 shadow-sm hover:shadow-md transition-shadow">
-                                <p className="text-xs font-bold text-blue-700 uppercase mb-3 tracking-wide">📝 Descrição Completa do Item</p>
-                                <p className="text-sm text-gray-800 leading-relaxed">
-                                    {result.catmat_data?.descricao ||
-                                        'ATADURA CREPOM, TIPO: CERCA DE 13 FIOS / CM², MATE-RIAL: FAIXA DE TECIDO 100% ALGODÃO, LARGURA: CERCA DE 10 CM, COMPRIMENTO EM REPOUSO: ROLO CERCA DE 1,8 M, ESTERILIDADE: NÃO ESTÉRIL C/12 UNIDADES EMBALA-GEM: EMBALAGEM INDIVIDUAL'}
-                                </p>
-                            </div>
-
-                            {/* Badge de Status */}
-                            <div className="flex items-center justify-between pt-2">
-                                <div className="flex items-center gap-2">
-                                    <div className={`px-3 py-1 rounded-full text-xs font-bold ${result.catmat_data ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
-                                        {result.catmat_data ? '✅ Dados Oficiais' : '⏳ Aguardando Dados'}
+                                        {/* Unidade Padrão */}
+                                        <div className="bg-white/80 p-5 rounded-lg border-2 border-purple-300 shadow-sm hover:shadow-md transition-shadow">
+                                            <p className="text-xs font-bold text-purple-700 uppercase mb-2 tracking-wide">📦 Unidade de Fornecimento</p>
+                                            <p className="text-xl font-bold text-gray-900">
+                                                {result.catmat_data.unidade_padrao || 'UN'}
+                                            </p>
+                                        </div>
                                     </div>
+
+                                    {/* Descrição Completa (span full width) */}
+                                    <div className="bg-white/80 p-5 rounded-lg border-2 border-blue-300 shadow-sm hover:shadow-md transition-shadow">
+                                        <p className="text-xs font-bold text-blue-700 uppercase mb-3 tracking-wide">📝 Descrição Completa do Item</p>
+                                        <p className="text-sm text-gray-800 leading-relaxed">
+                                            {result.catmat_data.descricao}
+                                        </p>
+                                    </div>
+
+                                    {/* Badge de Status */}
+                                    <div className="flex items-center justify-between pt-2">
+                                        <div className="flex items-center gap-2">
+                                            <div className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">
+                                                ✅ Dados Oficiais
+                                            </div>
+                                        </div>
+                                        <p className="text-xs text-gray-500">Fonte: Catálogo CATMAT/BR</p>
+                                    </div>
+                                </>
+                            ) : (
+                                <div className="bg-white/80 p-8 rounded-lg border-2 border-gray-300 text-center">
+                                    <p className="text-gray-500 text-lg font-medium mb-2">
+                                        Nenhum código CATMAT detectado nesta análise
+                                    </p>
+                                    <p className="text-gray-400 text-sm">
+                                        O código CATMAT pode estar ausente ou não foi encontrado no texto da descrição técnica.
+                                    </p>
                                 </div>
-                                <p className="text-xs text-gray-500">Fonte: Catálogo CATMAT/BR</p>
-                            </div>
+                            )}
                         </div>
 
 

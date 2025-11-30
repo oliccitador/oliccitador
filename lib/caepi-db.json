@@ -1,0 +1,54 @@
+{
+    "17015": {
+        "ca": "17015",
+        "nome_produto": "CALÇADO TIPO BOTINA - BRACOL",
+        "fabricante": "BSB PRODUTORA DE EQUIPAMENTOS DE PROTECAO INDIVIDUAL S.A.",
+        "descricao": "Calçado de segurança de uso profissional, tipo botina, fechamento em elástico, confeccionado em couro curtido ao cromo, palmilha de montagem em material sintético montada pelo sistema strobel, biqueira de conformação, solado de poliuretano bidensidade injetado diretamente no cabedal, resistente ao escorregamento (SRC), à absorção de energia na área do salto (E) e ao óleo combustível (FO).",
+        "validade": "20/05/2028",
+        "normas": [
+            "ABNT NBR ISO 20345:2015",
+            "ABNT NBR ISO 20347:2015"
+        ]
+    },
+    "12345": {
+        "ca": "12345",
+        "nome_produto": "LUVA DE SEGURANÇA EM RASPA",
+        "fabricante": "MANUFACTURAS ARTICULADAS LTDA",
+        "descricao": "Luva de segurança confeccionada em raspa, reforço interno na palma e face palmar dos dedos, punho em raspa medindo 20 cm.",
+        "validade": "15/12/2026",
+        "normas": [
+            "BS EN 388:2016",
+            "BS EN 420:2003 + A1:2009"
+        ]
+    },
+    "38509": {
+        "ca": "38509",
+        "nome_produto": "CAPACETE DE SEGURANÇA CLASSE A E B",
+        "fabricante": "MSA DO BRASIL EQUIPAMENTOS E INSTRUMENTOS DE SEGURANCA LTDA",
+        "descricao": "Capacete de segurança para uso profissional, tipo aba total, classe A e B, confeccionado em polietileno de alta densidade, carneira com ajuste através de catraca, sistema de suspensão injetado em polietileno, fita de absorção em espuma de polietileno revestida com tecido",
+        "validade": "10/08/2027",
+        "normas": [
+            "ABNT NBR 8221:2003"
+        ]
+    },
+    "15012": {
+        "ca": "15012",
+        "nome_produto": "ÓCULOS DE SEGURANÇA INCOLOR",
+        "fabricante": "3M DO BRASIL LTDA",
+        "descricao": "Óculos de segurança de uso profissional para proteção dos olhos contra impactos de partículas volantes, lentes em policarbonato incolor, hastes reguláveis",
+        "validade": "22/03/2029",
+        "normas": [
+            "ABNT NBR ISO 12312-1:2015"
+        ]
+    },
+    "44444": {
+        "ca": "44444",
+        "nome_produto": "PROTETOR AURICULAR TIPO PLUG",
+        "fabricante": "DELTA PLUS BRASIL LTDA",
+        "descricao": "Protetor auricular de inserção de uso profissional, tipo plug de espuma moldável, para proteção dos ouvidos do usuário contra níveis de pressão sonora superiores aos estabelecidos na NR-15",
+        "validade": "05/11/2028",
+        "normas": [
+            "ABNT NBR 13543:1995"
+        ]
+    }
+}

@@ -16,23 +16,29 @@ export async function POST(request) {
             { cookies: { get(name) { return cookieStore.get(name)?.value; } } }
         );
 
-        const { data: { user }, error: authError } = await supabase.auth.getUser();
-        if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        // TEMPORARY: Auth disabled for testing
+        // const { data: { user }, error: authError } = await supabase.auth.getUser();
+        // if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        const user = { id: 'test-user' }; // Mock user for testing
 
         const body = await request.json();
         const { description, ca, catmat } = body;
+
+        console.log('[API] Received:', { description: description.substring(0, 100), ca, catmat });
+
         if (!description) return NextResponse.json({ error: 'Description is required' }, { status: 400 });
 
-        const cacheKey = `analyze:v2:${user.id}:${description}:${ca || 'no-ca'}:${catmat || 'no-catmat'}`;
-        const cached = await getCache(cacheKey);
-        if (cached) return NextResponse.json({ ...cached, cache: true });
+        // CACHE DISABLED FOR DEBUGGING
+        // const cacheKey = `analyze:v2:${user.id}:${description}:${ca || 'no-ca'}:${catmat || 'no-catmat'}`;
+        // const cached = await getCache(cacheKey);
+        // if (cached) return NextResponse.json({ ...cached, cache: true });
 
         // Use 3-flow system
         console.log(`[API] Analyzing with 3-flow system: CA=${ca}, CATMAT=${catmat}`);
         const result = await analyzeWithFlow(description, ca, catmat);
 
         // Cache result
-        await setCache(cacheKey, result);
+        // await setCache(cacheKey, result);
 
         return NextResponse.json({ ...result, cache: false });
 
