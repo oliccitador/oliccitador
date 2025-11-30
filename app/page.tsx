@@ -8,7 +8,7 @@ export default function LandingPage() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <div className="min-h-screen bg-[#0f172a] font-sans text-slate-100 selection:bg-cyan-500/30">
+        <div className="min-h-screen bg-[#0f172a] font-sans text-slate-100 selection:bg-cyan-500/30 bg-grid-white">
 
             {/* Navigation */}
             <nav className="fixed top-0 w-full z-50 bg-[#0f172a]/80 backdrop-blur-md border-b border-white/10">
@@ -71,12 +71,12 @@ export default function LandingPage() {
                 <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] opacity-50" />
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                    <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-slate-400">
+                    <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-slate-400 drop-shadow-sm">
                         O Cérebro Lógico das<br />Compras Públicas
                     </h1>
-                    <p className="mt-4 max-w-2xl mx-auto text-xl text-slate-400 mb-10">
-                        Transforme editais complexos em decisões estratégicas em segundos.
-                        Valide códigos, encontre preços e gere justificativas com Inteligência Artificial.
+                    <p className="mt-4 max-w-2xl mx-auto text-xl text-slate-400 mb-10 leading-relaxed">
+                        Transforme editais complexos em decisões estratégicas.
+                        <span className="block mt-2 text-slate-300">Valide códigos, encontre preços e gere justificativas em segundos.</span>
                     </p>
                     <div className="flex justify-center">
                         <Link href="/pricing" className="px-8 py-4 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(8,145,178,0.6)] hover:shadow-[0_0_30px_rgba(8,145,178,0.8)] hover:-translate-y-1 flex items-center justify-center gap-2">
@@ -90,9 +90,9 @@ export default function LandingPage() {
             <section className="py-4 bg-gradient-to-r from-purple-900 via-orange-800 to-purple-900 border-y border-orange-500/30">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
                     <div className="flex items-center gap-2">
-                        <span className="px-2 py-1 bg-orange-500 text-white text-xs font-bold rounded-full animate-pulse">EM BREVE</span>
+                        <span className="px-2 py-1 bg-orange-500 text-white text-xs font-bold rounded-full animate-pulse shadow-lg shadow-orange-500/20">LISTA DE ESPERA VIP</span>
                         <p className="text-white font-medium">
-                            <span className="font-bold text-orange-400">SICX Express:</span> Prepare-se para vender no mercado digital oficial do governo.
+                            <span className="font-bold text-orange-400">SICX Express:</span> O mercado digital oficial do governo está chegando.
                         </p>
                     </div>
                     <Link href="/sicx" className="group flex items-center gap-1 text-sm font-bold text-orange-400 hover:text-orange-300 transition-colors">
@@ -140,10 +140,10 @@ export default function LandingPage() {
                             { icon: CheckCircle, title: "Conformidade", desc: "Justificativas alinhadas rigorosamente à Lei 14.133/21." },
                             { icon: TrendingUp, title: "Economia", desc: "Encontre os melhores preços validados e elimine sobrepreço." }
                         ].map((item, index) => (
-                            <div key={index} className="p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-colors">
-                                <item.icon className="w-10 h-10 text-cyan-400 mb-4" />
+                            <div key={index} className="p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-cyan-500/30 transition-all duration-300 group">
+                                <item.icon className="w-10 h-10 text-cyan-400 mb-4 group-hover:scale-110 transition-transform" />
                                 <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                                <p className="text-slate-400 text-sm">{item.desc}</p>
+                                <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
                             </div>
                         ))}
                     </div>

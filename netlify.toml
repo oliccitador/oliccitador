@@ -6,4 +6,4 @@
 
 
 [functions]
-  included_files = ["lib/catmat-db.json"]
+  included_files = ["lib/catmat-db.json", "lib/caepi-db.json"]
