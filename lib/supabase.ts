@@ -1,15 +1,20 @@
 import { createBrowserClient } from '@supabase/ssr'
 
 export function createClient() {
-    // Use process.env with fallback to hardcoded values for client-side
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://bcqusrvpyfirnzsoctvt.supabase.co';
-    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJjcXVzcnZweWZpcm56c29jdHZ0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNTk1MjgsImV4cCI6MjA3OTYzNTUyOH0.x09aSU6SgyEu9vHJET68wxf_AEqvguBZO92BILmsvlM';
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
     if (!supabaseUrl || !supabaseAnonKey) {
-        throw new Error(
-            'Missing Supabase environment variables'
-        );
+        console.error('❌ Missing Supabase environment variables');
+        throw new Error('Missing Supabase environment variables');
     }
+
+    // Debug log to verify key presence (safe log)
+    console.log('✅ Supabase Client Initializing:', {
+        url: supabaseUrl,
+        keyLength: supabaseAnonKey?.length,
+        keyStart: supabaseAnonKey?.substring(0, 5) + '...'
+    });
 
     return createBrowserClient(supabaseUrl, supabaseAnonKey);
 }
