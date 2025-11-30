@@ -23,7 +23,6 @@
         "xlsx": "^0.18.5"
     },
     "devDependencies": {
-        "@netlify/plugin-nextjs": "^5.15.1",
         "@types/node": "^18.19.0",
         "@types/react": "^18.2.0",
         "autoprefixer": "^10.0.1",
