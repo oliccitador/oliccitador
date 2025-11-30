@@ -7,9 +7,7 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# NEVER skip builds - always rebuild
-[build.ignore]
-  # Empty = always build
+
 
 # Include large files in functions (for Supabase if needed locally)
 [functions]
