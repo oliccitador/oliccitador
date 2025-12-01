@@ -42,10 +42,12 @@ export default function PricingPage() {
             if (data.init_point) {
                 window.location.href = data.init_point;
             } else {
+                console.error('❌ Checkout API Error:', data.error, data);
                 setError(data.error || 'Erro ao processar pagamento');
                 setLoading(false);
             }
         } catch (err) {
+            console.error('❌ Checkout Fetch Error:', err);
             setError('Erro ao conectar com o servidor');
             setLoading(false);
         }
