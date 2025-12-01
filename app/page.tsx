@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Brain, Search, ShieldCheck, ShoppingCart, FileText, Zap, CheckCircle, TrendingUp, ArrowRight, Menu, X } from 'lucide-react';
+import { Brain, Search, ShieldCheck, ShoppingCart, FileText, Zap, CheckCircle, TrendingUp, ArrowRight, Menu, X, Sparkles, Rocket } from 'lucide-react';
 import { useState } from 'react';
 
 export default function LandingPage() {
@@ -65,6 +65,25 @@ export default function LandingPage() {
             <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
                 <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[120px] opacity-50" />
                 <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] opacity-50" />
+
+                {/* Announcement Ribbon */}
+                <div className="relative z-20 max-w-4xl mx-auto px-4 mb-12">
+                    <div className="bg-gradient-to-r from-cyan-900/40 via-purple-900/40 to-cyan-900/40 border border-white/10 backdrop-blur-md rounded-full p-1">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 py-2 px-4 text-sm font-medium text-cyan-100">
+                            <span className="flex items-center gap-2">
+                                <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
+                                <span className="opacity-90">Em breve:</span>
+                                <span className="text-white font-bold tracking-wide text-shadow-sm">Leitor de Editais Inteligente</span>
+                            </span>
+                            <span className="hidden sm:inline text-white/20">|</span>
+                            <span className="flex items-center gap-2">
+                                <Rocket className="w-4 h-4 text-cyan-400" />
+                                <span className="opacity-90">Ainda este Mês:</span>
+                                <span className="text-white font-bold tracking-wide text-shadow-sm">Cotador Inteligente</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-slate-400">
