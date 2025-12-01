@@ -28,9 +28,6 @@ export default function LandingPage() {
                                 <Link href="/sicx" className="hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">SICX Express</Link>
                                 <Link href="/pricing" className="hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Planos</Link>
                                 <Link href="/login" className="text-cyan-400 hover:text-cyan-300 transition-colors px-3 py-2 rounded-md text-sm font-medium">Login</Link>
-                                <Link href="/pricing" className="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-full text-sm font-bold transition-all shadow-[0_0_15px_rgba(8,145,178,0.5)] hover:shadow-[0_0_25px_rgba(8,145,178,0.7)]">
-                                    Começar Agora
-                                </Link>
                             </div>
                         </div>
 
@@ -54,9 +51,6 @@ export default function LandingPage() {
                             <Link href="/sicx" className="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">SICX Express</Link>
                             <Link href="/pricing" className="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Planos</Link>
                             <Link href="/login" className="text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Login</Link>
-                            <Link href="/pricing" className="bg-cyan-600 text-white block px-3 py-2 rounded-md text-base font-bold mt-4 text-center">
-                                Começar Agora
-                            </Link>
                         </div>
                     </div>
                 )}
