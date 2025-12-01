@@ -316,6 +316,58 @@ export default function Home() {
                             )}
                         </div>
 
+                        {/* CA MODULE CARD - Only visible when CA is detected */}
+                        {result.ca_module && (
+                            <div className="bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50 p-6 rounded-xl shadow-lg border-2 border-yellow-400 space-y-4 md:col-span-2">
+                                <div className="flex items-center gap-3 text-yellow-700 font-bold text-xl mb-4">
+                                    <span className="text-3xl">🔐</span>
+                                    <h3>Descrição Técnica – CA informado</h3>
+                                </div>
+
+                                <div className="grid grid-cols-1 gap-4">
+                                    {/* CA Detectado */}
+                                    <div className="bg-white/80 p-5 rounded-lg border-2 border-yellow-300 shadow-sm hover:shadow-md transition-shadow">
+                                        <p className="text-xs font-bold text-yellow-700 uppercase mb-2 tracking-wide">📍 CA Detectado</p>
+                                        <p className="text-2xl font-mono font-extrabold text-gray-900 tracking-tight">
+                                            CA {result.ca_module.ca_detectado}
+                                        </p>
+                                    </div>
+
+                                    {/* Nome Comercial */}
+                                    <div className="bg-white/80 p-5 rounded-lg border-2 border-yellow-300 shadow-sm hover:shadow-md transition-shadow">
+                                        <p className="text-xs font-bold text-yellow-700 uppercase mb-2 tracking-wide">🏷️ Nome Comercial</p>
+                                        <p className="text-base font-bold text-gray-900 leading-tight">
+                                            {result.ca_module.nome_comercial}
+                                        </p>
+                                    </div>
+
+                                    {/* Descrição Técnica */}
+                                    <div className="bg-white/80 p-5 rounded-lg border-2 border-yellow-300 shadow-sm hover:shadow-md transition-shadow">
+                                        <p className="text-xs font-bold text-yellow-700 uppercase mb-3 tracking-wide">📝 Descrição Técnica</p>
+                                        <p className="text-sm text-gray-800 leading-relaxed">
+                                            {result.ca_module.descricao_tecnica}
+                                        </p>
+                                    </div>
+
+                                    {/* Mensagem Obrigatória */}
+                                    <div className="bg-yellow-100 p-5 rounded-lg border-2 border-yellow-400">
+                                        <p className="text-xs font-bold text-yellow-800 uppercase mb-2">⚠️ Recomendação Importante</p>
+                                        <p className="text-sm text-gray-700 leading-relaxed">
+                                            {result.ca_module.mensagem_usuario}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Badge de Status */}
+                                <div className="flex items-center justify-between pt-2">
+                                    <div className="px-3 py-1 rounded-full text-xs font-bold bg-yellow-200 text-yellow-800">
+                                        ✅ Dados extraídos via IA
+                                    </div>
+                                    <p className="text-xs text-gray-500">Fonte: Módulo CA (Gemini AI)</p>
+                                </div>
+                            </div>
+                        )}
+
                         {/* Regra 4: Justificativa */}
                         <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-3 md:col-span-2">
                             <div className="flex items-center gap-2 text-blue-600 font-semibold">
