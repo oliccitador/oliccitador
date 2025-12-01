@@ -98,7 +98,11 @@ export async function POST(request: Request) {
                 email: email,
                 quota: selectedPlan.quota,
             },
-            // Removed payment_methods restriction to allow all defaults (PIX, Boleto, Card)
+            payment_methods: {
+                excluded_payment_methods: [],
+                excluded_payment_types: [],
+                installments: 1
+            }
         };
 
         console.log('📝 Creating preference with data:', JSON.stringify(preferenceData, null, 2));
