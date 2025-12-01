@@ -23,25 +23,46 @@ const PLANS = {
 };
 
 export async function POST(request: Request) {
+    console.log('🔵 Checkout API called');
+
     try {
         // 1. Get plan and email from request
         const body = await request.json();
         const { plan, email } = body;
+        console.log('📧 Request data:', { plan, email });
 
         if (!plan || !email) {
+            console.error('❌ Missing required fields:', { plan, email });
             return NextResponse.json({ error: 'Plan and email are required' }, { status: 400 });
         }
 
         if (!PLANS[plan as keyof typeof PLANS]) {
+            console.error('❌ Invalid plan:', plan);
             return NextResponse.json({ error: 'Invalid plan' }, { status: 400 });
         }
 
         const selectedPlan = PLANS[plan as keyof typeof PLANS];
+        console.log('✅ Selected plan:', selectedPlan);
 
         // 2. Initialize Mercado Pago
-        const client = new MercadoPagoConfig({
-            accessToken: process.env.MERCADOPAGO_ACCESS_TOKEN!,
+        const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN;
+        console.log('🔑 Access Token check:', {
+            exists: !!accessToken,
+            length: accessToken?.length,
+            prefix: accessToken?.substring(0, 10) + '...'
         });
+
+        if (!accessToken) {
+            console.error('❌ MERCADOPAGO_ACCESS_TOKEN not configured');
+            return NextResponse.json({
+                error: 'Payment service not configured. Please contact support.'
+            }, { status: 500 });
+        }
+
+        const client = new MercadoPagoConfig({
+            accessToken: accessToken,
+        });
+        console.log('✅ MercadoPago client initialized');
 
         const preference = new Preference(client);
 
@@ -80,7 +101,9 @@ export async function POST(request: Request) {
             // Removed payment_methods restriction to allow all defaults (PIX, Boleto, Card)
         };
 
+        console.log('📝 Creating preference with data:', JSON.stringify(preferenceData, null, 2));
         const result = await preference.create({ body: preferenceData });
+        console.log('✅ Preference created:', { id: result.id, init_point: result.init_point });
 
         return NextResponse.json({
             init_point: result.init_point,
@@ -88,7 +111,13 @@ export async function POST(request: Request) {
         });
 
     } catch (error: any) {
-        console.error('Mercado Pago Preference Error:', error);
+        console.error('❌ CHECKOUT API ERROR:', {
+            name: error.name,
+            message: error.message,
+            status: error.status,
+            cause: error.cause,
+            stack: error.stack
+        });
         return NextResponse.json({
             error: error.message || 'Error creating preference'
         }, { status: 500 });
