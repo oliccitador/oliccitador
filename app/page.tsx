@@ -27,6 +27,7 @@ export default function LandingPage() {
                                 <Link href="#benefits" className="hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Vantagens</Link>
                                 <Link href="/sicx" className="hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">SICX Express</Link>
                                 <Link href="/pricing" className="hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Planos</Link>
+                                <Link href="/tutorial" className="hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Tutorial</Link>
                                 <Link href="/login" className="text-cyan-400 hover:text-cyan-300 transition-colors px-3 py-2 rounded-md text-sm font-medium">Login</Link>
                             </div>
                         </div>
@@ -50,6 +51,7 @@ export default function LandingPage() {
                             <Link href="#benefits" className="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Vantagens</Link>
                             <Link href="/sicx" className="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">SICX Express</Link>
                             <Link href="/pricing" className="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Planos</Link>
+                            <Link href="/tutorial" className="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Tutorial</Link>
                             <Link href="/login" className="text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Login</Link>
                         </div>
                     </div>
@@ -210,6 +212,7 @@ export default function LandingPage() {
                     <div className="flex gap-8 text-sm text-slate-500">
                         <Link href="/terms" className="hover:text-cyan-400 transition-colors">Termos de Uso</Link>
                         <Link href="/privacy" className="hover:text-cyan-400 transition-colors">Privacidade</Link>
+                        <Link href="/tutorial" className="hover:text-cyan-400 transition-colors">Tutorial</Link>
                         <a href="mailto:suporte.olicitador@gmail.com" className="hover:text-cyan-400 transition-colors">Contato</a>
                     </div>
                     <p className="text-slate-600 text-sm">© 2024 O Licitador. Todos os direitos reservados.</p>
