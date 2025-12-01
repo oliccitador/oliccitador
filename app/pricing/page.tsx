@@ -69,9 +69,6 @@ export default function PricingPage() {
                             <div className="ml-10 flex items-baseline space-x-8">
                                 <Link href="/" className="hover:text-cyan-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">Home</Link>
                                 <Link href="/login" className="text-cyan-400 hover:text-cyan-300 transition-colors px-3 py-2 rounded-md text-sm font-medium">Login</Link>
-                                <Link href="/analise" className="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-full text-sm font-bold transition-all shadow-[0_0_15px_rgba(8,145,178,0.5)] hover:shadow-[0_0_25px_rgba(8,145,178,0.7)]">
-                                    Começar Análise
-                                </Link>
                             </div>
                         </div>
 
@@ -92,9 +89,6 @@ export default function PricingPage() {
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                             <Link href="/" className="text-slate-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</Link>
                             <Link href="/login" className="text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Login</Link>
-                            <Link href="/analise" className="bg-cyan-600 text-white block px-3 py-2 rounded-md text-base font-bold mt-4 text-center">
-                                Começar Análise
-                            </Link>
                         </div>
                     </div>
                 )}
