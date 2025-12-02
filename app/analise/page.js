@@ -216,7 +216,7 @@ export default function Home() {
                     <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-green-500 mb-8 animate-in fade-in slide-in-from-bottom-4">
                         <div className="flex items-center gap-3 text-green-700 font-bold text-xl mb-6 border-b border-green-100 pb-4">
                             <span className="text-3xl">💰</span>
-                            <h3>Cotação de Mercado (Bing BR)</h3>
+                            <h3>Cotação de Mercado</h3>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -226,12 +226,7 @@ export default function Home() {
                                     <p className="text-xs font-bold text-slate-500 uppercase mb-1">Produto Buscado</p>
                                     <p className="text-sm font-medium text-slate-900">{priceResult.produto}</p>
                                 </div>
-                                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
-                                    <p className="text-xs font-bold text-slate-500 uppercase mb-1">Estratégia Usada</p>
-                                    <p className="text-xs font-mono text-slate-700 bg-slate-200 px-2 py-1 rounded inline-block">
-                                        {priceResult.origem_descricao}
-                                    </p>
-                                </div>
+
                             </div>
 
                             {/* Prices Column */}
@@ -283,39 +278,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        {/* Regra 2: Detetive de Códigos */}
-                        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-3">
-                            <div className="flex items-center gap-2 text-purple-600 font-semibold">
-                                <Search className="w-5 h-5" />
-                                <h2>Detetive de Códigos</h2>
-                            </div>
-                            <div className="space-y-2">
-                                <div>
-                                    <span className="text-xs font-bold text-slate-500 uppercase">CA Detectado</span>
-                                    <div className="flex flex-wrap gap-2 mt-1">
-                                        {result.codigos_detectados?.ca ? (
-                                            <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded text-sm font-medium">
-                                                {result.codigos_detectados.ca}
-                                            </span>
-                                        ) : (
-                                            <span className="text-sm text-slate-400 italic">Nenhum CA detectado</span>
-                                        )}
-                                    </div>
-                                </div>
-                                <div>
-                                    <span className="text-xs font-bold text-slate-500 uppercase">CATMAT / BR</span>
-                                    <div className="flex flex-wrap gap-2 mt-1">
-                                        {result.codigos_detectados?.catmat ? (
-                                            <span className="bg-purple-100 text-purple-700 px-2 py-1 rounded text-sm font-medium">
-                                                CATMAT {result.codigos_detectados.catmat}
-                                            </span>
-                                        ) : (
-                                            <span className="text-sm text-slate-400 italic">Nenhum código detectado</span>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
 
                         {/* CATMAT Information Card - Sempre visível */}
                         <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6 rounded-xl shadow-lg border-2 border-blue-300 space-y-4 md:col-span-2">
@@ -430,15 +393,6 @@ export default function Home() {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            ) : (
-                                <div className="mt-4 p-6 text-center bg-gray-50 rounded-lg border border-dashed border-gray-300">
-                                    <p className="text-gray-600 text-sm font-medium mb-1">
-                                        Item de Especificação Genérica
-                                    </p>
-                                    <p className="text-gray-500 text-xs">
-                                        Não foi possível identificar uma marca/modelo específico como referência técnica para este item.
-                                    </p>
                                 </div>
                             )}
                         </div>
