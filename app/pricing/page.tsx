@@ -106,241 +106,201 @@ export default function PricingPage() {
                 </p>
             </section>
 
-            {/* Black Friday Banner */}
-            <section className="pb-8 px-4">
-                <div className="max-w-4xl mx-auto">
-                    <div className="relative overflow-hidden bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 rounded-2xl p-1">
-                        <div className="bg-slate-900 rounded-xl p-6 text-center">
-                            <div className="flex items-center justify-center gap-3 mb-2">
-                                <span className="text-4xl">🔥</span>
-                                <h2 className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">
-                                    BLACK FRIDAY
-                                </h2>
-                                <span className="text-4xl">🔥</span>
-                            </div>
-                            <p className="text-lg md:text-xl text-white font-bold">
-                                Até <span className="text-yellow-400 text-2xl">75% OFF</span> + Bônus Exclusivos!
-                            </p>
-                            <p className="text-sm text-slate-300 mt-2">
-                                Valores válidos para assinaturas realizadas até o dia <strong className="text-yellow-400">10/12/2025</strong>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
 
             {/* Pricing Cards */}
             <section className="pb-24 px-4">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
 
                     {/* Básico Tier */}
-                    <div className="relative p-8 bg-white/5 border border-yellow-500/30 rounded-3xl hover:bg-white/10 transition-all flex flex-col">
-                        <div className="absolute -top-3 -right-3 bg-yellow-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-full animate-pulse">
-                            50% OFF
-                        </div>
+                    <div className="relative p-8 bg-white/5 border border-slate-500/30 rounded-3xl hover:bg-white/10 transition-all flex flex-col">
                         <div className="mb-4">
-                            <h3 className="text-2xl font-bold text-white">Básico Black Friday</h3>
+                            <h3 className="text-2xl font-bold text-white">Básico</h3>
                             <p className="text-slate-400 text-sm">Para quem está começando</p>
                         </div>
                         <div className="mb-6">
-                            <div className="flex items-center gap-2">
-                                <span className="text-2xl font-bold text-slate-500 line-through">R$ 39</span>
-                            </div>
-                            <span className="text-4xl font-bold text-yellow-400">R$ 19,90</span>
+                            <span className="text-4xl font-bold text-white">R$ 29,90</span>
                             <span className="text-slate-500">/mês</span>
                         </div>
                         <ul className="space-y-4 mb-8 flex-1">
                             <li className="flex items-center gap-3 text-slate-300">
-                                <Check className="w-5 h-5 text-cyan-400" /> <strong>50 análises/mês</strong>
+                                <Check className="w-5 h-5 text-cyan-400" /> <strong>100 análises de itens/mês</strong>
                             </li>
                             <li className="flex items-center gap-3 text-slate-300">
-                                <Check className="w-5 h-5 text-cyan-400" /> Todas as 4 Regras de Ouro
+                                <Check className="w-5 h-5 text-cyan-400" /> <strong>50 leituras de editais/mês</strong>
                             </li>
                             <li className="flex items-center gap-3 text-slate-300">
-                                <Check className="w-5 h-5 text-cyan-400" /> Busca de Mercado
+                                <Check className="w-5 h-5 text-cyan-400" /> Cotador Inteligente
                             </li>
                             <li className="flex items-center gap-3 text-slate-300">
-                                <Check className="w-5 h-5 text-cyan-400" /> Justificativa Técnica
+                                <Check className="w-5 h-5 text-cyan-400" /> Busca CATMAT/C.A
                             </li>
                             <li className="flex items-center gap-3 text-slate-300">
-                                <Check className="w-5 h-5 text-cyan-400" /> Suporte por email
+                                <Check className="w-5 h-5 text-cyan-400" /> Justificativas Técnicas
+                            </li>
+                            <li className="flex items-center gap-3 text-slate-300">
+                                <Check className="w-5 h-5 text-cyan-400" /> Suporte WhatsApp (48h)
                             </li>
                         </ul>
-                        <button onClick={() => handleSubscribe('basico')} className="w-full py-3 rounded-full bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold transition-all shadow-[0_0_20px_rgba(234,179,8,0.4)]">
-                            Assinar Agora
+                        <button onClick={() => handleSubscribe('basico')} className="w-full py-3 rounded-full bg-slate-600 hover:bg-slate-500 text-white font-bold transition-all">
+                            Assinar Básico
                         </button>
                     </div>
 
-                    {/* Pro Tier (Highlighted) */}
+                    {/* Profissional Tier (Highlighted) */}
                     <div className="relative p-8 bg-gradient-to-b from-cyan-900/20 to-slate-900/40 border border-cyan-500/50 rounded-3xl shadow-[0_0_30px_rgba(8,145,178,0.15)] transform md:-translate-y-4 flex flex-col">
                         <div className="absolute top-0 right-0 bg-cyan-500 text-slate-900 text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-2xl">
                             MAIS POPULAR
                         </div>
-                        <div className="absolute -top-3 -left-3 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">
-                            55% OFF
-                        </div>
                         <div className="mb-4">
-                            <h3 className="text-2xl font-bold text-white">Pro Black Friday</h3>
+                            <h3 className="text-2xl font-bold text-white">Profissional</h3>
                             <p className="text-cyan-200/70 text-sm">Ideal para profissionais</p>
                         </div>
                         <div className="mb-6">
-                            <div className="flex items-center gap-2">
-                                <span className="text-2xl font-bold text-slate-500 line-through">R$ 89</span>
-                            </div>
-                            <span className="text-4xl font-bold text-white">R$ 39,90</span>
+                            <span className="text-4xl font-bold text-white">R$ 59,90</span>
                             <span className="text-slate-500">/mês</span>
                         </div>
                         <ul className="space-y-4 mb-8 flex-1">
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-cyan-400" /> <strong>150 análises/mês</strong>
+                                <Check className="w-5 h-5 text-cyan-400" /> <strong>Análises ILIMITADAS</strong>
                             </li>
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-cyan-400" /> Todas as 4 Regras de Ouro
+                                <Check className="w-5 h-5 text-cyan-400" /> <strong>500 leituras de editais/mês</strong>
                             </li>
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-cyan-400" /> Busca de Mercado Avançada
+                                <Check className="w-5 h-5 text-cyan-400" /> Cotador Inteligente ILIMITADO
                             </li>
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-cyan-400" /> Justificativa Técnica Jurídica
+                                <Check className="w-5 h-5 text-cyan-400" /> Busca CATMAT/C.A ILIMITADA
                             </li>
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-cyan-400" /> Exportação em PDF
+                                <Check className="w-5 h-5 text-cyan-400" /> Justificativas Técnicas ILIMITADAS
                             </li>
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-cyan-400" /> Suporte prioritário
+                                <Check className="w-5 h-5 text-cyan-400" /> Suporte WhatsApp Prioritário (6h)
+                            </li>
+                            <li className="flex items-center gap-3 text-white">
+                                <Check className="w-5 h-5 text-cyan-400" /> Acesso Beta a novos recursos
                             </li>
                         </ul>
-                        <button onClick={() => handleSubscribe('pro')} className="w-full py-4 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all hover:scale-105">
-                            Assinar Pro
+                        <button onClick={() => handleSubscribe('profissional')} className="w-full py-4 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all hover:scale-105">
+                            Assinar Profissional
                         </button>
                     </div>
 
-                    {/* Premium Tier - BLACK FRIDAY SPECIAL */}
+                    {/* Anual Tier */}
                     <div className="relative p-8 bg-gradient-to-b from-green-900/20 to-slate-900/40 border border-green-500/50 rounded-3xl hover:bg-white/10 transition-all flex flex-col">
-                        <div className="absolute -top-3 -right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">
-                            75% OFF
+                        <div className="absolute -top-3 -right-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                            MELHOR CUSTO
                         </div>
                         <div className="mb-4">
-                            <h3 className="text-2xl font-bold text-white">Premium Black Friday</h3>
-                            <p className="text-green-200/70 text-sm">Oferta exclusiva</p>
+                            <h3 className="text-2xl font-bold text-white">Anual</h3>
+                            <p className="text-green-200/70 text-sm">Economize R$ 61,80/ano</p>
                         </div>
                         <div className="mb-6">
-                            <div className="flex items-center gap-2">
-                                <span className="text-2xl font-bold text-slate-500 line-through">R$ 199</span>
+                            <div className="flex items-baseline gap-2">
+                                <span className="text-4xl font-bold text-green-400">R$ 24,75</span>
+                                <span className="text-slate-500">/mês</span>
                             </div>
-                            <span className="text-4xl font-bold text-green-400">R$ 99,90</span>
-                            <span className="text-slate-500">/mês</span>
+                            <p className="text-sm text-slate-400 mt-1">(R$ 297,00 cobrado anualmente)</p>
                         </div>
                         <ul className="space-y-4 mb-8 flex-1">
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-green-400" />
-                                <div>
-                                    <strong className="line-through text-slate-500">500</strong> <strong className="text-green-400">1000 análises/mês</strong>
-                                    <p className="text-xs text-green-300">Só para assinantes da Black Friday!</p>
-                                </div>
+                                <Check className="w-5 h-5 text-green-400" /> <strong>Análises ILIMITADAS</strong>
                             </li>
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-green-400" /> Tudo do plano Pro
+                                <Check className="w-5 h-5 text-green-400" /> <strong>350 leituras de editais/mês</strong>
                             </li>
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-green-400" /> API dedicada
+                                <Check className="w-5 h-5 text-green-400" /> Cotador Inteligente ILIMITADO
                             </li>
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-green-400" /> Gestão de múltiplos usuários
+                                <Check className="w-5 h-5 text-green-400" /> Busca CATMAT/C.A ILIMITADA
                             </li>
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-green-400" /> Suporte prioritário 24/7
+                                <Check className="w-5 h-5 text-green-400" /> Justificativas Técnicas ILIMITADAS
                             </li>
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-green-400" /> Treinamento personalizado
+                                <Check className="w-5 h-5 text-green-400" /> Suporte WhatsApp Prioritário (6h)
+                            </li>
+                            <li className="flex items-center gap-3 text-white">
+                                <Check className="w-5 h-5 text-green-400" /> Acesso Beta + Garantia de Preço
                             </li>
                         </ul>
-                        <button onClick={() => handleSubscribe('premium')} className="w-full py-3 rounded-full bg-green-500 hover:bg-green-400 text-slate-900 font-bold transition-all shadow-[0_0_20px_rgba(34,197,94,0.4)]">
-                            Assinar Premium
-                        </button>
+                        <button onClick={() => handleSubscribe('anual')} className="w-full py-4 rounded-full bg-green-500 hover:bg-green-400 text-slate-900 font-bold shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all hover:scale-105">
+                            Assinar Anual
                     </div>
+                </footer >
 
-                </div>
-            </section>
+                {/* Email Modal */}
+                {
+                    showEmailModal && (
+                        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+                            <div className="bg-slate-900 border border-cyan-500/30 rounded-2xl p-8 max-w-md w-full shadow-[0_0_50px_rgba(8,145,178,0.3)]">
+                                <h3 className="text-2xl font-bold text-white mb-4">Quase lá! 🚀</h3>
+                                <p className="text-slate-300 mb-6">
+                                    Digite seu email para prosseguir com a assinatura do plano <strong className="text-cyan-400">{selectedPlan === 'basico' ? 'Básico' : selectedPlan === 'pro' ? 'Pro' : 'Premium'}</strong>.
+                                </p>
 
-            {/* Footer */}
-            <footer className="bg-[#0b1120] py-12 border-t border-white/5">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div className="flex items-center gap-2">
-                        <Brain className="w-6 h-6 text-slate-500" />
-                        <span className="text-slate-400 font-semibold">O Licitador</span>
-                    </div>
-                    <p className="text-slate-600 text-sm">© 2024 O Licitador. Todos os direitos reservados.</p>
-                </div>
-            </footer>
+                                <form onSubmit={handleCheckout} className="space-y-4">
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                                        <input
+                                            type="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                                            placeholder="seu@email.com"
+                                            required
+                                            autoFocus
+                                        />
+                                    </div>
 
-            {/* Email Modal */}
-            {showEmailModal && (
-                <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-                    <div className="bg-slate-900 border border-cyan-500/30 rounded-2xl p-8 max-w-md w-full shadow-[0_0_50px_rgba(8,145,178,0.3)]">
-                        <h3 className="text-2xl font-bold text-white mb-4">Quase lá! 🚀</h3>
-                        <p className="text-slate-300 mb-6">
-                            Digite seu email para prosseguir com a assinatura do plano <strong className="text-cyan-400">{selectedPlan === 'basico' ? 'Básico' : selectedPlan === 'pro' ? 'Pro' : 'Premium'}</strong>.
-                        </p>
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-300 mb-2">Confirmar Email</label>
+                                        <input
+                                            type="email"
+                                            value={confirmEmail}
+                                            onChange={(e) => setConfirmEmail(e.target.value)}
+                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                                            placeholder="Confirme seu email"
+                                            required
+                                            onPaste={(e) => e.preventDefault()} // Prevent pasting to force typing
+                                        />
+                                    </div>
 
-                        <form onSubmit={handleCheckout} className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                                <input
-                                    type="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                                    placeholder="seu@email.com"
-                                    required
-                                    autoFocus
-                                />
+                                    {error && (
+                                        <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 text-red-400 text-sm">
+                                            {error}
+                                        </div>
+                                    )}
+
+                                    <div className="flex gap-3">
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                setShowEmailModal(false);
+                                                setEmail('');
+                                                setError('');
+                                            }}
+                                            className="flex-1 py-3 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg transition-all"
+                                            disabled={loading}
+                                        >
+                                            Cancelar
+                                        </button>
+                                        <button
+                                            type="submit"
+                                            className="flex-1 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] disabled:opacity-50"
+                                            disabled={loading}
+                                        >
+                                            {loading ? 'Processando...' : 'Continuar'}
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-
-                            <div>
-                                <label className="block text-sm font-medium text-slate-300 mb-2">Confirmar Email</label>
-                                <input
-                                    type="email"
-                                    value={confirmEmail}
-                                    onChange={(e) => setConfirmEmail(e.target.value)}
-                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                                    placeholder="Confirme seu email"
-                                    required
-                                    onPaste={(e) => e.preventDefault()} // Prevent pasting to force typing
-                                />
-                            </div>
-
-                            {error && (
-                                <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 text-red-400 text-sm">
-                                    {error}
-                                </div>
-                            )}
-
-                            <div className="flex gap-3">
-                                <button
-                                    type="button"
-                                    onClick={() => {
-                                        setShowEmailModal(false);
-                                        setEmail('');
-                                        setError('');
-                                    }}
-                                    className="flex-1 py-3 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg transition-all"
-                                    disabled={loading}
-                                >
-                                    Cancelar
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="flex-1 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] disabled:opacity-50"
-                                    disabled={loading}
-                                >
-                                    {loading ? 'Processando...' : 'Continuar'}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
-        </div>
+                        </div>
+                    )
+                }
+        </div >
     );
 }

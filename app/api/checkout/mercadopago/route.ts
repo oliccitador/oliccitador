@@ -3,22 +3,26 @@ import MercadoPagoConfig, { Preference } from 'mercadopago';
 
 export const dynamic = 'force-dynamic';
 
-// Plan configuration - Black Friday prices
+// Plan configuration
 const PLANS = {
     basico: {
         name: 'Básico',
-        price: 19.90,
-        quota: 50
+        price: 29.90,
+        item_quota: 100,
+        edital_quota: 50
     },
-    pro: {
-        name: 'Pro',
-        price: 39.90,
-        quota: 150
+    profissional: {
+        name: 'Profissional',
+        price: 59.90,
+        item_quota: -1, // ilimitado
+        edital_quota: 500
     },
-    premium: {
-        name: 'Premium',
-        price: 99.90,
-        quota: 1000
+    anual: {
+        name: 'Anual',
+        price: 297.00,
+        item_quota: -1, // ilimitado
+        edital_quota: 350,
+        billing_period: 'yearly'
     }
 };
 
