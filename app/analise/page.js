@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import { useState, useCallback } from 'react';
-import { Search, ShieldCheck, ShoppingCart, FileText, Loader2, ExternalLink } from 'lucide-react';
+import { Search, ShieldCheck, ShoppingCart, FileText, Loader2, ExternalLink, DollarSign } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,12 +11,48 @@ export default function Home() {
     const [catmat, setCatmat] = useState('');
     const [result, setResult] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [priceResult, setPriceResult] = useState(null);
+    const [priceLoading, setPriceLoading] = useState(false);
+
+    const handleQuotation = async () => {
+        if (!result) return;
+
+        setPriceLoading(true);
+        setPriceResult(null);
+
+        try {
+            // Prepare payload based on ISOLATED rules
+            // We pass everything, backend decides what to use based on has_ca
+            const payload = {
+                has_ca: !!result.ca_module,
+                ca_numero: result.ca_module?.ca_detectado,
+                ca_descricao_tecnica: result.ca_module?.descricao_tecnica,
+                query_semantica: result.query_semantica_limpa
+            };
+
+            const response = await fetch('/api/prices', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+
+            const data = await response.json();
+            setPriceResult(data);
+
+        } catch (error) {
+            console.error('Price Search Error:', error);
+            alert('Erro ao buscar preços. Tente novamente.');
+        } finally {
+            setPriceLoading(false);
+        }
+    };
 
     const handleAnalyze = async () => {
         if (!description) return;
 
         // --- CORREÇÃO: Forçar o reset do estado na submissão ---
         setResult(null); // Limpa imediatamente os resultados antigos
+        setPriceResult(null);
         // --------------------------------------------------------
 
         setLoading(true);
@@ -43,6 +79,7 @@ export default function Home() {
     // FUNÇÃO DE RESET: Limpa o estado e a descrição para nova busca
     const handleReset = useCallback(() => {
         setResult(null);
+        setPriceResult(null);
         setDescription('');
         console.log("Interface resetada para nova busca.");
     }, []);
@@ -132,13 +169,89 @@ export default function Home() {
 
                 {/* BOTÃO DE RESET - Visível após análise concluída */}
                 {result && !result.error && (
-                    <div className="flex justify-end mb-6">
+                    <div className="flex justify-end mb-6 gap-4">
+                        <button
+                            onClick={handleQuotation}
+                            disabled={priceLoading}
+                            className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg transition-all duration-200 flex items-center gap-2 shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {priceLoading ? (
+                                <>
+                                    <Loader2 className="w-5 h-5 animate-spin" />
+                                    Buscando Preços...
+                                </>
+                            ) : (
+                                <>
+                                    <DollarSign className="w-5 h-5" />
+                                    COTAÇÃO
+                                </>
+                            )}
+                        </button>
+
                         <button
                             onClick={handleReset}
                             className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg transition-all duration-200 flex items-center gap-2 shadow-sm hover:shadow-md"
                         >
                             Fazer Nova Busca
                         </button>
+                    </div>
+                )}
+
+                {/* PRICE SEARCH RESULT CARD */}
+                {priceResult && (
+                    <div className="bg-white p-6 rounded-xl shadow-lg border-2 border-green-500 mb-8 animate-in fade-in slide-in-from-bottom-4">
+                        <div className="flex items-center gap-3 text-green-700 font-bold text-xl mb-6 border-b border-green-100 pb-4">
+                            <span className="text-3xl">💰</span>
+                            <h3>Cotação de Mercado (Bing BR)</h3>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {/* Info Column */}
+                            <div className="md:col-span-1 space-y-4">
+                                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                    <p className="text-xs font-bold text-slate-500 uppercase mb-1">Produto Buscado</p>
+                                    <p className="text-sm font-medium text-slate-900">{priceResult.produto}</p>
+                                </div>
+                                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                    <p className="text-xs font-bold text-slate-500 uppercase mb-1">Estratégia Usada</p>
+                                    <p className="text-xs font-mono text-slate-700 bg-slate-200 px-2 py-1 rounded inline-block">
+                                        {priceResult.origem_descricao}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Prices Column */}
+                            <div className="md:col-span-2 space-y-3">
+                                <h4 className="font-semibold text-slate-700 mb-2">Melhores Preços Encontrados</h4>
+                                {priceResult.melhores_precos && priceResult.melhores_precos.length > 0 ? (
+                                    priceResult.melhores_precos.map((item, idx) => (
+                                        <div key={idx} className="flex items-center justify-between bg-white p-4 rounded-lg border border-slate-200 hover:border-green-300 transition-colors shadow-sm">
+                                            <div className="flex-1">
+                                                <p className="font-medium text-slate-900 line-clamp-1">{item.titulo}</p>
+                                                <p className="text-xs text-slate-500 mt-1">{item.loja}</p>
+                                            </div>
+                                            <div className="text-right ml-4">
+                                                <p className="text-lg font-bold text-green-700">
+                                                    {item.preco_formatado || `R$ ${item.preco?.toFixed(2)}`}
+                                                </p>
+                                                <a
+                                                    href={item.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-xs text-blue-600 hover:underline flex items-center justify-end gap-1 mt-1"
+                                                >
+                                                    Ver Loja <ExternalLink className="w-3 h-3" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <div className="text-center p-8 bg-slate-50 rounded-lg border border-dashed border-slate-300">
+                                        <p className="text-slate-500">Nenhum preço encontrado para esta busca.</p>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 )}
 
