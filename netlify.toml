@@ -8,3 +8,9 @@
 
 [functions]
   included_files = ["lib/catmat-db.json", "lib/caepi-db.json"]
+
+# WhatsApp Webhook Redirect
+[[redirects]]
+  from = "/api/whatsapp/webhook"
+  to = "/.netlify/functions/whatsapp-webhook"
+  status = 200
