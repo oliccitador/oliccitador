@@ -10,12 +10,14 @@ export function createClient() {
         throw new Error('Missing Supabase environment variables');
     }
 
-    // Debug log to verify key presence (safe log)
-    console.log('✅ Supabase Client Initializing:', {
-        url: supabaseUrl,
-        keyLength: supabaseAnonKey?.length,
-        keyStart: supabaseAnonKey?.substring(0, 5) + '...'
-    });
+    // Debug log to verify key presence (safe log - dev only)
+    if (process.env.NODE_ENV !== 'production') {
+        console.log('✅ Supabase Client Initializing:', {
+            url: supabaseUrl,
+            keyLength: supabaseAnonKey?.length,
+            keyStart: supabaseAnonKey?.substring(0, 5) + '...'
+        });
+    }
 
     return createBrowserClient(supabaseUrl, supabaseAnonKey);
 }

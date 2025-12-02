@@ -48,6 +48,11 @@ export async function POST(request: Request) {
         const selectedPlan = PLANS[plan as keyof typeof PLANS];
         console.log('✅ Selected plan:', selectedPlan);
 
+        // Environment validation (dev only warning)
+        if (!process.env.NEXT_PUBLIC_BASE_URL && process.env.NODE_ENV !== 'production') {
+            console.warn('⚠️ NEXT_PUBLIC_BASE_URL not set, using fallback URL');
+        }
+
         // 2. Initialize Mercado Pago
         const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN;
         console.log('🔑 Access Token check:', {
