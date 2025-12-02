@@ -4,9 +4,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { WhatsAppOrchestrator } from '../../../lib/whatsapp/orchestrator.ts';
-import { WhatsAppClient } from '../../../lib/whatsapp/whatsapp-client.ts';
-import { SessionManager } from '../../../lib/whatsapp/session-manager.ts';
+import { WhatsAppOrchestrator, WhatsAppClient, SessionManager } from '@/lib/whatsapp';
 
 export const dynamic = 'force-dynamic';
 
