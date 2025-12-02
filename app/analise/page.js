@@ -22,9 +22,23 @@ export default function Home() {
 
         try {
             // Prepare payload based on ISOLATED rules
-            // We pass everything, backend decides what to use based on has_ca
+            const hasCa = !!result.ca_module;
+            let query = '';
+
+            if (hasCa) {
+                // FORCE CA QUERY CONSTRUCTION
+                const caNum = result.ca_module?.ca_detectado || '';
+                const caDesc = result.ca_module?.descricao_tecnica || '';
+                query = `CA ${caNum} ${caDesc}`;
+            } else {
+                // FORCE SEMANTIC QUERY
+                query = result.query_semantica_limpa || '';
+            }
+
+            // We pass everything, but 'query' is now the primary search key
             const payload = {
-                has_ca: !!result.ca_module,
+                query: query,
+                has_ca: hasCa,
                 ca_numero: result.ca_module?.ca_detectado,
                 ca_descricao_tecnica: result.ca_module?.descricao_tecnica,
                 query_semantica: result.query_semantica_limpa
