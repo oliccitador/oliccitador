@@ -128,7 +128,7 @@ export default function PricingPage() {
                                 <Check className="w-5 h-5 text-cyan-400" /> <strong>100 análises de itens/mês</strong>
                             </li>
                             <li className="flex items-center gap-3 text-slate-300">
-                                <Check className="w-5 h-5 text-cyan-400" /> <strong>50 leituras de editais/mês</strong>
+                                <Check className="w-5 h-5 text-cyan-400" /> <strong>50 leituras de editais/mês</strong> <span className="text-yellow-400 font-bold ml-2 text-xs uppercase">Cortesia</span> <span className="text-cyan-400 text-xs ml-1 font-bold">ainda este Mês</span>
                             </li>
                             <li className="flex items-center gap-3 text-slate-300">
                                 <Check className="w-5 h-5 text-cyan-400" /> Cotador Inteligente
@@ -166,7 +166,7 @@ export default function PricingPage() {
                                 <Check className="w-5 h-5 text-cyan-400" /> <strong>Análises ILIMITADAS</strong>
                             </li>
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-cyan-400" /> <strong>500 leituras de editais/mês</strong>
+                                <Check className="w-5 h-5 text-cyan-400" /> <strong>500 leituras de editais/mês</strong> <span className="text-yellow-400 font-bold ml-2 text-xs uppercase">Cortesia</span> <span className="text-cyan-400 text-xs ml-1 font-bold">ainda este Mês</span>
                             </li>
                             <li className="flex items-center gap-3 text-white">
                                 <Check className="w-5 h-5 text-cyan-400" /> Cotador Inteligente ILIMITADO
@@ -210,7 +210,7 @@ export default function PricingPage() {
                                 <Check className="w-5 h-5 text-green-400" /> <strong>Análises ILIMITADAS</strong>
                             </li>
                             <li className="flex items-center gap-3 text-white">
-                                <Check className="w-5 h-5 text-green-400" /> <strong>350 leituras de editais/mês</strong>
+                                <Check className="w-5 h-5 text-green-400" /> <strong>350 leituras de editais/mês</strong> <span className="text-yellow-400 font-bold ml-2 text-xs uppercase">Cortesia</span> <span className="text-green-400 text-xs ml-1 font-bold">ainda este Mês</span>
                             </li>
                             <li className="flex items-center gap-3 text-white">
                                 <Check className="w-5 h-5 text-green-400" /> Cotador Inteligente ILIMITADO
