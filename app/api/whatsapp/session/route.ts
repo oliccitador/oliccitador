@@ -4,7 +4,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { SessionManager } from '@/lib/whatsapp';
+import { SessionManager } from '../../../lib/whatsapp/session-manager';
 
 export const dynamic = 'force-dynamic';
 
