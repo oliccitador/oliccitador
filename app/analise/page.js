@@ -26,10 +26,10 @@ export default function Home() {
             let query = '';
 
             if (hasCa) {
-                // FORCE CA QUERY CONSTRUCTION
+                // FORCE CA QUERY CONSTRUCTION: CA + Commercial Name ONLY
                 const caNum = result.ca_module?.ca_detectado || '';
-                const caDesc = result.ca_module?.descricao_tecnica || '';
-                query = `CA ${caNum} ${caDesc}`;
+                const caName = result.ca_module?.nome_comercial || '';
+                query = `CA ${caNum} ${caName}`;
             } else {
                 // FORCE SEMANTIC QUERY
                 query = result.query_semantica_limpa || '';
@@ -40,6 +40,7 @@ export default function Home() {
                 query: query,
                 has_ca: hasCa,
                 ca_numero: result.ca_module?.ca_detectado,
+                ca_nome_comercial: result.ca_module?.nome_comercial, // Ensure this is passed
                 ca_descricao_tecnica: result.ca_module?.descricao_tecnica,
                 query_semantica: result.query_semantica_limpa
             };
