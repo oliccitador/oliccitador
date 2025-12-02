@@ -75,12 +75,6 @@ export default function LandingPage() {
                                 <span className="opacity-90">Em breve:</span>
                                 <span className="text-white font-bold tracking-wide text-shadow-sm">Leitor de Editais Inteligente</span>
                             </span>
-                            <span className="hidden sm:inline text-white/20">|</span>
-                            <span className="flex items-center gap-2">
-                                <Rocket className="w-4 h-4 text-cyan-400" />
-                                <span className="opacity-90">Ainda este Mês:</span>
-                                <span className="text-white font-bold tracking-wide text-shadow-sm">Cotador Inteligente</span>
-                            </span>
                         </div>
                     </div>
                 </div>
