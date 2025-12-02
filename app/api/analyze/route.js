@@ -7,7 +7,7 @@ import { getCache, setCache } from '../../../lib/cache';
 export const dynamic = 'force-dynamic';
 
 export async function POST(request) {
-    console.log('DEBUG: API POST /api/analyze called');
+    if (process.env.NODE_ENV !== 'production') console.log('DEBUG: API POST /api/analyze called');
     try {
         const cookieStore = await cookies();
         const supabase = createServerClient(
@@ -24,7 +24,7 @@ export async function POST(request) {
         const body = await request.json();
         const { description, ca, catmat } = body;
 
-        console.log('[API] Received:', { description: description.substring(0, 100), ca, catmat });
+        if (process.env.NODE_ENV !== 'production') console.log('[API] Received:', { description: description.substring(0, 100), ca, catmat });
 
         if (!description) return NextResponse.json({ error: 'Description is required' }, { status: 400 });
 
@@ -34,7 +34,7 @@ export async function POST(request) {
         // if (cached) return NextResponse.json({ ...cached, cache: true });
 
         // Use 3-flow system
-        console.log(`[API] Analyzing with 3-flow system: CA=${ca}, CATMAT=${catmat}`);
+        if (process.env.NODE_ENV !== 'production') console.log(`[API] Analyzing with 3-flow system: CA=${ca}, CATMAT=${catmat}`);
         const result = await analyzeWithFlow(description, ca, catmat);
 
         // Cache result

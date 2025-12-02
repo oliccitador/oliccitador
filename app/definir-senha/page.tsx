@@ -23,7 +23,7 @@ function SetPasswordForm() {
 
             // 1. Listen for auth state changes (best for catching the URL session)
             const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-                console.log('Auth event:', event);
+                if (process.env.NODE_ENV !== 'production') console.log('Auth event:', event);
                 if (event === 'SIGNED_IN' || event === 'PASSWORD_RECOVERY') {
                     if (session?.user?.email) {
                         setUserEmail(session.user.email);
@@ -43,7 +43,7 @@ function SetPasswordForm() {
             // 3. Fallback: Manually parse hash if getSession failed but hash exists
             // This handles cases where the client might not have picked up the hash yet
             if (window.location.hash && window.location.hash.includes('access_token')) {
-                console.log('Manual hash parsing triggered');
+                if (process.env.NODE_ENV !== 'production') console.log('Manual hash parsing triggered');
                 try {
                     // Extract tokens from hash
                     const hashParams = new URLSearchParams(window.location.hash.substring(1));

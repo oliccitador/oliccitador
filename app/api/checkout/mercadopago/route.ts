@@ -27,13 +27,13 @@ const PLANS = {
 };
 
 export async function POST(request: Request) {
-    console.log('🔵 Checkout API called');
+    if (process.env.NODE_ENV !== 'production') console.log('🔵 Checkout API called');
 
     try {
         // 1. Get plan and email from request
         const body = await request.json();
         const { plan, email } = body;
-        console.log('📧 Request data:', { plan, email });
+        if (process.env.NODE_ENV !== 'production') console.log('📧 Request data:', { plan, email });
 
         if (!plan || !email) {
             console.error('❌ Missing required fields:', { plan, email });
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
         }
 
         const selectedPlan = PLANS[plan as keyof typeof PLANS];
-        console.log('✅ Selected plan:', selectedPlan);
+        if (process.env.NODE_ENV !== 'production') console.log('✅ Selected plan:', selectedPlan);
 
         // Environment validation (dev only warning)
         if (!process.env.NEXT_PUBLIC_BASE_URL && process.env.NODE_ENV !== 'production') {
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
 
         // 2. Initialize Mercado Pago
         const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN;
-        console.log('🔑 Access Token check:', {
+        if (process.env.NODE_ENV !== 'production') console.log('🔑 Access Token check:', {
             exists: !!accessToken,
             length: accessToken?.length,
             prefix: accessToken?.substring(0, 10) + '...'
@@ -71,7 +71,7 @@ export async function POST(request: Request) {
         const client = new MercadoPagoConfig({
             accessToken: accessToken,
         });
-        console.log('✅ MercadoPago client initialized');
+        if (process.env.NODE_ENV !== 'production') console.log('✅ MercadoPago client initialized');
 
         const preference = new Preference(client);
 
@@ -114,9 +114,9 @@ export async function POST(request: Request) {
             }
         };
 
-        console.log('📝 Creating preference with data:', JSON.stringify(preferenceData, null, 2));
+        if (process.env.NODE_ENV !== 'production') console.log('📝 Creating preference with data:', JSON.stringify(preferenceData, null, 2));
         const result = await preference.create({ body: preferenceData });
-        console.log('✅ Preference created:', { id: result.id, init_point: result.init_point });
+        if (process.env.NODE_ENV !== 'production') console.log('✅ Preference created:', { id: result.id, init_point: result.init_point });
 
         return NextResponse.json({
             init_point: result.init_point,
