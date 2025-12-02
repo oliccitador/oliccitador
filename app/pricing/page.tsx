@@ -230,78 +230,82 @@ export default function PricingPage() {
                         </ul>
                         <button onClick={() => handleSubscribe('anual')} className="w-full py-4 rounded-full bg-green-500 hover:bg-green-400 text-slate-900 font-bold shadow-[0_0_20px_rgba(34,197,94,0.4)] transition-all hover:scale-105">
                             Assinar Anual
+                        </button>
                     </div>
-                </footer >
+                </div>
+            </section>
 
-                {/* Email Modal */}
-                {
-                    showEmailModal && (
-                        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-                            <div className="bg-slate-900 border border-cyan-500/30 rounded-2xl p-8 max-w-md w-full shadow-[0_0_50px_rgba(8,145,178,0.3)]">
-                                <h3 className="text-2xl font-bold text-white mb-4">Quase lá! 🚀</h3>
-                                <p className="text-slate-300 mb-6">
-                                    Digite seu email para prosseguir com a assinatura do plano <strong className="text-cyan-400">{selectedPlan === 'basico' ? 'Básico' : selectedPlan === 'pro' ? 'Pro' : 'Premium'}</strong>.
-                                </p>
+            <footer className="bg-[#0b1120] py-12 border-t border-white/5 text-center text-slate-500 text-sm">
+                <p>&copy; {new Date().getFullYear()} O Licitador. Todos os direitos reservados.</p>
+            </footer>
 
-                                <form onSubmit={handleCheckout} className="space-y-4">
-                                    <div>
-                                        <label className="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                                        <input
-                                            type="email"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                                            placeholder="seu@email.com"
-                                            required
-                                            autoFocus
-                                        />
-                                    </div>
+            {showEmailModal && (
+                <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+                    <div className="bg-slate-900 border border-cyan-500/30 rounded-2xl p-8 max-w-md w-full shadow-[0_0_50px_rgba(8,145,178,0.3)]">
+                        <h3 className="text-2xl font-bold text-white mb-4">Quase lá! 🚀</h3>
+                        <p className="text-slate-300 mb-6">
+                            Digite seu email para prosseguir com a assinatura do plano <strong className="text-cyan-400">{selectedPlan === 'basico' ? 'Básico' : selectedPlan === 'pro' ? 'Pro' : 'Premium'}</strong>.
+                        </p>
 
-                                    <div>
-                                        <label className="block text-sm font-medium text-slate-300 mb-2">Confirmar Email</label>
-                                        <input
-                                            type="email"
-                                            value={confirmEmail}
-                                            onChange={(e) => setConfirmEmail(e.target.value)}
-                                            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                                            placeholder="Confirme seu email"
-                                            required
-                                            onPaste={(e) => e.preventDefault()} // Prevent pasting to force typing
-                                        />
-                                    </div>
-
-                                    {error && (
-                                        <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 text-red-400 text-sm">
-                                            {error}
-                                        </div>
-                                    )}
-
-                                    <div className="flex gap-3">
-                                        <button
-                                            type="button"
-                                            onClick={() => {
-                                                setShowEmailModal(false);
-                                                setEmail('');
-                                                setError('');
-                                            }}
-                                            className="flex-1 py-3 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg transition-all"
-                                            disabled={loading}
-                                        >
-                                            Cancelar
-                                        </button>
-                                        <button
-                                            type="submit"
-                                            className="flex-1 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] disabled:opacity-50"
-                                            disabled={loading}
-                                        >
-                                            {loading ? 'Processando...' : 'Continuar'}
-                                        </button>
-                                    </div>
-                                </form>
+                        <form onSubmit={handleCheckout} className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                                <input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                                    placeholder="seu@email.com"
+                                    required
+                                    autoFocus
+                                />
                             </div>
-                        </div>
-                    )
-                }
+
+                            <div>
+                                <label className="block text-sm font-medium text-slate-300 mb-2">Confirmar Email</label>
+                                <input
+                                    type="email"
+                                    value={confirmEmail}
+                                    onChange={(e) => setConfirmEmail(e.target.value)}
+                                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                                    placeholder="Confirme seu email"
+                                    required
+                                    onPaste={(e) => e.preventDefault()} // Prevent pasting to force typing
+                                />
+                            </div>
+
+                            {error && (
+                                <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-3 text-red-400 text-sm">
+                                    {error}
+                                </div>
+                            )}
+
+                            <div className="flex gap-3">
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setShowEmailModal(false);
+                                        setEmail('');
+                                        setError('');
+                                    }}
+                                    className="flex-1 py-3 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-lg transition-all"
+                                    disabled={loading}
+                                >
+                                    Cancelar
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="flex-1 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] disabled:opacity-50"
+                                    disabled={loading}
+                                >
+                                    {loading ? 'Processando...' : 'Continuar'}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )
+            }
         </div >
     );
 }
