@@ -26,10 +26,9 @@ export default function Home() {
             let query = '';
 
             if (hasCa) {
-                // FORCE CA QUERY CONSTRUCTION: CA + Commercial Name ONLY
-                const caNum = result.ca_module?.ca_detectado || '';
+                // USE ONLY COMMERCIAL NAME (CA number doesn't help in e-commerce search)
                 const caName = result.ca_module?.nome_comercial || '';
-                query = `CA ${caNum} ${caName}`;
+                query = caName;
             } else {
                 // FORCE SEMANTIC QUERY
                 query = result.query_semantica_limpa || '';
