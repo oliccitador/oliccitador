@@ -371,7 +371,7 @@ export default function Home() {
                             </div>
 
                             {/* Produto de Referência */}
-                            {result.produto_referencia && result.produto_referencia.marca && result.produto_referencia.modelo ? (
+                            {result.produto_referencia && result.produto_referencia.marca && result.produto_referencia.modelo && (
                                 <div className="mt-4 p-6 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg">
                                     <div className="flex items-start gap-4">
                                         <div className="flex-shrink-0 w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
