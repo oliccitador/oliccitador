@@ -67,16 +67,38 @@ export default function LandingPage() {
                 <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[120px] opacity-50" />
 
                 {/* Announcement Ribbon */}
-                <div className="relative z-20 max-w-4xl mx-auto px-4 mb-12">
-                    <div className="bg-gradient-to-r from-cyan-900/40 via-purple-900/40 to-cyan-900/40 border border-white/10 backdrop-blur-md rounded-full p-1">
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 py-2 px-4 text-sm font-medium text-cyan-100">
-                            <span className="flex items-center gap-2">
-                                <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
-                                <span className="opacity-90">Em breve:</span>
-                                <span className="text-white font-bold tracking-wide text-shadow-sm">Leitor de Editais Inteligente</span>
-                            </span>
-                        </div>
+                {/* Promotional Badges */}
+                <div className="flex flex-wrap justify-center gap-4 mb-12 animate-fade-in-up max-w-6xl mx-auto px-4">
+
+                    {/* --- ATIVOS --- */}
+
+                    {/* Selo 1: Cotador Inteligente */}
+                    <div className="px-5 py-2 rounded-full bg-cyan-500/10 border border-cyan-400/50 text-cyan-300 font-bold flex items-center gap-2 shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:scale-105 transition-transform cursor-default">
+                        <Rocket className="w-5 h-5" />
+                        <span>Cotador Inteligente</span>
                     </div>
+
+                    {/* Selo 2: CATMAT */}
+                    <div className="px-5 py-2 rounded-full bg-purple-500/10 border border-purple-400/50 text-purple-300 font-bold flex items-center gap-2 shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:scale-105 transition-transform cursor-default">
+                        <Search className="w-5 h-5" />
+                        <span>Busca Dedicada CATMAT</span>
+                    </div>
+
+                    {/* Selo 3: C.A */}
+                    <div className="px-5 py-2 rounded-full bg-amber-500/10 border border-amber-400/50 text-amber-300 font-bold flex items-center gap-2 shadow-[0_0_20px_rgba(251,191,36,0.3)] hover:scale-105 transition-transform cursor-default">
+                        <ShieldCheck className="w-5 h-5" />
+                        <span>Busca Dedicada C.A</span>
+                    </div>
+
+                    {/* --- EM BREVE --- */}
+
+                    {/* Selo 4: Leitor (Diferenciado) */}
+                    <div className="px-4 py-1.5 rounded-full border border-dashed border-emerald-500/30 text-emerald-400/70 font-medium flex items-center gap-2 hover:text-emerald-300 transition-colors cursor-help" title="Funcionalidade em desenvolvimento">
+                        <Sparkles className="w-4 h-4" />
+                        <span>Leitor de Editais Inteligente</span>
+                        <span className="text-[10px] bg-emerald-900/50 border border-emerald-500/30 px-1.5 py-0.5 rounded text-emerald-200 uppercase tracking-wider">Em Breve</span>
+                    </div>
+
                 </div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
