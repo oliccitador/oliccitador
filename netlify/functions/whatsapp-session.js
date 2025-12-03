@@ -55,7 +55,6 @@ exports.handler = async (event, context) => {
                         phone,
                         context: 'public',
                         messages: [],
-                        metadata: {},
                         status: 'active',
                         last_message_at: new Date().toISOString()
                     })
