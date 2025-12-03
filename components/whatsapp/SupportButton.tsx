@@ -39,13 +39,13 @@ export function SupportButton() {
     const context = isDashboard ? 'operacional' : 'public';
 
     const uiConfig: UIConfig = isDashboard ? {
-        // Configuração SUPORTE (Dashboard/Produção) - Mantendo padrão atual por enquanto
+        // Configuração SUPORTE (Dashboard/Produção) - Conforme especificação exata
         headerTitle: 'Suporte Técnico',
-        headerSubtitle: 'Identifique-se para suporte',
-        bodyTitle: 'Suporte Operacional',
-        bodyDescription: 'Informe seu WhatsApp para falar com o suporte técnico.',
-        inputPlaceholder: 'Ex: 11999999999',
-        buttonText: 'Iniciar Suporte'
+        headerSubtitle: 'Digite seu WhatsApp para iniciar o suporte',
+        bodyTitle: 'Bem-vindo!',
+        bodyDescription: 'Para começar o suporte, digite seu número de WhatsApp.',
+        inputPlaceholder: 'Ex: 21987654321',
+        buttonText: 'Iniciar suporte'
     } : {
         // Configuração ATENDIMENTO (Home/Pricing) - Conforme especificação exata
         headerTitle: 'Suporte O Licitador',
