@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { MessageCircle, X, Send, Loader2 } from 'lucide-react';
 
 interface Message {
@@ -15,13 +16,45 @@ interface Session {
     context: 'public' | 'operacional';
 }
 
+interface UIConfig {
+    headerTitle: string;
+    headerSubtitle: string;
+    bodyTitle: string;
+    bodyDescription: string;
+    inputPlaceholder: string;
+    buttonText: string;
+}
+
 export function SupportButton() {
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [phone, setPhone] = useState('');
     const [message, setMessage] = useState('');
     const [session, setSession] = useState<Session | null>(null);
     const [loading, setLoading] = useState(false);
     const [isRegistered, setIsRegistered] = useState(false);
+
+    // Determine context and UI config
+    const isDashboard = pathname?.includes('/dashboard') || pathname?.includes('/producao');
+    const context = isDashboard ? 'operacional' : 'public';
+
+    const uiConfig: UIConfig = isDashboard ? {
+        // Configuração SUPORTE (Dashboard/Produção) - Mantendo padrão atual por enquanto
+        headerTitle: 'Suporte Técnico',
+        headerSubtitle: 'Identifique-se para suporte',
+        bodyTitle: 'Suporte Operacional',
+        bodyDescription: 'Informe seu WhatsApp para falar com o suporte técnico.',
+        inputPlaceholder: 'Ex: 11999999999',
+        buttonText: 'Iniciar Suporte'
+    } : {
+        // Configuração ATENDIMENTO (Home/Pricing) - Conforme especificação exata
+        headerTitle: 'Suporte O Licitador',
+        headerSubtitle: 'Digite seu WhatsApp para iniciar o atendimento',
+        bodyTitle: 'Bem-vindo!',
+        bodyDescription: 'Para começar o atendimento, digite seu número de WhatsApp.',
+        inputPlaceholder: 'Ex: 11987654321',
+        buttonText: 'Iniciar atendimento'
+    };
 
     // Check for existing session on mount
     useEffect(() => {
@@ -74,7 +107,7 @@ export function SupportButton() {
                 body: JSON.stringify({
                     phone,
                     message: newMessage,
-                    context: window.location.pathname.includes('/dashboard') ? 'operacional' : 'public'
+                    context
                 })
             });
 
@@ -96,7 +129,7 @@ export function SupportButton() {
                     className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center gap-2"
                 >
                     <MessageCircle size={24} />
-                    <span className="font-medium hidden md:inline">Suporte WhatsApp</span>
+                    <span className="font-medium hidden md:inline">{uiConfig.headerTitle}</span>
                 </button>
             )}
 
@@ -107,9 +140,9 @@ export function SupportButton() {
                         <div className="flex items-center gap-2">
                             <MessageCircle size={20} />
                             <div>
-                                <h3 className="font-bold">Suporte O Licitador</h3>
+                                <h3 className="font-bold">{uiConfig.headerTitle}</h3>
                                 <p className="text-xs text-green-100">
-                                    {isRegistered ? 'Online' : 'Identifique-se'}
+                                    {isRegistered ? 'Online' : uiConfig.headerSubtitle}
                                 </p>
                             </div>
                         </div>
@@ -126,14 +159,14 @@ export function SupportButton() {
                         {!isRegistered ? (
                             <div className="h-full flex flex-col justify-center items-center text-center space-y-4">
                                 <div className="bg-white p-6 rounded-xl shadow-sm w-full">
-                                    <h4 className="font-semibold text-gray-800 mb-2">Bem-vindo!</h4>
+                                    <h4 className="font-semibold text-gray-800 mb-2">{uiConfig.bodyTitle}</h4>
                                     <p className="text-sm text-gray-600 mb-4">
-                                        Para iniciar o atendimento, por favor informe seu número de WhatsApp.
+                                        {uiConfig.bodyDescription}
                                     </p>
                                     <form onSubmit={handleRegister} className="space-y-3">
                                         <input
                                             type="tel"
-                                            placeholder="Ex: 11999999999"
+                                            placeholder={uiConfig.inputPlaceholder}
                                             value={phone}
                                             onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
                                             className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
@@ -143,7 +176,7 @@ export function SupportButton() {
                                             type="submit"
                                             className="w-full bg-green-600 text-white py-2 rounded-lg font-medium hover:bg-green-700 transition-colors"
                                         >
-                                            Iniciar Chat
+                                            {uiConfig.buttonText}
                                         </button>
                                     </form>
                                 </div>
@@ -162,8 +195,8 @@ export function SupportButton() {
                                     >
                                         <div
                                             className={`max-w-[80%] p-3 rounded-lg text-sm ${msg.role === 'user'
-                                                    ? 'bg-[#DCF8C6] text-gray-800 rounded-tr-none'
-                                                    : 'bg-white text-gray-800 rounded-tl-none shadow-sm'
+                                                ? 'bg-[#DCF8C6] text-gray-800 rounded-tr-none'
+                                                : 'bg-white text-gray-800 rounded-tl-none shadow-sm'
                                                 }`}
                                         >
                                             {msg.content}
