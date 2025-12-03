@@ -118,7 +118,6 @@ exports.handler = async (event, context) => {
                 .from('whatsapp_sessions')
                 .update({
                     messages: updatedMessages,
-                    last_activity: new Date().toISOString(),
                     last_message_at: new Date().toISOString(),
                     context: context || session.context
                 })
