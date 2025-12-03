@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { SupportButton } from '@/components/whatsapp/SupportButton'
+import { SupportButton } from '../components/whatsapp/SupportButton'
 
 const inter = Inter({ subsets: ['latin'] })
 
