@@ -2,9 +2,7 @@
 // Handles session creation, retrieval, and bot responses via OpenAI
 
 const { createClient } = require('@supabase/supabase-js');
-
-// Dynamic import for ES modules
-let getBotResponse;
+const { getBotResponse } = require('../../lib/openai-service.js');
 
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -26,11 +24,6 @@ exports.handler = async (event, context) => {
     }
 
     try {
-        // Lazy load OpenAI service (ES module)
-        if (!getBotResponse) {
-            const openaiService = await import('../../lib/openai-service.js');
-            getBotResponse = openaiService.getBotResponse;
-        }
 
         if (event.httpMethod === 'GET') {
             // Get session
