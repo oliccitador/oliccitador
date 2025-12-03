@@ -48,7 +48,7 @@ export function SupportButton() {
         buttonText: 'Iniciar suporte'
     } : {
         // Configuração ATENDIMENTO (Home/Pricing) - Conforme especificação exata
-        headerTitle: 'Suporte O Licitador',
+        headerTitle: 'Atendimento O Licitador',
         headerSubtitle: 'Digite seu WhatsApp para iniciar o atendimento',
         bodyTitle: 'Bem-vindo!',
         bodyDescription: 'Para começar o atendimento, digite seu número de WhatsApp.',
