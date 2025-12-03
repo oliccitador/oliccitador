@@ -83,6 +83,22 @@ export function SupportButton() {
         if (phone.length < 10) return;
         localStorage.setItem('whatsapp_phone', phone);
         setIsRegistered(true);
+
+        // Add automatic greeting message based on context
+        const greetingMessage: Message = {
+            role: 'assistant',
+            content: isDashboard
+                ? `Olá! 👋 Sou o assistente de suporte técnico.\n\nEstou aqui para te ajudar a usar a ferramenta. Qual sua dúvida?`
+                : `Olá! 👋 Bem-vindo ao **O Licitador**!\n\nSou o assistente de atendimento. Como posso te ajudar hoje?\n\n1️⃣ Conhecer as funcionalidades\n2️⃣ Ver os planos e preços\n3️⃣ Tirar uma dúvida específica`,
+            timestamp: new Date().toISOString()
+        };
+
+        setSession({
+            phone,
+            messages: [greetingMessage],
+            context
+        });
+
         fetchSession(phone);
     };
 
