@@ -35,7 +35,9 @@ export function SupportButton() {
     const [isRegistered, setIsRegistered] = useState(false);
 
     // Determine context and UI config
-    const isDashboard = pathname?.includes('/dashboard') || pathname?.includes('/producao');
+    const isDashboard = pathname?.includes('/dashboard') ||
+        pathname?.includes('/producao') ||
+        pathname?.includes('/analise');
     const context = isDashboard ? 'operacional' : 'public';
 
     const uiConfig: UIConfig = isDashboard ? {
