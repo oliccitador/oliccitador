@@ -1,7 +1,10 @@
 // WhatsApp Session Handler - Netlify Function
-// Handles session creation and retrieval
+// Handles session creation, retrieval, and bot responses via OpenAI
 
 const { createClient } = require('@supabase/supabase-js');
+
+// Dynamic import for ES modules
+let getBotResponse;
 
 const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -23,6 +26,12 @@ exports.handler = async (event, context) => {
     }
 
     try {
+        // Lazy load OpenAI service (ES module)
+        if (!getBotResponse) {
+            const openaiService = await import('../../lib/openai-service.js');
+            getBotResponse = openaiService.getBotResponse;
+        }
+
         if (event.httpMethod === 'GET') {
             // Get session
             const phone = event.queryStringParameters?.phone;
@@ -39,53 +48,98 @@ exports.handler = async (event, context) => {
                 .from('whatsapp_sessions')
                 .select('*')
                 .eq('phone', phone)
-                .gte('last_message_at', new Date(Date.now() - 3600000).toISOString())
                 .single();
 
             if (error && error.code !== 'PGRST116') {
                 throw error;
             }
 
-            return {
-                statusCode: 200,
-                headers,
-                body: JSON.stringify(data || { phone, messages: [], context: 'public' })
-            };
-        }
+            // Return existing session or create new one
+            if (!data) {
+                const { data: newSession, error: createError } = await supabase
+                    .from('whatsapp_sessions')
+                    .insert({
+                        phone,
+                        context: 'public',
+                        messages: [],
+                        metadata: {},
+                        status: 'active',
+                        last_message_at: new Date().toISOString()
+                    })
+                    .select()
+                    .single();
 
-        if (event.httpMethod === 'POST') {
-            // Create/update session
-            const body = JSON.parse(event.body || '{}');
-            const { phone, context, message } = body;
+                if (createError) throw createError;
 
-            if (!phone) {
                 return {
-                    statusCode: 400,
+                    statusCode: 200,
                     headers,
-                    body: JSON.stringify({ error: 'Missing phone' })
+                    body: JSON.stringify(newSession)
                 };
             }
-
-            const sessionData = {
-                phone,
-                context: context || 'public',
-                messages: message ? [{ role: 'user', content: message, timestamp: new Date().toISOString() }] : [],
-                last_message_at: new Date().toISOString(),
-                metadata: {}
-            };
-
-            const { data, error } = await supabase
-                .from('whatsapp_sessions')
-                .upsert(sessionData, { onConflict: 'phone' })
-                .select()
-                .single();
-
-            if (error) throw error;
 
             return {
                 statusCode: 200,
                 headers,
                 body: JSON.stringify(data)
+            };
+        }
+
+        if (event.httpMethod === 'POST') {
+            // Send message and get bot response
+            const body = JSON.parse(event.body || '{}');
+            const { phone, context, message } = body;
+
+            if (!phone || !message) {
+                return {
+                    statusCode: 400,
+                    headers,
+                    body: JSON.stringify({ error: 'Missing phone or message' })
+                };
+            }
+
+            // Get existing session
+            const { data: session, error: fetchError } = await supabase
+                .from('whatsapp_sessions')
+                .select('*')
+                .eq('phone', phone)
+                .single();
+
+            if (fetchError) throw fetchError;
+
+            // Determine bot type based on context
+            const botType = context === 'operacional' ? 'suporte' : 'atendimento';
+
+            console.log(`[WHATSAPP-SESSION] Bot type: ${botType}, Phone: ${phone}`);
+
+            // Get bot response from OpenAI
+            const botResponse = await getBotResponse(message, session.messages || [], botType);
+
+            // Update session with new messages
+            const updatedMessages = [
+                ...(session.messages || []),
+                { role: 'user', content: message, timestamp: new Date().toISOString() },
+                { role: 'assistant', content: botResponse, timestamp: new Date().toISOString() }
+            ];
+
+            const { data: updatedSession, error: updateError } = await supabase
+                .from('whatsapp_sessions')
+                .update({
+                    messages: updatedMessages,
+                    last_activity: new Date().toISOString(),
+                    last_message_at: new Date().toISOString(),
+                    context: context || session.context
+                })
+                .eq('phone', phone)
+                .select()
+                .single();
+
+            if (updateError) throw updateError;
+
+            return {
+                statusCode: 200,
+                headers,
+                body: JSON.stringify(updatedSession)
             };
         }
 
@@ -96,7 +150,7 @@ exports.handler = async (event, context) => {
         };
 
     } catch (error) {
-        console.error('Session handler error:', error);
+        console.error('[WHATSAPP-SESSION] Error:', error);
         return {
             statusCode: 500,
             headers,
