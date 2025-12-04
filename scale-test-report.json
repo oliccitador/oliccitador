@@ -1,0 +1,746 @@
+{
+  "total": 50,
+  "passed": 50,
+  "failed": 0,
+  "rate": "100.0%",
+  "details": [
+    {
+      "input": "Ventilador Pulmonar T7 Amoul 5,5kg 17 modos IPX4",
+      "fallback": "Ventilador",
+      "detectedCategory": "ventilador pulmonar",
+      "query": "ventilador pulmonar 5,5kg 17 modos IPX4 preço Brasil",
+      "specs": {
+        "numerical": [
+          "5,5kg",
+          "17 modos"
+        ],
+        "certifications": [
+          "IPX4"
+        ],
+        "compatibility": [],
+        "category": "ventilador pulmonar",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Desfibrilador Externo Automático DEA CMOS Drake Bifásico com bateria de lítio longa duração",
+      "fallback": "Desfibrilador",
+      "detectedCategory": "desfibrilador",
+      "query": "desfibrilador preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "desfibrilador",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Oxímetro de Pulso Portátil de Dedo com Curva Pletismográfica e Alarme MD300",
+      "fallback": "Oxímetro",
+      "detectedCategory": "oxímetro",
+      "query": "oxímetro preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "oxímetro",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Maca Hospitalar Hidráulica com Grades Laterais e Rodízios 150mm Capacidade 250kg",
+      "fallback": "Maca",
+      "detectedCategory": "maca hospitalar",
+      "query": "maca hospitalar ios preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [
+          "ios"
+        ],
+        "category": "maca hospitalar",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Autoclave Vertical 21 Litros Volare Med Digital Inox Bivolt para esterilização",
+      "fallback": "Autoclave",
+      "detectedCategory": "autoclave",
+      "query": "autoclave 21 Litros preço Brasil",
+      "specs": {
+        "numerical": [
+          "21 Litros"
+        ],
+        "certifications": [],
+        "compatibility": [],
+        "category": "autoclave",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Cadeira de Rodas Motorizada D1000 Dellamed Dobrável Bateria Lítio Autonomia 20km",
+      "fallback": "Cadeira de Rodas",
+      "detectedCategory": "cadeira rodas",
+      "query": "cadeira rodas preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "cadeira rodas",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Monitor Multiparâmetro 12 polegadas ECG SPO2 PNI TEMP RESP Bateria 4h",
+      "fallback": "Monitor",
+      "detectedCategory": "monitor",
+      "query": "monitor 12 polegadas preço Brasil",
+      "specs": {
+        "numerical": [
+          "12 polegadas"
+        ],
+        "certifications": [],
+        "compatibility": [],
+        "category": "monitor",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Bomba de Infusão Universal Volumétrica Samtronic ST550 Equipo Padrão",
+      "fallback": "Bomba Infusão",
+      "detectedCategory": "Bomba Infusão",
+      "query": "Bomba Infusão preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Bomba Infusão",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Bisturi Eletrônico Eletrocautério 150W BP150 Emai Transcutâneo",
+      "fallback": "Eletrocautério",
+      "detectedCategory": "Eletrocautério",
+      "query": "Eletrocautério preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Eletrocautério",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Foco Cirúrgico de Teto LED 120.000 Lux Bivolt com Braço Articulado",
+      "fallback": "Foco Cirúrgico",
+      "detectedCategory": "Foco Cirúrgico",
+      "query": "Foco Cirúrgico preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Foco Cirúrgico",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Notebook Dell Latitude 3420 Intel Core i5 1135G7 8GB RAM SSD 256GB Windows 11 Pro 14\"",
+      "fallback": "Notebook",
+      "detectedCategory": "notebook",
+      "query": "notebook 14\" Intel Core Windows preço Brasil",
+      "specs": {
+        "numerical": [
+          "14\""
+        ],
+        "certifications": [],
+        "compatibility": [
+          "Intel Core",
+          "Windows"
+        ],
+        "category": "notebook",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Monitor Gamer LG UltraGear 27 polegadas IPS 144Hz 1ms HDMI DisplayPort HDR10",
+      "fallback": "Monitor",
+      "detectedCategory": "monitor",
+      "query": "monitor 27 polegadas preço Brasil",
+      "specs": {
+        "numerical": [
+          "27 polegadas"
+        ],
+        "certifications": [],
+        "compatibility": [],
+        "category": "monitor",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Impressora Multifuncional Laser Brother DCP-1617NW Wi-Fi 110V Monocromática",
+      "fallback": "Impressora",
+      "detectedCategory": "impressora",
+      "query": "impressora preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "impressora",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Servidor Dell PowerEdge T150 Intel Xeon E-2314 16GB RAM 2TB HDD Torre",
+      "fallback": "Servidor",
+      "detectedCategory": "Servidor",
+      "query": "Servidor ge preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [
+          "ge"
+        ],
+        "category": "Servidor",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Switch Gigabit 24 Portas TP-Link TL-SG1024D Rack 10/100/1000 Mbps",
+      "fallback": "Switch",
+      "detectedCategory": "Switch",
+      "query": "Switch preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Switch",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Nobreak SMS Station II 1200VA Bivolt 6 Tomadas Bateria Selada",
+      "fallback": "Nobreak",
+      "detectedCategory": "Nobreak",
+      "query": "Nobreak preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Nobreak",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Tablet Samsung Galaxy Tab S6 Lite 64GB 4GB RAM Tela 10.4\" Caneta S-Pen Cinza",
+      "fallback": "Tablet",
+      "detectedCategory": "Tablet",
+      "query": "Tablet 10.4\" preço Brasil",
+      "specs": {
+        "numerical": [
+          "10.4\""
+        ],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Tablet",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Projetor Epson PowerLite E20 3400 Lumens HDMI XGA 3LCD para salas de aula",
+      "fallback": "Projetor",
+      "detectedCategory": "Projetor",
+      "query": "Projetor preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Projetor",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "HD Externo Portátil Seagate Expansion 4TB USB 3.0 Preto STEA4000400",
+      "fallback": "HD Externo",
+      "detectedCategory": "HD Externo",
+      "query": "HD Externo preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "HD Externo",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Webcam Logitech C920s Pro Full HD 1080p com Proteção de Privacidade e Microfone",
+      "fallback": "Webcam",
+      "detectedCategory": "Webcam",
+      "query": "Webcam preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Webcam",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Cadeira de Escritório Presidente Ergonômica Tela Mesh Preta Ajuste Lombar Relax",
+      "fallback": "Cadeira",
+      "detectedCategory": "Cadeira",
+      "query": "Cadeira preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Cadeira",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Fragmentadora de Papel 12 Folhas Corte em Partículas CD Cartão 110V Menno",
+      "fallback": "Fragmentadora",
+      "detectedCategory": "Fragmentadora",
+      "query": "Fragmentadora preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Fragmentadora",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Quadro Branco Magnético 120x90cm Moldura Alumínio com Kit Instalação",
+      "fallback": "Quadro Branco",
+      "detectedCategory": "Quadro Branco",
+      "query": "Quadro Branco preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Quadro Branco",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Calculadora Científica Casio fx-82MS 240 Funções 2 Linhas Bateria",
+      "fallback": "Calculadora",
+      "detectedCategory": "Calculadora",
+      "query": "Calculadora 240 Funções preço Brasil",
+      "specs": {
+        "numerical": [
+          "240 Funções"
+        ],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Calculadora",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Guilhotina de Papel Facão A4 33cm Capacidade 10 Folhas Base Metal",
+      "fallback": "Guilhotina",
+      "detectedCategory": "Guilhotina",
+      "query": "Guilhotina preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Guilhotina",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Plastificadora Poliseladora A4 A3 Ofício Crachá Bivolt com Reverso",
+      "fallback": "Plastificadora",
+      "detectedCategory": "Plastificadora",
+      "query": "Plastificadora preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Plastificadora",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Rotulador Eletrônico Brother PT-70BM Portátil Fita M 9mm e 12mm",
+      "fallback": "Rotulador",
+      "detectedCategory": "Rotulador",
+      "query": "Rotulador preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Rotulador",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Cofre Eletrônico Digital Senha e Chave 30x38x30cm para Notebook Documentos",
+      "fallback": "Cofre",
+      "detectedCategory": "notebook",
+      "query": "notebook preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "notebook",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Relógio de Ponto Biométrico Digital Henry Prism Super Fácil Homologado Portaria 1510",
+      "fallback": "Relógio Ponto",
+      "detectedCategory": "Relógio Ponto",
+      "query": "Relógio Ponto preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Relógio Ponto",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Ar Condicionado Split Inverter 12000 BTU Frio Samsung WindFree 220V",
+      "fallback": "Ar Condicionado",
+      "detectedCategory": "ar condicionado",
+      "query": "ar condicionado 12000 BTU preço Brasil",
+      "specs": {
+        "numerical": [
+          "12000 BTU"
+        ],
+        "certifications": [],
+        "compatibility": [],
+        "category": "ar condicionado",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Furadeira Parafusadeira Impacto Bateria 20V Dewalt DCD776C2 Maleta Carregador",
+      "fallback": "Furadeira",
+      "detectedCategory": "Furadeira",
+      "query": "Furadeira preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Furadeira",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Serra Circular Manual Makita 185mm 7.1/4\" 1800W 5007N 220V com Disco",
+      "fallback": "Serra",
+      "detectedCategory": "Serra",
+      "query": "Serra 4\" preço Brasil",
+      "specs": {
+        "numerical": [
+          "4\""
+        ],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Serra",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Lixadeira Orbital Bosch GSS 140 220W com Coletor de Pó 127V",
+      "fallback": "Lixadeira",
+      "detectedCategory": "Lixadeira",
+      "query": "Lixadeira preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Lixadeira",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Betoneira 400 Litros Motor 2CV Monofásico 220V CSM Rental Profissional",
+      "fallback": "Betoneira",
+      "detectedCategory": "Betoneira",
+      "query": "Betoneira 400 Litros preço Brasil",
+      "specs": {
+        "numerical": [
+          "400 Litros"
+        ],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Betoneira",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Escada Articulada Multifuncional 4x3 12 Degraus Alumínio 3,39m Botafogo",
+      "fallback": "Escada",
+      "detectedCategory": "impressora multifuncional",
+      "query": "impressora multifuncional preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "impressora multifuncional",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Gerador de Energia Gasolina 3.1KVA Partida Manual TG3100CXR Toyama Bivolt",
+      "fallback": "Gerador",
+      "detectedCategory": "Gerador",
+      "query": "Gerador preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Gerador",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Compressor de Ar 24 Litros Motocompressor 8,2 Pés 2HP 110V Schulz",
+      "fallback": "Compressor",
+      "detectedCategory": "Compressor",
+      "query": "Compressor 24 Litros preço Brasil",
+      "specs": {
+        "numerical": [
+          "24 Litros"
+        ],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Compressor",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Trena Laser Digital Medidor de Distância 50 Metros Bosch GLM 50 C Bluetooth",
+      "fallback": "Trena",
+      "detectedCategory": "Trena",
+      "query": "Trena preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Trena",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Martelete Perfurador Rompedor SDS Plus 800W 2.7J HR2470 Makita Maleta",
+      "fallback": "Martelete",
+      "detectedCategory": "Martelete",
+      "query": "Martelete preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Martelete",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Capacete de Segurança Aba Frontal Classe B com Jugular Ajuste Carneira Branco",
+      "fallback": "EPI",
+      "detectedCategory": "EPI",
+      "query": "EPI preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "EPI",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Geladeira Frost Free Brastemp 375 Litros Inox BRM45 Duplex",
+      "fallback": "Geladeira",
+      "detectedCategory": "geladeira",
+      "query": "geladeira 375 Litros preço Brasil",
+      "specs": {
+        "numerical": [
+          "375 Litros"
+        ],
+        "certifications": [],
+        "compatibility": [],
+        "category": "geladeira",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Micro-ondas Electrolux 31 Litros Painel Integrado MI41S Prata Espelhado",
+      "fallback": "Microondas",
+      "detectedCategory": "Microondas",
+      "query": "Microondas 31 Litros preço Brasil",
+      "specs": {
+        "numerical": [
+          "31 Litros"
+        ],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Microondas",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Bebedouro de Coluna Esmaltec EGC35B Água Gelada e Natural Garrafão 20L Branco",
+      "fallback": "Bebedouro",
+      "detectedCategory": "Bebedouro",
+      "query": "Bebedouro 20L preço Brasil",
+      "specs": {
+        "numerical": [
+          "20L"
+        ],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Bebedouro",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Cafeteira Expresso Oster PrimaLatte II Vermelha 19 Bar Bomba Italiana Leite",
+      "fallback": "Cafeteira",
+      "detectedCategory": "Cafeteira",
+      "query": "Cafeteira preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Cafeteira",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Ventilador de Parede 60cm Oscilante Ventisol Bivolt Grade Aço Preto 200W",
+      "fallback": "Ventilador",
+      "detectedCategory": "ventilador pulmonar",
+      "query": "ventilador pulmonar preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "ventilador pulmonar",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Extintor de Incêndio Pó Químico ABC 4kg com Suporte Parede Validade 5 Anos",
+      "fallback": "Extintor",
+      "detectedCategory": "Extintor",
+      "query": "Extintor preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Extintor",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Pneu 175/70 R13 82T Formula Evo Pirelli para Carro de Passeio",
+      "fallback": "Pneu",
+      "detectedCategory": "Pneu",
+      "query": "Pneu preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Pneu",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Bateria Automotiva Moura 60Ah M60GD 12V Livre de Manutenção Polo Direito",
+      "fallback": "Bateria Carro",
+      "detectedCategory": "Bateria Carro",
+      "query": "Bateria Carro preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Bateria Carro",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Ração Golden Special Cães Adultos Frango e Carne 15kg Premium Especial",
+      "fallback": "Ração",
+      "detectedCategory": "Ração",
+      "query": "Ração preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Ração",
+        "model": null
+      },
+      "passed": true
+    },
+    {
+      "input": "Papel Sulfite A4 75g Chamex Branco Caixa com 10 Resmas 5000 Folhas",
+      "fallback": "Papel A4",
+      "detectedCategory": "Papel A4",
+      "query": "Papel A4 preço Brasil",
+      "specs": {
+        "numerical": [],
+        "certifications": [],
+        "compatibility": [],
+        "category": "Papel A4",
+        "model": null
+      },
+      "passed": true
+    }
+  ]
+}

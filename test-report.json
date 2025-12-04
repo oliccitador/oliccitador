@@ -1,0 +1,128 @@
+{
+  "timestamp": "2025-12-04T16:05:51.497Z",
+  "totalTestes": 5,
+  "sucessos": 5,
+  "taxaSucesso": "100.0%",
+  "resultados": [
+    {
+      "id": 1,
+      "categoria": "ELETRO",
+      "query": "GELADEIRA FROST FREE 400L",
+      "numResultados": 3,
+      "sucesso": true,
+      "top3": [
+        {
+          "preco": "R$ 514,00",
+          "titulo": "Conjunto Interface Refrigerador Brastemp Brm54 W11228626 Cin",
+          "loja": "mercadolivre.com.br"
+        },
+        {
+          "preco": "R$ 1.000,00",
+          "titulo": "Geladeira Brastemp Frost Free",
+          "loja": "mercadolivre.com.br"
+        },
+        {
+          "preco": "R$ 1.600,00",
+          "titulo": "Geladeira Frost Free 400 Litros Cor Branco 110w",
+          "loja": "mercadolivre.com.br"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "categoria": "ELETRO",
+      "query": "MICROONDAS 30L INOX",
+      "numResultados": 3,
+      "sucesso": true,
+      "top3": [
+        {
+          "preco": "R$ 65,77",
+          "titulo": "Paneleiras Grandes Inox Antiescaldante",
+          "loja": "mercadolivre.com.br"
+        },
+        {
+          "preco": "R$ 579,00",
+          "titulo": "Micro-ondas CM020BF 20 Litros Espelhado com Função Descongel",
+          "loja": "mercadolivre.com.br"
+        },
+        {
+          "preco": "R$ 581,03",
+          "titulo": "Micro-ondas Brastemp 20 Litros Em Inox Espelhado - Bms20ar",
+          "loja": "mercadolivre.com.br"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "categoria": "ELETRONICO",
+      "query": "NOTEBOOK I5 8GB SSD",
+      "numResultados": 3,
+      "sucesso": true,
+      "top3": [
+        {
+          "preco": "R$ 1.274,00",
+          "titulo": "Notebook Dell Latitude 3450 Core I5 5th 8gb Ssd 240gb Nf Cin",
+          "loja": "mercadolivre.com.br"
+        },
+        {
+          "preco": "R$ 1.506,00",
+          "titulo": "Notebook Lenovo Intel Core I5 8350u 8gb Ddr4 Ssd M.2 256gb -",
+          "loja": "mercadolivre.com.br"
+        },
+        {
+          "preco": "R$ 1.569,00",
+          "titulo": "Notebook Dell Latitude 3400 I5 8265 8gb 240ssd - Excelente (",
+          "loja": "mercadolivre.com.br"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "categoria": "MOVEL",
+      "query": "CADEIRA ESCRITORIO ERGONOMICA",
+      "numResultados": 3,
+      "sucesso": true,
+      "top3": [
+        {
+          "preco": "R$ 230,76",
+          "titulo": "Cadeira Escritorio Ajustavel Apoio Braço Tecido Respiravel P",
+          "loja": "mercadolivre.com.br"
+        },
+        {
+          "preco": "R$ 234,00",
+          "titulo": "Cadeira Escritório Slim Secretária Elidy Office Eiffel Max",
+          "loja": "mercadolivre.com.br"
+        },
+        {
+          "preco": "R$ 282,03",
+          "titulo": "Cadeira Slim Eames Charles Eiffel Giratória Estofada Cor Nud",
+          "loja": "mercadolivre.com.br"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "categoria": "MEDICO",
+      "query": "CADEIRA RODAS DOBRAVEL",
+      "numResultados": 3,
+      "sucesso": true,
+      "top3": [
+        {
+          "preco": "R$ 67,48",
+          "titulo": "Lençol Deslizante Para Idosos, Pano De Cama De Transferência",
+          "loja": "mercadolivre.com.br"
+        },
+        {
+          "preco": "R$ 485,10",
+          "titulo": "Cadeira De Transporte D90 100kg Dellamed",
+          "loja": "mercadolivre.com.br"
+        },
+        {
+          "preco": "R$ 492,99",
+          "titulo": "Cadeira De Rodas Dobrável Compacta Barata Econômica Nova",
+          "loja": "mercadolivre.com.br"
+        }
+      ]
+    }
+  ]
+}
