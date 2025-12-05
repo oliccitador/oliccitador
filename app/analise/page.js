@@ -39,7 +39,7 @@ export default function Home() {
                 query: query,
                 has_ca: hasCa,
                 ca_numero: result.ca_module?.ca_detectado,
-                ca_nome_comercial: result.ca_module?.nome_comercial || result.produto_referencia?.modelo || 'Produto', // Better fallback
+                ca_nome_comercial: result.ca_module?.nome_comercial || result.produto_referencia?.modelo || '', // Removed 'Produto' fallback to allow smart search
                 ca_descricao_tecnica: result.ca_module?.descricao_tecnica || description, // CRITICAL FIX: Use input description if no CA
                 query_semantica: result.query_semantica_limpa
             };
