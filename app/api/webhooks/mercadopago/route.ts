@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
 import { getWelcomeEmailTemplate } from '../../../../lib/email-templates';
+import logger from '../../../../lib/logger';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,7 +24,7 @@ export async function POST(req: Request) {
         );
 
         const body = await req.json();
-        if (process.env.NODE_ENV !== 'production') console.log('Mercado Pago Webhook received:', body);
+        logger.info('WEBHOOK/MP', 'Webhook received:', body);
 
         // Mercado Pago sends notifications with different types
         const { type, data } = body;
@@ -53,7 +54,7 @@ export async function POST(req: Request) {
 
             // Only process approved payments
             if (payment.status !== 'approved') {
-                if (process.env.NODE_ENV !== 'production') console.log(`Payment status is ${payment.status}, skipping`);
+                logger.debug('WEBHOOK/MP', `Payment status is ${payment.status}, skipping`);
                 return NextResponse.json({ received: true });
             }
 
@@ -68,7 +69,7 @@ export async function POST(req: Request) {
                     const externalRef = JSON.parse(payment.external_reference);
                     if (externalRef.email) email = externalRef.email;
                     if (externalRef.plan) planCode = externalRef.plan;
-                    if (process.env.NODE_ENV !== 'production') console.log('Recovered metadata from external_reference:', externalRef);
+                    logger.debug('WEBHOOK/MP', 'Recovered metadata from external_reference:', externalRef);
                 } catch (e) {
                     console.warn('Failed to parse external_reference:', payment.external_reference);
                 }
@@ -85,7 +86,7 @@ export async function POST(req: Request) {
                 return NextResponse.json({ error: 'Invalid plan' }, { status: 400 });
             }
 
-            if (process.env.NODE_ENV !== 'production') console.log(`Processing payment for ${email}, plan: ${planCode}`);
+            logger.info('WEBHOOK/MP', `Processing payment for ${email}, plan: ${planCode}`);
 
             // Check if user exists
             const { data: existingUsers } = await supabaseAdmin.auth.admin.listUsers();
@@ -97,7 +98,7 @@ export async function POST(req: Request) {
 
             if (existingUser) {
                 userId = existingUser.id;
-                if (process.env.NODE_ENV !== 'production') console.log(`User already exists: ${userId}`);
+                logger.debug('WEBHOOK/MP', `User already exists: ${userId}`);
             } else {
                 isNewUser = true;
                 // Create new user
@@ -119,7 +120,7 @@ export async function POST(req: Request) {
                 }
 
                 userId = newUser.user.id;
-                if (process.env.NODE_ENV !== 'production') console.log(`Created new user: ${userId}`);
+                logger.success('WEBHOOK/MP', `Created new user: ${userId}`);
 
                 // Generate password reset link
                 const { data: linkData, error: linkError } = await supabaseAdmin.auth.admin.generateLink({
@@ -136,7 +137,7 @@ export async function POST(req: Request) {
 
                 if (linkData?.properties?.action_link) {
                     actionUrl = linkData.properties.action_link;
-                    if (process.env.NODE_ENV !== 'production') console.log('Generated recovery link successfully');
+                    logger.success('WEBHOOK/MP', 'Generated recovery link successfully');
                 }
             }
 
@@ -160,7 +161,7 @@ export async function POST(req: Request) {
                 return NextResponse.json({ error: 'Error updating subscription' }, { status: 500 });
             }
 
-            if (process.env.NODE_ENV !== 'production') console.log(`Subscription activated for user ${userId}`);
+            logger.success('WEBHOOK/MP', `Subscription activated for user ${userId}`);
 
             // Send Welcome/Confirmation Email
             try {
@@ -170,7 +171,7 @@ export async function POST(req: Request) {
                     subject: isNewUser ? 'Bem-vindo ao O Licitador! Defina sua senha' : 'Pagamento Confirmado - O Licitador',
                     html: getWelcomeEmailTemplate(planDetails.name, actionUrl, isNewUser)
                 });
-                if (process.env.NODE_ENV !== 'production') console.log(`Email sent to ${email}`);
+                logger.success('WEBHOOK/MP', `Email sent to ${email}`);
             } catch (emailError) {
                 console.error('Error sending email:', emailError);
             }

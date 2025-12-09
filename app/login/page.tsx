@@ -104,6 +104,15 @@ function LoginForm() {
                             </div>
                         </div>
 
+                        <div className="text-right">
+                            <Link
+                                href="/esqueci-senha"
+                                className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
+                            >
+                                Esqueci minha senha
+                            </Link>
+                        </div>
+
                         <button
                             type="submit"
                             disabled={loading}

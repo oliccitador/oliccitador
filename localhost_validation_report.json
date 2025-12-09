@@ -1,0 +1,181 @@
+{
+  "timestamp": "2025-12-06T19:47:36.348Z",
+  "endpoint": "http://localhost:3000/api/analyze",
+  "total": 20,
+  "passed": 17,
+  "failed": 3,
+  "successRate": "85.0%",
+  "results": [
+    {
+      "index": 1,
+      "item": "Notebook i7",
+      "category": "Eletrônicos",
+      "status": "PASS",
+      "cleanDesc": "Notebook alta performance. Processador Intel Core i7 (13ª geração) ou superior/equivalente. Memória RAM: 16GB DDR4. Armazenamento: SSD de 512GB M.2 NVMe. Tela: 15.6 polegadas Full HD (1920x1080) Antirreflexo. Sistema Operacional: Windows 11 Pro 64 bits."
+    },
+    {
+      "index": 2,
+      "item": "Monitor 24",
+      "category": "Eletrônicos",
+      "status": "PASS",
+      "cleanDesc": "Monitor de vídeo LED 24 polegadas. Resolução Full HD 1920x1080, conexões HDMI e DisplayPort. Taxa de atualização 60Hz. Base com ajuste de altura, inclinação e rotação. Certificação EPEAT Gold."
+    },
+    {
+      "index": 3,
+      "item": "Tablet Samsung",
+      "category": "Eletrônicos",
+      "status": "PASS",
+      "cleanDesc": "Tablet tela 8.7 polegadas, processador Octa-Core, memória RAM 4GB, armazenamento 64GB expansível, conectividade Wi-Fi + 4G, sistema Android 13 ou superior, câmera traseira 8MP."
+    },
+    {
+      "index": 4,
+      "item": "Impressora Laser",
+      "category": "Eletrônicos",
+      "status": "PASS",
+      "cleanDesc": "Impressora multifuncional laser monocromática. Velocidade mínima de 40 ppm. Resolução 1200 x 1200 dpi. Conexão Rede Ethernet Gigabit e USB 2.0. Duplex automático (frente e verso). Ciclo mensal de 80.000 páginas. Alimentação 110V/220V."
+    },
+    {
+      "index": 5,
+      "item": "Geladeira Frost Free",
+      "category": "Eletrodomésticos",
+      "status": "PASS",
+      "cleanDesc": "Geladeira Frost Free Duplex. Capacidade total mínima de 375 litros. Cor: Branca ou Inox. Eficiência energética Classe A (Selo Procel). Voltagem: 220V. Prateleiras de vidro temperado e gavetão de legumes."
+    },
+    {
+      "index": 6,
+      "item": "Ar Condicionado 12000",
+      "category": "Eletrodomésticos",
+      "status": "PASS",
+      "cleanDesc": "Ar condicionado split high wall 12.000 BTUs tecnologia Inverter ciclo frio gás refrigerante R-410A (ecológico) classificação A INMETRO controle remoto sem fio serpentina de cobre."
+    },
+    {
+      "index": 7,
+      "item": "Microondas 30L",
+      "category": "Eletrodomésticos",
+      "status": "PASS",
+      "cleanDesc": "Forno micro-ondas com capacidade nominal de 30 a 34 litros. Painel digital com trava de segurança. Função descongelar e menu receitas pré-programadas. Acabamento espelhado ou inox. Potência mínima de 800W. Prato giratório de vidro. Tensão 127V. Em conformidade com a portaria 174/2012 do INMETRO."
+    },
+    {
+      "index": 8,
+      "item": "Fogão Industrial",
+      "category": "Eletrodomésticos",
+      "status": "PASS",
+      "cleanDesc": "Fogão industrial 4 bocas com forno. Estrutura em aço carbono ou inox. Grelhas em ferro fundido 30x30cm. Queimadores duplos e simples. Baixa pressão. Forno com capacidade mínima de 80 litros e porta com visor. Alimentação a Gás GLP. Dimensões aproximadas: 80x80x80cm."
+    },
+    {
+      "index": 9,
+      "item": "Cadeira Giratória",
+      "category": "Mobiliário",
+      "status": "PASS",
+      "cleanDesc": "Cadeira giratória ergonômica para escritório. Espaldar médio, com regulagem de altura a gás. Base em aço com capa de polipropileno e 05 rodízios duplos. Revestimento em tecido crepe ou couro sintético preto. Braços reguláveis. Em conformidade com a NR-17 e ABNT NBR 13962."
+    },
+    {
+      "index": 10,
+      "item": "Mesa Escritório",
+      "category": "Mobiliário",
+      "status": "PASS",
+      "cleanDesc": "Mesa de escritório reta. Medidas: 1200mm (L) x 600mm (P) x 740mm (A). Tampo em MDP/MDF de 25mm com bordas em ABS. Estrutura em aço com pintura epóxi. Gaveteiro fixo ou volante com 02 gavetas e fechadura. Cor: Cinza ou Argila. Pés niveladores."
+    },
+    {
+      "index": 11,
+      "item": "Armário Aço",
+      "category": "Mobiliário",
+      "status": "FAIL",
+      "cleanDesc": "ARMÁRIO AÇO 02 PORTAS Chapa 26 0 45mm 04 prateleiras reguláveis 03 móveis 01 fixa Fechadura com 02 chaves Capacidade carga por prateleira 20kg Pintura eletrostática cor cinza cristal Dimensões aprox 1980x900x400mm Tratamento antiferruginoso prévio"
+    },
+    {
+      "index": 12,
+      "item": "Estação Trabalho",
+      "category": "Mobiliário",
+      "status": "FAIL",
+      "cleanDesc": "ESTAÇÃO TRABALHO 4 LUGARES Formato plataforma cruz Tampo MDP 25mm com caixas tomadas para elétrica dados Divisórias frontais laterais vidro Estrutura metálica calha fiação Cor Branco Carvalho Medidas totais aproximadas 2800x1400mm"
+    },
+    {
+      "index": 13,
+      "item": "Capacete",
+      "category": "EPIs",
+      "status": "FAIL",
+      "cleanDesc": "CAPACETE SEGURANÇA Tipo Aba Frontal Classe Casco polietileno alta densidade Carneira suspensão com ajuste por catraca tira absorvedora suor Cor Branca Azul definir pedido Deve possuir Certificado Aprovação válido gravado forma indelével"
+    },
+    {
+      "index": 14,
+      "item": "Luva Vaqueta",
+      "category": "EPIs",
+      "status": "PASS",
+      "cleanDesc": "LUVA SEGURANÇA VAQUETA Tipo Petroleira Confeccionada couro bovino curtido cromo palma dorso Com reforço palmar interno Elástico para ajuste Punho acabamento viés Indicada proteção contra agentes abrasivos escoriantes Tamanho 9"
+    },
+    {
+      "index": 15,
+      "item": "Bota Segurança",
+      "category": "EPIs",
+      "status": "PASS",
+      "cleanDesc": "CALÇADO TIPO BOTINA SEGURANÇA Cabedal couro hidrofugado curtido cromo Biqueira composite PVC Plástico resistente impactos Fechamento elástico lateral Solado bidensidade injetado diretamente Cor Preta Numeração 35 45 Válido"
+    },
+    {
+      "index": 16,
+      "item": "Óculos Proteção",
+      "category": "EPIs",
+      "status": "PASS",
+      "cleanDesc": "ÓCULOS SEGURANÇA Constituídos arco material plástico preto com proteção superior lateral Lentes policarbonato incolor tratamento antirrisco antiembaçante Hastes tipo espátula reguláveis contra raios UVA UVB impactos partículas volantes"
+    },
+    {
+      "index": 17,
+      "item": "Disjuntor 20A",
+      "category": "Elétrica",
+      "status": "PASS",
+      "cleanDesc": "DISJUNTOR TERMOMAGNÉTICO BIPOLAR Corrente nominal 20A Curva disparo Padrão DIN Tensão máxima operação Capacidade interrupção Icn mínima 3kA Fixação trilho 35mm conformidade com norma NBR 60898 400V"
+    },
+    {
+      "index": 18,
+      "item": "Lâmpada LED",
+      "category": "Elétrica",
+      "status": "PASS",
+      "cleanDesc": "LÂMPADA LED TUBULAR Potência 18W 20W G13 Tensão Bivolt 240V Temperatura cor 6500K Branco Frio Fluxo luminoso mínimo 1850 lumens Vida útil estimada 25 000 horas Corpo vidro policarbonato Selo PROCEL INMETRO 100V"
+    },
+    {
+      "index": 19,
+      "item": "Cabo Flexível",
+      "category": "Elétrica",
+      "status": "PASS",
+      "cleanDesc": "CABO FLEXÍVEL 2 5MM Condutor Cobre eletrolítico têmpera mole classe 4 5 Isolação PVC antichama BWF 70 Tensão isolamento 450 Cor Vermelho Preto Azul rolos 100m Registro INMETRO obrigatório Marca referência Sil Cobrecom Prysmian equivalente 750V"
+    },
+    {
+      "index": 20,
+      "item": "Tomada 20A",
+      "category": "Elétrica",
+      "status": "PASS",
+      "cleanDesc": "TOMADA ENERGIA 2PT 20A Tipo Embutir Módulo padrão brasileiro NBR 14136 Cor Vermelha Branca identificação Tensão Material Termoplástico anti chama contatos liga cobre Placa 4x2 inclusa necessário 250V"
+    }
+  ],
+  "failures": [
+    {
+      "item": "Armário Aço",
+      "category": "Mobiliário",
+      "cleanDesc": "ARMÁRIO AÇO 02 PORTAS Chapa 26 0 45mm 04 prateleiras reguláveis 03 móveis 01 fixa Fechadura com 02 chaves Capacidade carga por prateleira 20kg Pintura eletrostática cor cinza cristal Dimensões aprox 1980x900x400mm Tratamento antiferruginoso prévio",
+      "missingKeywords": [
+        "Armário de Aço"
+      ],
+      "foundForbidden": []
+    },
+    {
+      "item": "Estação Trabalho",
+      "category": "Mobiliário",
+      "cleanDesc": "ESTAÇÃO TRABALHO 4 LUGARES Formato plataforma cruz Tampo MDP 25mm com caixas tomadas para elétrica dados Divisórias frontais laterais vidro Estrutura metálica calha fiação Cor Branco Carvalho Medidas totais aproximadas 2800x1400mm",
+      "missingKeywords": [
+        "Estação de Trabalho",
+        "caixas de tomadas",
+        "calha de fiação"
+      ],
+      "foundForbidden": []
+    },
+    {
+      "item": "Capacete",
+      "category": "EPIs",
+      "cleanDesc": "CAPACETE SEGURANÇA Tipo Aba Frontal Classe Casco polietileno alta densidade Carneira suspensão com ajuste por catraca tira absorvedora suor Cor Branca Azul definir pedido Deve possuir Certificado Aprovação válido gravado forma indelével",
+      "missingKeywords": [
+        "Classe B"
+      ],
+      "foundForbidden": []
+    }
+  ]
+}

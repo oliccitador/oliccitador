@@ -15,6 +15,7 @@ function SetPasswordForm() {
     const [success, setSuccess] = useState(false);
     const [isReady, setIsReady] = useState(false);
     const [userEmail, setUserEmail] = useState('');
+    const [isPasswordLocked, setIsPasswordLocked] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
@@ -27,6 +28,11 @@ function SetPasswordForm() {
                 if (event === 'SIGNED_IN' || event === 'PASSWORD_RECOVERY') {
                     if (session?.user?.email) {
                         setUserEmail(session.user.email);
+
+                        // Verificar se é usuário de feedback com senha bloqueada
+                        const passwordLocked = session.user.user_metadata?.password_locked === true;
+                        setIsPasswordLocked(passwordLocked);
+
                         setIsReady(true);
                     }
                 }
@@ -36,6 +42,11 @@ function SetPasswordForm() {
             const { data: { session } } = await supabase.auth.getSession();
             if (session?.user?.email) {
                 setUserEmail(session.user.email);
+
+                // Verificar se é usuário de feedback
+                const passwordLocked = session.user.user_metadata?.password_locked === true;
+                setIsPasswordLocked(passwordLocked);
+
                 setIsReady(true);
                 return;
             }
@@ -150,6 +161,53 @@ function SetPasswordForm() {
                     <Link href="/login" className="text-cyan-400 hover:text-cyan-300">
                         Ir para Login
                     </Link>
+                </div>
+            </div>
+        );
+    }
+
+    // BLOQUEIO: Usuários de feedback não podem alterar senha
+    if (isPasswordLocked) {
+        return (
+            <div className="min-h-screen bg-[#0f172a] flex items-center justify-center px-4">
+                <div className="w-full max-w-md">
+                    <div className="text-center mb-8">
+                        <Link href="/" className="inline-flex items-center gap-2 mb-4">
+                            <Brain className="w-12 h-12 text-cyan-400" />
+                            <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
+                                O Licitador
+                            </span>
+                        </Link>
+                    </div>
+
+                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-[0_0_50px_rgba(8,145,178,0.1)]">
+                        <div className="text-center">
+                            <div className="w-16 h-16 bg-yellow-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <Lock className="w-8 h-8 text-yellow-400" />
+                            </div>
+                            <h2 className="text-2xl font-bold text-white mb-4">Senha Bloqueada</h2>
+                            <p className="text-slate-300 mb-6">
+                                📧 <strong>{userEmail}</strong>
+                            </p>
+                            <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 text-sm text-yellow-200 mb-6 text-left">
+                                <p className="mb-2">
+                                    🔒 <strong>Conta de Teste/Feedback</strong>
+                                </p>
+                                <p className="mb-2">
+                                    Esta conta possui uma senha <strong>pré-estabelecida</strong> pelo time de desenvolvimento e não pode ser alterada por questões de segurança e controle de acesso.
+                                </p>
+                                <p>
+                                    Se você esqueceu a senha, entre em contato com o administrador.
+                                </p>
+                            </div>
+                            <Link
+                                href="/login"
+                                className="inline-block py-3 px-6 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)]"
+                            >
+                                Voltar ao Login
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
         );

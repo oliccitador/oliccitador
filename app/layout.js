@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import { SupportButton } from '../components/whatsapp/SupportButton'
+import { ChatManager } from '../components/chat/ChatManager'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
         <html lang="pt-BR">
             <body className={inter.className}>
                 {children}
-                <SupportButton />
+                <ChatManager />
             </body>
         </html>
     )

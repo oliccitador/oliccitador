@@ -1,0 +1,123 @@
+================================================================================
+🔍 DIAGNÓSTICO ENDPOINT POR ENDPOINT (CORRIGIDO)
+================================================================================
+
+📦 TESTE 1: Buscar código CATMAT para 'COMPUTADOR PORTATIL'
+--------------------------------------------------------------------------------
+URL: https://dadosabertos.compras.gov.br/modulo-material/4_consultarItemMaterial?descricaoItem=COMPUTADOR%20PORTATIL&tamanhoPagina=10
+Status: 200
+✅ SUCESSO!
+Total de resultados: 0
+
+
+💰 TESTE 2: Pesquisa de Preço (código 401838 - Notebook)
+--------------------------------------------------------------------------------
+URL: https://dadosabertos.compras.gov.br/modulo-pesquisa-preco/1_consultarMaterial?codigoItemCatalogo=401838&tamanhoPagina=10
+Status: 200
+✅ SUCESSO!
+Total de resultados: 10
+
+PRIMEIRO ITEM COMPLETO:
+{
+  "idCompra": "98428705900092025",
+  "idItemCompra": 8576257,
+  "forma": "SISRP",
+  "modalidade": 5,
+  "criterioJulgamento": "V",
+  "numeroItemCompra": 26,
+  "descricaoItem": "CABO ELÉTRICO FLEXÍVEL, TENSÃO ISOLAMENTO: 450/750 V, NORMAS TÉCNICAS: NBR13248 , COR DA COBERTURA: BRANCA , SEÇÃO NOMINAL: 2,5 MM2, MATERIAL DO CONDUTOR: COBRE , MATERIAL ISOLAMENTO: PVC - CLORETO DE POLIVINILA , CLASSE ENCORDOAMENTO: 5 ",
+  "codigoItemCatalogo": 401838,
+  "nomeUnidadeMedida": null,
+  "siglaUnidadeMedida": null,
+  "nomeUnidadeFornecimento": "METRO",
+  "siglaUnidadeFornecimento": "M",
+  "capacidadeUnidadeFornecimento": 0,
+  "quantidade": 2000,
+  "precoUnitario": 2.21,
+  "percentualMaiorDesconto": 0,
+  "niFornecedor": "48172751000111",
+  "nomeFornecedor": "LR ENGENHARIA UBERLANDIA LTDA",
+  "marca": "CABO ELETRICO DIMFLE",
+  "codigoUasg": "984287",
+  "nomeUasg": "PREFEITURA MUNICIPAL DE CARMO DO RIO CLARO",
+  "codigoMunicipio": 3114402,
+  "municipio": "CARMO DO RIO CLARO",
+  "estado": "MG",
+  "codigoOrgao": 95186,
+  "nomeOrgao": "PREFEITURA DE CARMO DO RIO CLARO",
+  "poder": "E",
+  "esfera": "M",
+  "dataCompra": "2025-11-04T03:00:00.000+00:00",
+  "dataHoraAtualizacaoCompra": "2025-11-05T01:10:10.507674",
+  "dataHoraAtualizacaoItem": "2025-11-05T03:00:15.638519",
+  "dataResultado": "2025-11-04T03:00:00.000+00:00",
+  "dataHoraAtualizacaoUasg": "2023-06-15T15:11:00",
+  "codigoClasse": 6145,
+  "nomeClasse": "FIOS E CABOS ELÉTRICOS"
+}
+
+
+🏛️ TESTE 3: API PNCP - Contratações Nov/2024
+--------------------------------------------------------------------------------
+URL: https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20241101&dataFinal=20241130&codigoModalidadeContratacao=6&pagina=1&tamanhoPagina=10
+Status: 200
+✅ SUCESSO!
+Total de resultados: 10
+
+PRIMEIRO ITEM COMPLETO:
+{
+  "dataInclusao": "2024-11-01T00:10:32",
+  "numeroCompra": "0107",
+  "unidadeOrgao": {
+    "ufNome": "Rio Grande do Sul",
+    "codigoUnidade": "171510",
+    "nomeUnidade": "MUNICÍPIO DE BENTO GONÇALVES",
+    "ufSigla": "RS",
+    "municipioNome": "Bento Gonçalves",
+    "codigoIbge": "4302105"
+  },
+  "srp": false,
+  "orgaoEntidade": {
+    "cnpj": "87849923000109",
+    "razaoSocial": "MUNICIPIO DE BENTO GONCALVES",
+    "poderId": "N",
+    "esferaId": "M"
+  },
+  "anoCompra": 2024,
+  "sequencialCompra": 350,
+  "dataPublicacaoPncp": "2024-11-01T00:10:32",
+  "dataAtualizacao": "2024-11-25T14:30:34",
+  "amparoLegal": {
+    "descricao": "pregão: modalidade de licitação obrigatória para aquisição de bens e serviços comuns",
+    "nome": "Lei 14.133/2021, Art. 28, I",
+    "codigo": 1
+  },
+  "dataAberturaProposta": "2024-11-01T00:00:00",
+  "dataEncerramentoProposta": "2024-11-25T08:30:00",
+  "informacaoComplementar": "",
+  "processo": "298/2024",
+  "objetoCompra": "ABERTURA DE PROCESSO LICITATÓRIO (PREGÃO ELETRÔNICO) PARA AQUISIÇÃO DE TUBULAÇÕES PRÉ FABRICADAS EM CONCRETO ARMADO.",
+  "linkSistemaOrigem": "https://pregaobanrisul.com.br/editais/0107_2024/326936",
+  "justificativaPresencial": null,
+  "unidadeSubRogada": null,
+  "orgaoSubRogado": null,
+  "valorTotalHomologado": 77400,
+  "linkProcessoEletronico": null,
+  "dataAtualizacaoGlobal": "2024-11-25T14:30:34",
+  "numeroControlePNCP": "87849923000109-1-000350/2024",
+  "modalidadeId": 6,
+  "modoDisputaId": 1,
+  "valorTotalEstimado": 85347,
+  "modalidadeNome": "Pregão - Eletrônico",
+  "modoDisputaNome": "Aberto",
+  "tipoInstrumentoConvocatorioCodigo": 1,
+  "tipoInstrumentoConvocatorioNome": "Edital",
+  "fontesOrcamentarias": [],
+  "situacaoCompraId": 1,
+  "situacaoCompraNome": "Divulgada no PNCP",
+  "usuarioNome": "PROCERGS - CENTRO DE TECNOLOGIA DA INFORMACAO E COMUNICACAO DO ESTADO DO RIO GRANDE DO SUL S.A."
+}
+
+================================================================================
+✅ DIAGNÓSTICO CONCLUÍDO
+================================================================================

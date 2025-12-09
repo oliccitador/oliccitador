@@ -7,8 +7,28 @@ console.log('║          TESTE DE ESCALA: PESQUISA INTELIGENTE (50 PRODUTOS)   
 console.log('╚═══════════════════════════════════════════════════════════════════════════════╝\n');
 
 const testCases = [
-    // === MÉDICO & HOSPITALAR (1-10) ===
-    { category: 'Ventilador', desc: 'Ventilador Pulmonar T7 Amoul 5,5kg 17 modos IPX4' },
+    // === CRITICAL TEST CASE: T7 VENTILATOR (Full Description) ===
+    {
+        category: 'Ventilador Pulmonar',
+        desc: `Ventilador de Transporte Pulmonar Adulto e Pediátrico
+Diferenciais
+* Início rápido com autoteste automático na inicialização
+* Certificação IPX4: resistente à água e intempéries
+* Compatível com ambulância aérea
+* Ventilação pré-configurada para adultos, crianças e bebês
+* Equipamento leve e portátil, fácil de transportar
+* Modo RCP conforme diretrizes da AHA & ERC
+Características Técnicas
+* Interface intuitiva com bloqueio de tela
+* 17 modos de ventilação disponíveis
+* Concentração de O₂ ajustável de 40% a 100%
+* Válvula PEEP interna
+* Alarmes sonoros e visuais para multiparâmetros
+* Compatível com Mainstream EtCO₂ (opcional - tecnologia Respironics)
+Longa autonomia de bateria
+* Peso: 5,5 kg
+* Volume corrente (VC): 20 ml`
+    },
     { category: 'Desfibrilador', desc: 'Desfibrilador Externo Automático DEA CMOS Drake Bifásico com bateria de lítio longa duração' },
     { category: 'Oxímetro', desc: 'Oxímetro de Pulso Portátil de Dedo com Curva Pletismográfica e Alarme MD300' },
     { category: 'Maca', desc: 'Maca Hospitalar Hidráulica com Grades Laterais e Rodízios 150mm Capacidade 250kg' },

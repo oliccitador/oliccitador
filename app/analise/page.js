@@ -30,9 +30,14 @@ export default function Home() {
                 const caName = result.ca_module?.nome_comercial || '';
                 query = caName;
             } else {
-                // FORCE SEMANTIC QUERY
+                // FORCE CLEAN SEMANTIC QUERY
                 query = result.query_semantica_limpa || '';
             }
+
+            // Prioritize the AI-cleaned technical description if no CA description exists
+            const descriptionForSearch = result.ca_module?.descricao_tecnica ||
+                result.descricao_tecnica_limpa ||
+                description;
 
             // We pass everything, but 'query' is now the primary search key
             const payload = {
@@ -40,7 +45,7 @@ export default function Home() {
                 has_ca: hasCa,
                 ca_numero: result.ca_module?.ca_detectado,
                 ca_nome_comercial: result.ca_module?.nome_comercial || result.produto_referencia?.modelo || '', // Removed 'Produto' fallback to allow smart search
-                ca_descricao_tecnica: result.ca_module?.descricao_tecnica || description, // CRITICAL FIX: Use input description if no CA
+                ca_descricao_tecnica: descriptionForSearch, // CRITICAL FIX: Use AI Clean Description if no CA
                 query_semantica: result.query_semantica_limpa
             };
 
@@ -261,6 +266,47 @@ export default function Home() {
                                 )}
                             </div>
                         </div>
+
+                        {/* SEÇÃO PNCP (Referências Governamentais) */}
+                        {priceResult.referencias_governamentais && priceResult.referencias_governamentais.length > 0 && (
+                            <div className="mt-6 pt-6 border-t border-slate-200">
+                                <div className="flex items-center gap-2 mb-4">
+                                    <span className="text-xl">🏛️</span>
+                                    <h4 className="font-bold text-slate-700">Referências Públicas (PNCP)</h4>
+                                </div>
+
+                                <div className="space-y-3">
+                                    {priceResult.referencias_governamentais.map((item, idx) => (
+                                        <div key={idx} className="flex flex-col md:flex-row md:items-center justify-between bg-blue-50/50 p-4 rounded-lg border border-blue-100 hover:border-blue-300 transition-colors shadow-sm">
+                                            <div className="flex-1 mb-2 md:mb-0">
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-200">
+                                                        {item.fonte}
+                                                    </span>
+                                                    <p className="font-semibold text-slate-800 text-sm line-clamp-1" title={item.descricao}>
+                                                        {item.descricao}
+                                                    </p>
+                                                </div>
+                                                <div className="text-xs text-slate-500 mt-1 flex flex-wrap gap-x-4 gap-y-1">
+                                                    <span>🏢 {item.orgao}</span>
+                                                    {item.marca && <span>🏷️ {item.marca}</span>}
+                                                    {item.fornecedor && <span>📦 {item.fornecedor}</span>}
+                                                    <span>📅 {new Date(item.data).toLocaleDateString('pt-BR')}</span>
+                                                </div>
+                                            </div>
+                                            <div className="text-right ml-4 min-w-[120px]">
+                                                <p className="text-lg font-bold text-blue-700">
+                                                    R$ {item.preco?.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                                </p>
+                                                {item.id_referencia && (
+                                                    <span className="text-[10px] text-slate-400">ID: {item.id_referencia}</span>
+                                                )}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 )}
 
@@ -396,6 +442,32 @@ export default function Home() {
                                 </div>
                             )}
                         </div>
+
+                        {/* NOVO: Card de Descrição Limpa (IA) - Visível quando NÃO tem CA (ou sempre) */}
+                        {result.descricao_tecnica_limpa && !result.ca_module && (
+                            <div className="bg-gradient-to-br from-purple-50 via-fuchsia-50 to-pink-50 p-6 rounded-xl shadow-lg border-2 border-purple-300 space-y-4 md:col-span-2">
+                                <div className="flex items-center gap-3 text-purple-700 font-bold text-xl mb-4">
+                                    <span className="text-3xl">✨</span>
+                                    <h3>Descrição Técnica Otimizada (IA)</h3>
+                                </div>
+
+                                <div className="bg-white/80 p-5 rounded-lg border-2 border-purple-200 shadow-sm">
+                                    <p className="text-xs font-bold text-purple-700 uppercase mb-3 tracking-wide">
+                                        📝 Texto Limpo para Cotação
+                                    </p>
+                                    <p className="text-sm text-gray-800 leading-relaxed font-medium">
+                                        {result.descricao_tecnica_limpa}
+                                    </p>
+                                </div>
+
+                                <div className="flex items-center justify-between pt-2">
+                                    <div className="px-3 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700">
+                                        ✅ Lixo jurídico removido
+                                    </div>
+                                    <p className="text-xs text-gray-500">Fonte: Gemini AI Analysis</p>
+                                </div>
+                            </div>
+                        )}
 
                         {/* CA MODULE CARD - Only visible when CA is detected */}
                         {result.ca_module && (

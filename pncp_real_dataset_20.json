@@ -1,0 +1,339 @@
+[
+    {
+        "category": "Eletrônicos",
+        "item": "Notebook i7",
+        "raw_description": "ITEM 01 - NOTEBOOK DE ALTA PERFORMANCE. Processador Intel Core i7 (13ª geração) ou superior/equivalente. Memória RAM: Mínimo de 16GB DDR4. Armazenamento: SSD de 512GB M.2 NVMe. Tela: 15.6 polegadas Full HD (1920x1080) Antirreflexo. Sistema Operacional: Windows 11 Pro 64 bits. Garantia: 36 meses on-site. Conforme Termo de Referência Anexo I, devendo a contratada fornecer manuais e drivers.",
+        "expected_keywords": [
+            "Notebook",
+            "Intel Core i7",
+            "16GB",
+            "DDR4",
+            "SSD",
+            "512GB",
+            "15.6",
+            "Full HD",
+            "Windows 11 Pro"
+        ],
+        "forbidden_keywords": [
+            "Termo de Referência",
+            "Anexo I",
+            "contratada",
+            "manuais",
+            "drivers",
+            "ITEM 01"
+        ]
+    },
+    {
+        "category": "Eletrônicos",
+        "item": "Monitor 24",
+        "raw_description": "MONITOR DE VÍDEO LED 24 POLEGADAS. Resolução Full HD 1920x1080, conexões HDMI e DisplayPort. Taxa de atualização 60Hz ou superior. Base com ajuste de altura, inclinação e rotação. Acompanha cabos de energia e vídeo. Certificação EPEAT Gold. Conforme especificações técnicas contidas no Edital. Marca de referência: Dell, HP, Samsung ou similar de melhor qualidade.",
+        "expected_keywords": [
+            "Monitor",
+            "LED",
+            "24",
+            "Full HD",
+            "HDMI",
+            "DisplayPort",
+            "ajuste de altura"
+        ],
+        "forbidden_keywords": [
+            "Edital",
+            "Marca de referência",
+            "Dell",
+            "Samsung",
+            "similar",
+            "melhor qualidade",
+            "acompanha cabos"
+        ]
+    },
+    {
+        "category": "Eletrônicos",
+        "item": "Tablet Samsung",
+        "raw_description": "TABLET TIPO SAMSUNG GALAXY TAB A9 ou superior. Tela de 8.7 polegadas. Processador Octa-Core. Memória RAM: 4GB. Armazenamento: 64GB expansível. Conectividade: Wi-Fi + 4G. Sistema Android 13 ou superior. Câmera traseira 8MP. A contratada deverá fornecer capa protetora e película de vidro. Garantia de 12 meses balcão.",
+        "expected_keywords": [
+            "Tablet",
+            "8.7",
+            "Octa-Core",
+            "4GB",
+            "64GB",
+            "Wi-Fi",
+            "4G",
+            "Android"
+        ],
+        "forbidden_keywords": [
+            "contratada",
+            "deverá fornecer",
+            "capa protetora",
+            "película",
+            "balcão"
+        ]
+    },
+    {
+        "category": "Eletrônicos",
+        "item": "Impressora Laser",
+        "raw_description": "IMPRESSORA MULTIFUNCIONAL LASER MONOCROMÁTICA. Velocidade mínima de 40 ppm. Resolução 1200 x 1200 dpi. Conexão Rede Ethernet Gigabit e USB 2.0. Duplex automático (frente e verso). Ciclo mensal de 80.000 páginas. Alimentação 110V/220V. Inclusos: 01 toner inicial e cabos. Deverá ser entregue instalada e configurada na rede local.",
+        "expected_keywords": [
+            "Impressora Multifuncional",
+            "Laser Monocromática",
+            "40 ppm",
+            "1200 dpi",
+            "Rede Ethernet",
+            "Duplex",
+            "110V/220V"
+        ],
+        "forbidden_keywords": [
+            "Inclusos",
+            "toner inicial",
+            "entregue instalada",
+            "configurada",
+            "rede local"
+        ]
+    },
+    {
+        "category": "Eletrodomésticos",
+        "item": "Geladeira Frost Free",
+        "raw_description": "AQUISIÇÃO DE REFRIGERADOR DOMÉSTICO. Tipo: Geladeira Frost Free Duplex. Capacidade total mínima de 375 litros. Cor: Branca ou Inox. Eficiência energética Classe A (Selo Procel). Voltagem: 220V. Prateleiras de vidro temperado e gavetão de legumes. O equipamento deve ser entregue livre de arranhões e amassados na sede da Secretaria.",
+        "expected_keywords": [
+            "Geladeira",
+            "Frost Free",
+            "Duplex",
+            "375 litros",
+            "Classe A",
+            "220V"
+        ],
+        "forbidden_keywords": [
+            "AQUISIÇÃO DE",
+            "livre de arranhões",
+            "sede da Secretaria"
+        ]
+    },
+    {
+        "category": "Eletrodomésticos",
+        "item": "Ar Condicionado 12000",
+        "raw_description": "APARELHO DE AR CONDICIONADO TIPO SPLIT HIGH WALL. Capacidade de refrigeração: 12.000 BTUs. Tecnologia: Inverter. Ciclo: Frio. Gás refrigerante R-410A (ecológico). Classificação A no INMETRO. Controle remoto sem fio. Serpentina de cobre. A instalação não está inclusa neste item. Garantia do compressor de 10 anos.",
+        "expected_keywords": [
+            "Ar Condicionado",
+            "Split",
+            "12.000",
+            "Inverter",
+            "Frio",
+            "Serpentina de cobre",
+            "Controle remoto"
+        ],
+        "forbidden_keywords": [
+            "instalação não está inclusa",
+            "neste item"
+        ]
+    },
+    {
+        "category": "Eletrodomésticos",
+        "item": "Microondas 30L",
+        "raw_description": "FORNO MICRO-ONDAS. Capacidade nominal: 30 a 34 Litros. Painel digital com trava de segurança. Função descongelar e menu receitas pré-programadas. Acabamento: Espelhado ou Inox. Potência mínima: 800W. Prato giratório de vidro. Tensão: 127V. Em conformidade com a portaria 174/2012 do INMETRO.",
+        "expected_keywords": [
+            "Forno Micro-ondas",
+            "30",
+            "Litros",
+            "Painel digital",
+            "800W",
+            "Espelhado",
+            "127V"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Eletrodomésticos",
+        "item": "Fogão Industrial",
+        "raw_description": "FOGÃO INDUSTRIAL 4 BOCAS COM FORNO. Estrutura em aço carbono ou inox. Grelhas em ferro fundido 30x30cm. Queimadores duplos e simples. Baixa pressão. Forno com capacidade mínima de 80 litros e porta com visor. Alimentação a Gás GLP. Dimensões aproximadas: 80x80x80cm. Não acompanha botijão.",
+        "expected_keywords": [
+            "Fogão Industrial",
+            "4 Bocas",
+            "Forno",
+            "ferro fundido",
+            "Baixa pressão",
+            "Gás GLP"
+        ],
+        "forbidden_keywords": [
+            "Não acompanha botijão"
+        ]
+    },
+    {
+        "category": "Mobiliário",
+        "item": "Cadeira Giratória",
+        "raw_description": "CADEIRA GIRATÓRIA ERGONÔMICA PARA ESCRITÓRIO. Espaldar médio, com regulagem de altura a gás. Base em aço com capa de polipropileno e 05 rodízios duplos. Revestimento em tecido crepe ou couro sintético preto. Braços reguláveis. Em conformidade com a NR-17 e ABNT NBR 13962. Laudo ergonômico exigido na entrega.",
+        "expected_keywords": [
+            "Cadeira Giratória",
+            "Ergonômica",
+            "regulagem de altura",
+            "rodízios",
+            "Braços reguláveis"
+        ],
+        "forbidden_keywords": [
+            "Laudo ergonômico",
+            "exigido na entrega"
+        ]
+    },
+    {
+        "category": "Mobiliário",
+        "item": "Mesa Escritório",
+        "raw_description": "MESA DE ESCRITÓRIO RETA. Medidas: 1200mm (L) x 600mm (P) x 740mm (A). Tampo em MDP/MDF de 25mm com bordas em ABS. Estrutura em aço com pintura epóxi. Gaveteiro fixo ou volante com 02 gavetas e fechadura. Cor: Cinza ou Argila. Pés niveladores.",
+        "expected_keywords": [
+            "Mesa",
+            "Reta",
+            "1200mm",
+            "MDP",
+            "MDF",
+            "25mm",
+            "02 gavetas"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Mobiliário",
+        "item": "Armário Aço",
+        "raw_description": "ARMÁRIO DE AÇO 02 PORTAS. Chapa de aço #26 (0,45mm). 04 prateleiras reguláveis (03 móveis + 01 fixa). Fechadura com 02 chaves. Capacidade de carga por prateleira: 20kg. Pintura eletrostática a pó cor cinza cristal. Dimensões aprox: 1980x900x400mm. Tratamento antiferruginoso prévio.",
+        "expected_keywords": [
+            "Armário de Aço",
+            "02 Portas",
+            "Chapa",
+            "04 prateleiras",
+            "Fechadura"
+        ],
+        "forbidden_keywords": [
+            "prévia"
+        ]
+    },
+    {
+        "category": "Mobiliário",
+        "item": "Estação Trabalho",
+        "raw_description": "ESTAÇÃO DE TRABALHO 4 LUGARES. Formato plataforma ou cruz. Tampo em MDP 25mm com caixas de tomadas para elétrica e dados. Divisórias frontais ou laterais em vidro ou MDP. Estrutura metálica com calha de fiação. Cor: Branco ou Carvalho. Medidas totais aproximadas 2800x1400mm.",
+        "expected_keywords": [
+            "Estação de Trabalho",
+            "4 Lugares",
+            "MDP 25mm",
+            "caixas de tomadas",
+            "calha de fiação"
+        ],
+        "forbidden_keywords": [
+            "ou similar"
+        ]
+    },
+    {
+        "category": "EPIs",
+        "item": "Capacete",
+        "raw_description": "CAPACETE DE SEGURANÇA. Tipo: Aba Frontal. Classe B. Casco em polietileno de alta densidade. Carneira (suspensão) com ajuste por catraca e tira absorvedora de suor. Cor: Branca ou Azul (a definir no pedido). Deve possuir Certificado de Aprovação (CA) válido gravado no casco de forma indelével.",
+        "expected_keywords": [
+            "Capacete Segurança",
+            "Aba Frontal",
+            "Classe B",
+            "polietileno",
+            "catraca"
+        ],
+        "forbidden_keywords": [
+            "a definir no pedido",
+            "gravado no casco"
+        ]
+    },
+    {
+        "category": "EPIs",
+        "item": "Luva Vaqueta",
+        "raw_description": "LUVA DE SEGURANÇA EM VAQUETA. Tipo: Petroleira. Confeccionada em couro bovino curtido ao cromo (vaqueta) na palma e dorso. Com reforço palmar interno. Elástico no dorso para ajuste. Punho com acabamento em viés. Indicada para proteção contra agentes abrasivos e escoriantes. Tamanho: 9/G.",
+        "expected_keywords": [
+            "Luva",
+            "Vaqueta",
+            "Petroleira",
+            "couro bovino",
+            "reforço palmar"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "EPIs",
+        "item": "Bota Segurança",
+        "raw_description": "CALÇADO TIPO BOTINA DE SEGURANÇA. Cabedal em couro hidrofugado curtido ao cromo. Biqueira de composite (PVC/Plástico) resistente a impactos. Fechamento em elástico lateral. Solado bidensidade injetado diretamente no cabedal, antiderrapante. Cor: Preta. Numeração: 35 ao 45. CA Válido.",
+        "expected_keywords": [
+            "Botina",
+            "couro hidrofugado",
+            "Biqueira",
+            "composite",
+            "elástico lateral",
+            "Solado bidensidade"
+        ],
+        "forbidden_keywords": [
+            "CA Válido"
+        ]
+    },
+    {
+        "category": "EPIs",
+        "item": "Óculos Proteção",
+        "raw_description": "ÓCULOS DE SEGURANÇA. Constituídos de arco de material plástico preto com proteção superior e lateral. Lentes de policarbonato incolor com tratamento antirrisco e antiembaçante. Hastes tipo espátula reguláveis. Proteção contra raios UVA/UVB e impactos de partículas volantes.",
+        "expected_keywords": [
+            "Óculos",
+            "policarbonato",
+            "incolor",
+            "antirrisco",
+            "antiembaçante"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Elétrica",
+        "item": "Disjuntor 20A",
+        "raw_description": "DISJUNTOR TERMOMAGNÉTICO BIPOLAR. Corrente nominal: 20A. Curva de disparo: C. Padrão: DIN. Tensão máxima de operação: 400V. Capacidade de interrupção (Icn): mínima de 3kA. Fixação em trilho DIN 35mm. Em conformidade com a norma NBR NM 60898.",
+        "expected_keywords": [
+            "Disjuntor",
+            "Bipolar",
+            "20A",
+            "Curva",
+            "DIN",
+            "3kA"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Elétrica",
+        "item": "Lâmpada LED",
+        "raw_description": "LÂMPADA LED TUBULAR T8. Potência: 18W ou 20W. Base: G13. Tensão: Bivolt (100V-240V). Temperatura de cor: 6500K (Branco Frio). Fluxo luminoso mínimo: 1850 lumens. Vida útil estimada: 25.000 horas. Corpo em vidro ou policarbonato. Selo PROCEL/INMETRO.",
+        "expected_keywords": [
+            "Lâmpada",
+            "LED",
+            "Tubular",
+            "18W",
+            "G13",
+            "Bivolt",
+            "6500K",
+            "Branco Frio"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Elétrica",
+        "item": "Cabo Flexível",
+        "raw_description": "CABO FLEXÍVEL 2,5MM². Condutor: Cobre eletrolítico, têmpera mole, classe 4 ou 5. Isolação: PVC antichama BWF (70°C). Tensão de isolamento: 450/750V. Cor: Vermelho, Preto ou Azul (rolos de 100m). Registro no INMETRO obrigatório. Marca de referência: Sil, Cobrecom, Prysmian ou equivalente.",
+        "expected_keywords": [
+            "Cabo Flexível",
+            "2",
+            "mm",
+            "Cobre",
+            "PVC",
+            "750V"
+        ],
+        "forbidden_keywords": [
+            "Marca de referência"
+        ]
+    },
+    {
+        "category": "Elétrica",
+        "item": "Tomada 20A",
+        "raw_description": "TOMADA DE ENERGIA 2P+T 20A. Tipo: Embutir. Módulo tomada padrão brasileiro (NBR 14136). Cor: Vermelha ou Branca (identificação 20A). Tensão: 250V. Material: Termoplástico anti-chama e contatos em liga de cobre. Placa 4x2 inclusa se necessário.",
+        "expected_keywords": [
+            "Tomada",
+            "20A",
+            "Embutir",
+            "NBR 14136",
+            "250V"
+        ],
+        "forbidden_keywords": [
+            "inclusa se necessário"
+        ]
+    }
+]

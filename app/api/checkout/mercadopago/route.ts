@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import MercadoPagoConfig, { Preference } from 'mercadopago';
+import logger from '../../../../lib/logger';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,13 +28,13 @@ const PLANS = {
 };
 
 export async function POST(request: Request) {
-    if (process.env.NODE_ENV !== 'production') console.log('🔵 Checkout API called');
+    logger.debug('CHECKOUT/MP', 'API called');
 
     try {
         // 1. Get plan and email from request
         const body = await request.json();
         const { plan, email } = body;
-        if (process.env.NODE_ENV !== 'production') console.log('📧 Request data:', { plan, email });
+        logger.info('CHECKOUT/MP', 'Request data:', { plan, email });
 
         if (!plan || !email) {
             console.error('❌ Missing required fields:', { plan, email });
@@ -46,7 +47,7 @@ export async function POST(request: Request) {
         }
 
         const selectedPlan = PLANS[plan as keyof typeof PLANS];
-        if (process.env.NODE_ENV !== 'production') console.log('✅ Selected plan:', selectedPlan);
+        logger.debug('CHECKOUT/MP', 'Selected plan:', selectedPlan);
 
         // Environment validation (dev only warning)
         if (!process.env.NEXT_PUBLIC_BASE_URL && process.env.NODE_ENV !== 'production') {
@@ -71,7 +72,7 @@ export async function POST(request: Request) {
         const client = new MercadoPagoConfig({
             accessToken: accessToken,
         });
-        if (process.env.NODE_ENV !== 'production') console.log('✅ MercadoPago client initialized');
+        logger.success('CHECKOUT/MP', 'Client initialized');
 
         const preference = new Preference(client);
 
@@ -114,9 +115,9 @@ export async function POST(request: Request) {
             }
         };
 
-        if (process.env.NODE_ENV !== 'production') console.log('📝 Creating preference with data:', JSON.stringify(preferenceData, null, 2));
+        logger.debug('CHECKOUT/MP', 'Creating preference with data:', JSON.stringify(preferenceData, null, 2));
         const result = await preference.create({ body: preferenceData });
-        if (process.env.NODE_ENV !== 'production') console.log('✅ Preference created:', { id: result.id, init_point: result.init_point });
+        logger.success('CHECKOUT/MP', 'Preference created:', { id: result.id, init_point: result.init_point });
 
         return NextResponse.json({
             init_point: result.init_point,
