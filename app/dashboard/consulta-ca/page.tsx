@@ -224,7 +224,8 @@ export default function ConsultaCAPage() {
                                         </div>
                                     ) : (
                                         <div className="text-center p-8 bg-slate-50 rounded-lg border border-dashed border-slate-300">
-                                            <p className="text-slate-500">Nenhum preço encontrado para esta busca.</p>
+                                            <p className="text-slate-500 font-medium">Cotação de preços não encontrada para este CA.</p>
+                                            <p className="text-xs text-slate-400 mt-2">O "Plano Radical" está ativo: buscamos apenas anúncios que citam explicitamente o CA {result.numero_ca}.</p>
                                         </div>
                                     )}
                                 </div>
