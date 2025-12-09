@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient, getCurrentUser, getUserSubscription } from '../../lib/supabase';
-import { Brain, LogOut, TrendingUp, Calendar, Package } from 'lucide-react';
+import { Brain, LogOut, TrendingUp, Calendar, Package, Shield } from 'lucide-react';
 import Link from 'next/link';
 
 export default function DashboardPage() {
@@ -137,6 +137,13 @@ export default function DashboardPage() {
                             className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)]"
                         >
                             Nova Análise
+                        </Link>
+                        <Link
+                            href="/dashboard/consulta-ca"
+                            className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center gap-2"
+                        >
+                            <Shield className="w-5 h-5" />
+                            Consulta CA (Beta)
                         </Link>
                     </div>
                 </div>
