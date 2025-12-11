@@ -1,0 +1,149 @@
+import { analyzeProcurementItem } from '../../../lib/gemini';
+import { fetchValidatedMarketData } from '../../../lib/market-search';
+import { getCache, setCache } from '../../../lib/cache';
+import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
+import { createServerClient } from '@supabase/ssr';
+
+export const dynamic = 'force-dynamic';
+
+export async function POST(request) {
+    console.log('DEBUG: API POST /api/analyze called');
+    try {
+        // 1. Authentication
+        const cookieStore = await cookies();
+        console.log('DEBUG: Supabase env vars', {
+            url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+            anonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+            serviceKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
+        });
+        console.log('DEBUG: Creating Supabase client...');
+        const supabase = createServerClient(
+            process.env.NEXT_PUBLIC_SUPABASE_URL,
+            process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+            {
+                cookies: {
+                    get(name) {
+                        return cookieStore.get(name)?.value;
+                    },
+                },
+            }
+        );
+        console.log('DEBUG: Supabase client created');
+
+        console.log('DEBUG: Calling supabase.auth.getUser()...');
+        const { data: { user }, error: authError } = await supabase.auth.getUser();
+        console.log('DEBUG: supabase.auth.getUser() returned:', { hasUser: !!user, hasError: !!authError });
+        if (authError || !user) {
+            return NextResponse.json({
+                error: 'Unauthorized',
+                message: 'Você precisa fazer login para usar este serviço.',
+            }, { status: 401 });
+        }
+        console.log(`DEBUG: Authenticated user: ${user.email}`);
+
+        console.log('DEBUG: Parsing request body...');
+        const body = await request.json();
+        const { description } = body;
+        console.log('DEBUG: Description received, length:', description?.length);
+        if (!description) {
+            return NextResponse.json({ error: 'Description is required' }, { status: 400 });
+        }
+
+        // 2. Check subscription and quota
+        const { data: subscription, error: subError } = await supabase
+            .from('subscriptions')
+            .select('*')
+            .eq('user_id', user.id)
+            .single();
+        if (subError || !subscription) {
+            console.error('Subscription error:', subError);
+            return NextResponse.json({
+                error: 'No subscription',
+                message: 'Você não possui uma assinatura ativa.',
+            }, { status: 403 });
+        }
+        console.log(`DEBUG: Subscription - Plan: ${subscription.plan}, Used: ${subscription.quota_used}/${subscription.quota_limit}`);
+        if (subscription.quota_used >= subscription.quota_limit) {
+            return NextResponse.json({
+                error: 'Quota exceeded',
+                message: `Você atingiu o limite de ${subscription.quota_limit} análises/mês. Faça upgrade para continuar.`,
+                quota: { used: subscription.quota_used, limit: subscription.quota_limit },
+            }, { status: 429 });
+        }
+
+        // 3. Cache
+        const cachedResult = getCache(description);
+        if (cachedResult) {
+            console.log('DEBUG: Cache hit! Returning cached result');
+            await supabase.rpc('increment_quota', { p_user_id: user.id });
+            return NextResponse.json({
+                ...cachedResult,
+                _meta: {
+                    cached: true,
+                    quota: {
+                        used: subscription.quota_used + 1,
+                        limit: subscription.quota_limit,
+                        remaining: subscription.quota_limit - subscription.quota_used - 1,
+                    },
+                },
+            });
+        }
+
+        // 4. Call Gemini
+        console.log('DEBUG: Cache miss. Calling analyzeProcurementItem...');
+        const analysis = await analyzeProcurementItem(description);
+        console.log('DEBUG: analyzeProcurementItem returned:', JSON.stringify(analysis).substring(0, 100) + '...');
+
+        // 5. Market data if needed
+        if (analysis.query_semantica_limpa && !analysis.error) {
+            console.log('DEBUG: Query semântica detectada, iniciando busca de mercado...');
+            const marketResults = await fetchValidatedMarketData(analysis.query_semantica_limpa);
+            analysis.final_candidates = marketResults;
+            console.log(`DEBUG: ${marketResults.length} candidatos validados adicionados ao resultado`);
+        }
+
+        // 6. Save to cache
+        if (!analysis.error) {
+            setCache(description, analysis);
+        }
+
+        // 7. Increment quota
+        await supabase.rpc('increment_quota', { p_user_id: user.id });
+
+        // 8. Track usage
+        const inputTokens = Math.ceil(description.length / 4) + 500;
+        const outputTokens = Math.ceil(JSON.stringify(analysis).length / 4);
+        const costUSD = (inputTokens / 1_000_000) * 0.30 + (outputTokens / 1_000_000) * 2.50;
+        const costBRL = costUSD * 5.0;
+        await supabase.from('usage_logs').insert({
+            user_id: user.id,
+            cached: false,
+            tokens_input: inputTokens,
+            tokens_output: outputTokens,
+            cost_usd: costUSD,
+            cost_brl: costBRL,
+        });
+
+        // 9. Return result
+        return NextResponse.json({
+            ...analysis,
+            _meta: {
+                cached: false,
+                quota: {
+                    used: subscription.quota_used + 1,
+                    limit: subscription.quota_limit,
+                    remaining: subscription.quota_limit - subscription.quota_used - 1,
+                },
+            },
+        });
+    } catch (error) {
+        console.error('DEBUG: Erro crítico na rota /api/analyze:', error);
+        return NextResponse.json({
+            error: 'Erro interno do servidor',
+            message: error.message,
+            name: error.name,
+            stack: error.stack,
+        }, { status: 500 });
+    }
+}

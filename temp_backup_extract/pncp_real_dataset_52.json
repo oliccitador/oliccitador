@@ -1,0 +1,880 @@
+[
+    {
+        "category": "Eletrônicos",
+        "item": "Notebook i7",
+        "raw_description": "ITEM 01 - NOTEBOOK DE ALTA PERFORMANCE. Processador Intel Core i7 (13ª geração) ou superior/equivalente. Memória RAM: Mínimo de 16GB DDR4. Armazenamento: SSD de 512GB M.2 NVMe. Tela: 15.6 polegadas Full HD (1920x1080) Antirreflexo. Sistema Operacional: Windows 11 Pro 64 bits. Garantia: 36 meses on-site. Conforme Termo de Referência Anexo I, devendo a contratada fornecer manuais e drivers.",
+        "expected_keywords": [
+            "Notebook",
+            "Intel Core i7",
+            "16GB",
+            "DDR4",
+            "SSD",
+            "512GB",
+            "15.6",
+            "Full HD",
+            "Windows 11 Pro"
+        ],
+        "forbidden_keywords": [
+            "Termo de Referência",
+            "Anexo I",
+            "contratada",
+            "manuais",
+            "drivers",
+            "ITEM 01",
+            "Garantia"
+        ]
+    },
+    {
+        "category": "Eletrônicos",
+        "item": "Monitor 24",
+        "raw_description": "MONITOR DE VÍDEO LED 24 POLEGADAS. Resolução Full HD 1920x1080, conexões HDMI e DisplayPort. Taxa de atualização 60Hz ou superior. Base com ajuste de altura, inclinação e rotação. Acompanha cabos de energia e vídeo. Certificação EPEAT Gold. Conforme especificações técnicas contidas no Edital. Marca de referência: Dell, HP, Samsung ou similar de melhor qualidade.",
+        "expected_keywords": [
+            "Monitor",
+            "LED",
+            "24",
+            "Full HD",
+            "HDMI",
+            "DisplayPort",
+            "ajuste de altura"
+        ],
+        "forbidden_keywords": [
+            "Edital",
+            "Marca de referência",
+            "Dell",
+            "Samsung",
+            "similar",
+            "melhor qualidade",
+            "acompanha cabos"
+        ]
+    },
+    {
+        "category": "Eletrônicos",
+        "item": "Tablet Samsung",
+        "raw_description": "TABLET TIPO SAMSUNG GALAXY TAB A9 ou superior. Tela de 8.7 polegadas. Processador Octa-Core. Memória RAM: 4GB. Armazenamento: 64GB expansível. Conectividade: Wi-Fi + 4G. Sistema Android 13 ou superior. Câmera traseira 8MP. A contratada deverá fornecer capa protetora e película de vidro. Garantia de 12 meses balcão.",
+        "expected_keywords": [
+            "Tablet",
+            "8.7",
+            "Octa-Core",
+            "4GB",
+            "64GB",
+            "Wi-Fi",
+            "4G",
+            "Android"
+        ],
+        "forbidden_keywords": [
+            "contratada",
+            "deverá fornecer",
+            "capa protetora",
+            "película",
+            "balcão",
+            "Garantia"
+        ]
+    },
+    {
+        "category": "Eletrônicos",
+        "item": "Impressora Laser",
+        "raw_description": "IMPRESSORA MULTIFUNCIONAL LASER MONOCROMÁTICA. Velocidade mínima de 40 ppm. Resolução 1200 x 1200 dpi. Conexão Rede Ethernet Gigabit e USB 2.0. Duplex automático (frente e verso). Ciclo mensal de 80.000 páginas. Alimentação 110V/220V. Inclusos: 01 toner inicial e cabos. Deverá ser entregue instalada e configurada na rede local.",
+        "expected_keywords": [
+            "Impressora Multifuncional",
+            "Laser Monocromática",
+            "40 ppm",
+            "1200 dpi",
+            "Rede Ethernet",
+            "Duplex",
+            "110V/220V"
+        ],
+        "forbidden_keywords": [
+            "Inclusos",
+            "toner inicial",
+            "entregue instalada",
+            "configurada",
+            "rede local"
+        ]
+    },
+    {
+        "category": "Eletrodomésticos",
+        "item": "Geladeira Frost Free",
+        "raw_description": "AQUISIÇÃO DE REFRIGERADOR DOMÉSTICO. Tipo: Geladeira Frost Free Duplex. Capacidade total mínima de 375 litros. Cor: Branca ou Inox. Eficiência energética Classe A (Selo Procel). Voltagem: 220V. Prateleiras de vidro temperado e gavetão de legumes. O equipamento deve ser entregue livre de arranhões e amassados na sede da Secretaria.",
+        "expected_keywords": [
+            "Geladeira",
+            "Frost Free",
+            "Duplex",
+            "375 litros",
+            "Classe A",
+            "220V"
+        ],
+        "forbidden_keywords": [
+            "AQUISIÇÃO DE",
+            "livre de arranhões",
+            "sede da Secretaria"
+        ]
+    },
+    {
+        "category": "Eletrodomésticos",
+        "item": "Ar Condicionado 12000",
+        "raw_description": "APARELHO DE AR CONDICIONADO TIPO SPLIT HIGH WALL. Capacidade de refrigeração: 12.000 BTUs. Tecnologia: Inverter. Ciclo: Frio. Gás refrigerante R-410A (ecológico). Classificação A no INMETRO. Controle remoto sem fio. Serpentina de cobre. A instalação não está inclusa neste item. Garantia do compressor de 10 anos.",
+        "expected_keywords": [
+            "Ar Condicionado",
+            "Split",
+            "12.000",
+            "Inverter",
+            "Frio",
+            "Serpentina de cobre",
+            "Controle remoto"
+        ],
+        "forbidden_keywords": [
+            "instalação não está inclusa",
+            "neste item",
+            "Garantia"
+        ]
+    },
+    {
+        "category": "Eletrodomésticos",
+        "item": "Microondas 30L",
+        "raw_description": "FORNO MICRO-ONDAS. Capacidade nominal: 30 a 34 Litros. Painel digital com trava de segurança. Função descongelar e menu receitas pré-programadas. Acabamento: Espelhado ou Inox. Potência mínima: 800W. Prato giratório de vidro. Tensão: 127V. Em conformidade com a portaria 174/2012 do INMETRO.",
+        "expected_keywords": [
+            "Forno Micro-ondas",
+            "30",
+            "Litros",
+            "Painel digital",
+            "800W",
+            "Espelhado",
+            "127V"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Eletrodomésticos",
+        "item": "Fogão Industrial",
+        "raw_description": "FOGÃO INDUSTRIAL 4 BOCAS COM FORNO. Estrutura em aço carbono ou inox. Grelhas em ferro fundido 30x30cm. Queimadores duplos e simples. Baixa pressão. Forno com capacidade mínima de 80 litros e porta com visor. Alimentação a Gás GLP. Dimensões aproximadas: 80x80x80cm. Não acompanha botijão.",
+        "expected_keywords": [
+            "Fogão Industrial",
+            "4 Bocas",
+            "Forno",
+            "ferro fundido",
+            "Baixa pressão",
+            "Gás GLP"
+        ],
+        "forbidden_keywords": [
+            "Não acompanha botijão"
+        ]
+    },
+    {
+        "category": "Mobiliário",
+        "item": "Cadeira Giratória",
+        "raw_description": "CADEIRA GIRATÓRIA ERGONÔMICA PARA ESCRITÓRIO. Espaldar médio, com regulagem de altura a gás. Base em aço com capa de polipropileno e 05 rodízios duplos. Revestimento em tecido crepe ou couro sintético preto. Braços reguláveis. Em conformidade com a NR-17 e ABNT NBR 13962. Laudo ergonômico exigido na entrega.",
+        "expected_keywords": [
+            "Cadeira Giratória",
+            "Ergonômica",
+            "regulagem de altura",
+            "rodízios",
+            "Braços reguláveis"
+        ],
+        "forbidden_keywords": [
+            "Laudo ergonômico",
+            "exigido na entrega"
+        ]
+    },
+    {
+        "category": "Mobiliário",
+        "item": "Mesa Escritório",
+        "raw_description": "MESA DE ESCRITÓRIO RETA. Medidas: 1200mm (L) x 600mm (P) x 740mm (A). Tampo em MDP/MDF de 25mm com bordas em ABS. Estrutura em aço com pintura epóxi. Gaveteiro fixo ou volante com 02 gavetas e fechadura. Cor: Cinza ou Argila. Pés niveladores.",
+        "expected_keywords": [
+            "Mesa",
+            "Reta",
+            "1200mm",
+            "MDP",
+            "MDF",
+            "25mm",
+            "02 gavetas"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Mobiliário",
+        "item": "Armário Aço",
+        "raw_description": "ARMÁRIO DE AÇO 02 PORTAS. Chapa de aço #26 (0,45mm). 04 prateleiras reguláveis (03 móveis + 01 fixa). Fechadura com 02 chaves. Capacidade de carga por prateleira: 20kg. Pintura eletrostática a pó cor cinza cristal. Dimensões aprox: 1980x900x400mm. Tratamento antiferruginoso prévio.",
+        "expected_keywords": [
+            "Armário de Aço",
+            "02 Portas",
+            "Chapa",
+            "04 prateleiras",
+            "Fechadura"
+        ],
+        "forbidden_keywords": [
+            "prévia"
+        ]
+    },
+    {
+        "category": "Mobiliário",
+        "item": "Estação Trabalho",
+        "raw_description": "ESTAÇÃO DE TRABALHO 4 LUGARES. Formato plataforma ou cruz. Tampo em MDP 25mm com caixas de tomadas para elétrica e dados. Divisórias frontais ou laterais em vidro ou MDP. Estrutura metálica com calha de fiação. Cor: Branco ou Carvalho. Medidas totais aproximadas 2800x1400mm.",
+        "expected_keywords": [
+            "Estação de Trabalho",
+            "4 Lugares",
+            "MDP 25mm",
+            "caixas de tomadas",
+            "calha de fiação"
+        ],
+        "forbidden_keywords": [
+            "ou similar"
+        ]
+    },
+    {
+        "category": "EPIs",
+        "item": "Capacete",
+        "raw_description": "CAPACETE DE SEGURANÇA. Tipo: Aba Frontal. Classe B. Casco em polietileno de alta densidade. Carneira (suspensão) com ajuste por catraca e tira absorvedora de suor. Cor: Branca ou Azul (a definir no pedido). Deve possuir Certificado de Aprovação (CA) válido gravado no casco de forma indelével.",
+        "expected_keywords": [
+            "Capacete Segurança",
+            "Aba Frontal",
+            "Classe B",
+            "polietileno",
+            "catraca"
+        ],
+        "forbidden_keywords": [
+            "a definir no pedido",
+            "gravado no casco"
+        ]
+    },
+    {
+        "category": "EPIs",
+        "item": "Luva Vaqueta",
+        "raw_description": "LUVA DE SEGURANÇA EM VAQUETA. Tipo: Petroleira. Confeccionada em couro bovino curtido ao cromo (vaqueta) na palma e dorso. Com reforço palmar interno. Elástico no dorso para ajuste. Punho com acabamento em viés. Indicada para proteção contra agentes abrasivos e escoriantes. Tamanho: 9/G.",
+        "expected_keywords": [
+            "Luva",
+            "Vaqueta",
+            "Petroleira",
+            "couro bovino",
+            "reforço palmar"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "EPIs",
+        "item": "Bota Segurança",
+        "raw_description": "CALÇADO TIPO BOTINA DE SEGURANÇA. Cabedal em couro hidrofugado curtido ao cromo. Biqueira de composite (PVC/Plástico) resistente a impactos. Fechamento em elástico lateral. Solado bidensidade injetado diretamente no cabedal, antiderrapante. Cor: Preta. Numeração: 35 ao 45. CA Válido.",
+        "expected_keywords": [
+            "Botina",
+            "couro hidrofugado",
+            "Biqueira",
+            "composite",
+            "elástico lateral",
+            "Solado bidensidade"
+        ],
+        "forbidden_keywords": [
+            "CA Válido"
+        ]
+    },
+    {
+        "category": "EPIs",
+        "item": "Óculos Proteção",
+        "raw_description": "ÓCULOS DE SEGURANÇA. Constituídos de arco de material plástico preto com proteção superior e lateral. Lentes de policarbonato incolor com tratamento antirrisco e antiembaçante. Hastes tipo espátula reguláveis. Proteção contra raios UVA/UVB e impactos de partículas volantes.",
+        "expected_keywords": [
+            "Óculos",
+            "policarbonato",
+            "incolor",
+            "antirrisco",
+            "antiembaçante"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Elétrica",
+        "item": "Disjuntor 20A",
+        "raw_description": "DISJUNTOR TERMOMAGNÉTICO BIPOLAR. Corrente nominal: 20A. Curva de disparo: C. Padrão: DIN. Tensão máxima de operação: 400V. Capacidade de interrupção (Icn): mínima de 3kA. Fixação em trilho DIN 35mm. Em conformidade com a norma NBR NM 60898.",
+        "expected_keywords": [
+            "Disjuntor",
+            "Bipolar",
+            "20A",
+            "Curva",
+            "DIN",
+            "3kA"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Elétrica",
+        "item": "Lâmpada LED",
+        "raw_description": "LÂMPADA LED TUBULAR T8. Potência: 18W ou 20W. Base: G13. Tensão: Bivolt (100V-240V). Temperatura de cor: 6500K (Branco Frio). Fluxo luminoso mínimo: 1850 lumens. Vida útil estimada: 25.000 horas. Corpo em vidro ou policarbonato. Selo PROCEL/INMETRO.",
+        "expected_keywords": [
+            "Lâmpada",
+            "LED",
+            "Tubular",
+            "18W",
+            "G13",
+            "Bivolt",
+            "6500K",
+            "Branco Frio"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Elétrica",
+        "item": "Cabo Flexível",
+        "raw_description": "CABO FLEXÍVEL 2,5MM². Condutor: Cobre eletrolítico, têmpera mole, classe 4 ou 5. Isolação: PVC antichama BWF (70°C). Tensão de isolamento: 450/750V. Cor: Vermelho, Preto ou Azul (rolos de 100m). Registro no INMETRO obrigatório. Marca de referência: Sil, Cobrecom, Prysmian ou equivalente.",
+        "expected_keywords": [
+            "Cabo Flexível",
+            "2",
+            "mm",
+            "Cobre",
+            "PVC",
+            "750V"
+        ],
+        "forbidden_keywords": [
+            "Marca de referência"
+        ]
+    },
+    {
+        "category": "Elétrica",
+        "item": "Tomada 20A",
+        "raw_description": "TOMADA DE ENERGIA 2P+T 20A. Tipo: Embutir. Módulo tomada padrão brasileiro (NBR 14136). Cor: Vermelha ou Branca (identificação 20A). Tensão: 250V. Material: Termoplástico anti-chama e contatos em liga de cobre. Placa 4x2 inclusa se necessário.",
+        "expected_keywords": [
+            "Tomada",
+            "20A",
+            "Embutir",
+            "NBR 14136",
+            "250V"
+        ],
+        "forbidden_keywords": [
+            "inclusa se necessário"
+        ]
+    },
+    {
+        "category": "Baterias/Nobreaks",
+        "item": "Nobreak 10KVA",
+        "raw_description": "NOBREAK TRIFÁSICO DE 10 KVA. Fator de potência de 0,85. Transformador isolador embutido. Entrada 380V/220VCA. Tecnologia online dupla conversão. Baterias internas seladas VRLA longa vida. Autonomia mínima de 1 hora a meia carga. O equipamento deve ser entregue com startup incluso e garantia on-site de 24 meses.",
+        "expected_keywords": [
+            "Nobreak",
+            "Trifásico",
+            "10 KVA",
+            "0,85",
+            "380V",
+            "220V",
+            "online dupla conversão",
+            "Baterias internas"
+        ],
+        "forbidden_keywords": [
+            "startup incluso",
+            "Garantia",
+            "24 meses"
+        ]
+    },
+    {
+        "category": "Baterias/Nobreaks",
+        "item": "Nobreak 1500VA",
+        "raw_description": "NOBREAK 1500VA BIVOLT. Topologia Line Interactive. Tensão de entrada: Bivolt automático 115/127/220V. Tomadas de saída: mínimo 6 padrão ABNT. Autonomia de 25 minutos para 1 PC onboard + monitor LED. Bateria selada inclusa. Proteção contra surtos e subtensão. Marca ref: SMS, APC ou TS Shara.",
+        "expected_keywords": [
+            "Nobreak",
+            "1500VA",
+            "Bivolt",
+            "Line Interactive",
+            "6",
+            "padrão ABNT"
+        ],
+        "forbidden_keywords": [
+            "25 minutos",
+            "1 PC onboard",
+            "Marca ref",
+            "SMS",
+            "APC"
+        ]
+    },
+    {
+        "category": "Baterias/Nobreaks",
+        "item": "Bateria Estacionária",
+        "raw_description": "BATERIA ESTACIONÁRIA VRLA 12V 7AH. Tecnologia chumbo-ácida regulada por válvula. Tensão nominal 12V. Capacidade 7Ah / 20h. Dimensões compatíveis com nobreaks padrão de mercado. Terminais Faston 187 ou 250. Vida útil projetada de 3 a 5 anos. Certificação UL/CE. Deve ser entregue com carga plena.",
+        "expected_keywords": [
+            "Bateria Estacionária",
+            "VRLA",
+            "12V",
+            "7AH",
+            "chumbo-ácida",
+            "Terminais Faston"
+        ],
+        "forbidden_keywords": [
+            "padrão de mercado",
+            "Vida útil projetada",
+            "entregue com carga plena"
+        ]
+    },
+    {
+        "category": "Baterias/Nobreaks",
+        "item": "Nobreak 600VA",
+        "raw_description": "FONTE DE ALIMENTAÇÃO ININTERRUPTA (NOBREAK) 600VA. Entrada monovolt 115V ou 220V. Saída: Estabilizada. Forma de onda: Senoidal por aproximação (PWM). Bateria interna 12V/7Ah. Função DC Start. Gabinete plástico antichama. Prazo de garantia de 12 meses.",
+        "expected_keywords": [
+            "Nobreak",
+            "600VA",
+            "Estabilizada",
+            "Senoidal",
+            "PWM",
+            "Bateria interna",
+            "12V/7Ah"
+        ],
+        "forbidden_keywords": [
+            "Prazo de garantia",
+            "12 meses"
+        ]
+    },
+    {
+        "category": "Ferramentas",
+        "item": "Alicate Universal",
+        "raw_description": "ALICATE UNIVERSAL 8 POLEGADAS. Confeccionado em aço cromo-vanádio (Cr-V). Cabo com isolamento elétrico de 1000V (norma NBR 9699), ergonômico e antideslizante. Acabamento polido ou niquelado. Arestas de corte temperadas por indução. Marca de referência: Gedore, Belzer, Tramontina Pro.",
+        "expected_keywords": [
+            "Alicate Universal",
+            "8 polegadas",
+            "aço",
+            "cromo-vanádio",
+            "isolamento",
+            "1000V"
+        ],
+        "forbidden_keywords": [
+            "Marca de referência",
+            "Gedore",
+            "Belzer"
+        ]
+    },
+    {
+        "category": "Ferramentas",
+        "item": "Furadeira Impacto",
+        "raw_description": "FURADEIRA DE IMPACTO 1/2 Pol. (13mm). Potência mínima: 650W. Mandril de 1/2\" (13mm) com chave. Velocidade variável e reversível. Função impacto/martelete. Empunhadura lateral multiposição e limitador de profundidade. Tensão: 127V ou 220V. Acompanha maleta plástica para transporte.",
+        "expected_keywords": [
+            "Furadeira de Impacto",
+            "13mm",
+            "650W",
+            "Mandril",
+            "Velocidade variável",
+            "impacto",
+            "Empunhadura"
+        ],
+        "forbidden_keywords": [
+            "Acompanha maleta",
+            "transporte"
+        ]
+    },
+    {
+        "category": "Ferramentas",
+        "item": "Jogo Chaves",
+        "raw_description": "JOGO DE CHAVES COMBINADAS. Composto por no mínimo 12 peças. Medidas de 6mm a 22mm. Material: Aço cromo-vanádio com acabamento cromado fosco. Estojo ou suporte plástico para armazenamento. Normas DIN 3113. Garantia vitalícia contra defeitos de fabricação.",
+        "expected_keywords": [
+            "Jogo de Chaves",
+            "Combinadas",
+            "12 peças",
+            "6mm a 22mm",
+            "Aço cromo-vanádio"
+        ],
+        "forbidden_keywords": [
+            "Garantia vitalícia",
+            "defeitos de fabricação",
+            "Estojo"
+        ]
+    },
+    {
+        "category": "Ferramentas",
+        "item": "Parafusadeira Bateria",
+        "raw_description": "PARAFUSADEIRA/FURADEIRA A BATERIA 12V ou superior. Mandril de aperto rápido 3/8\" (10mm). Torque máximo de 30Nm. Bateria de Íons de Lítio recarregável. Luz LED auxiliar de trabalho. Acompanha carregador bivolt e 1 bateria extra. Rotação: 0-400 / 0-1500 rpm.",
+        "expected_keywords": [
+            "Parafusadeira",
+            "Furadeira",
+            "Bateria",
+            "12V",
+            "Mandril",
+            "10mm",
+            "Torque",
+            "Íons de Lítio"
+        ],
+        "forbidden_keywords": [
+            "Acompanha carregador",
+            "bateria extra"
+        ]
+    },
+    {
+        "category": "Limpeza",
+        "item": "Desinfetante 5L",
+        "raw_description": "DESINFETANTE USO GERAL. Embalagem de 5 Litros. Princípio ativo: Cloreto de Benzalcônio ou similar. Ação bactericida comprovada. Fragrância: Pinho, Lavanda ou Floral (a escolher). Registro na ANVISA/MS. Validade mínima de 12 meses a partir da entrega.",
+        "expected_keywords": [
+            "Desinfetante",
+            "5 Litros",
+            "bactericida",
+            "Cloreto de Benzalcônio"
+        ],
+        "forbidden_keywords": [
+            "a escolher",
+            "Validade mínima",
+            "a partir da entrega"
+        ]
+    },
+    {
+        "category": "Limpeza",
+        "item": "Detergente Neutro",
+        "raw_description": "DETERGENTE LÍQUIDO LAVA LOUÇAS. Tipo: Neutro. Biodegradável. Embalagem frasco de 500ml. Tensoativo aniônico. Dermatologicamente testado. Caixa com 24 unidades. Marca de referência: Ypê, Limpol, Minuano.",
+        "expected_keywords": [
+            "Detergente Líquido",
+            "Neutro",
+            "Biodegradável",
+            "500ml",
+            "Tensoativo"
+        ],
+        "forbidden_keywords": [
+            "Caixa com 24",
+            "Marca de referência",
+            "Ypê",
+            "Limpol"
+        ]
+    },
+    {
+        "category": "Limpeza",
+        "item": "Vassoura Piaçava",
+        "raw_description": "VASSOURA TIPO PIAÇAVA. Base em madeira ou plástico resistente. Cerdas de piaçava natural ou sintética de alta qualidade. Dimensões da base: aprox. 30cm a 40cm. Acompanha cabo de madeira plastificado de 1,20m com rosca. Item destinado a limpeza pesada.",
+        "expected_keywords": [
+            "Vassoura",
+            "Piaçava",
+            "Cerdas",
+            "cabo de madeira",
+            "1,20m"
+        ],
+        "forbidden_keywords": [
+            "Acompanha cabo",
+            "Item destinado a"
+        ]
+    },
+    {
+        "category": "Limpeza",
+        "item": "Sabão em Pó",
+        "raw_description": "SABÃO EM PÓ PARA LAVAGEM DE ROUPAS. Caixa ou pacote de 1kg ou 800g (ajuste conforme rendimento). Fórmula com enzimas ativas. tensoativo biodegradável. Remoção de manchas. Perfume suave. Entregar em fardos lacrados de fábrica.",
+        "expected_keywords": [
+            "Sabão em Pó",
+            "1kg",
+            "enzimas",
+            "biodegradável"
+        ],
+        "forbidden_keywords": [
+            "Entregar em fardos",
+            "lacrados"
+        ]
+    },
+    {
+        "category": "Iluminação",
+        "item": "Lâmpada T8 LED",
+        "raw_description": "LÂMPADA LED TUBULAR T8 18W a 20W. Base G13. Comprimento 120cm. Temperatura de cor 6500K (Luz do Dia). Bivolt automático (100-240V). Fluxo luminoso > 1850lm. Vida útil 25.000h. Corpo em vidro ou policarbonato leitoso. Garantia de 2 anos contra defeitos.",
+        "expected_keywords": [
+            "Lâmpada LED",
+            "Tubular",
+            "T8",
+            "18W",
+            "G13",
+            "120cm",
+            "6500K",
+            "Bivolt"
+        ],
+        "forbidden_keywords": [
+            "Garantia",
+            "2 anos",
+            "contra defeitos"
+        ]
+    },
+    {
+        "category": "Iluminação",
+        "item": "Refletor LED",
+        "raw_description": "REFLETOR DE LED 50W. Uso externo (IP65 ou superior - à prova d'água e poeira). Cor da luz: Branco Frio (6000K-6500K). Tensão: Bivolt. Corpo em alumínio injetado com pintura eletrostática preta. Vidro temperado. Suporte de fixação ajustável incluso.",
+        "expected_keywords": [
+            "Refletor",
+            "LED",
+            "50W",
+            "IP65",
+            "Branco Frio",
+            "alumínio",
+            "Vidro temperado"
+        ],
+        "forbidden_keywords": [
+            "Suporte de fixação",
+            "ajustável incluso"
+        ]
+    },
+    {
+        "category": "Iluminação",
+        "item": "Luminária Pública",
+        "raw_description": "LUMINÁRIA PÚBLICA LED 100W a 150W. Para poste/braço. Eficiência luminosa > 120 lm/W. Fator de potência > 0.92. Protetor de surto (DPS) integrado 10kV. Corpo em alumínio. Lente em policarbonato ou vidro. IP66 e IK08. Preparada para telegestão (base 7 pinos opcional).",
+        "expected_keywords": [
+            "Luminária Pública",
+            "LED",
+            "100W",
+            "Eficiência luminosa",
+            "DPS",
+            "IP66",
+            "IK08"
+        ],
+        "forbidden_keywords": [
+            "Preparada para telegestão",
+            "opcional"
+        ]
+    },
+    {
+        "category": "Iluminação",
+        "item": "Lâmpada Bulbo",
+        "raw_description": "LÂMPADA LED BULBO E27. Potência: 9W ou 10W (Equivalente a incandescente 60W). Tensão: Bivolt. Cor: 3000K (Branco Quente) ou 6500K (Branco Frio). Abertura de facho omnidirecional. Selo Procel A. Vida útil mediana 25.000h. Caixa individual.",
+        "expected_keywords": [
+            "Lâmpada LED",
+            "Bulbo",
+            "E27",
+            "9W",
+            "Bivolt"
+        ],
+        "forbidden_keywords": [
+            "Caixa individual",
+            "Equivalente a incandescente"
+        ]
+    },
+    {
+        "category": "Papelaria",
+        "item": "Papel Sulfite A4",
+        "raw_description": "PAPEL SULFITE ALCALINO A4 (210x297mm). Gramatura 75g/m². Cor: Branca. Resma com 500 folhas. Isento de aparas e impurezas. Corte perfeito e esquadrejado. Certificação Cerflor ou FSC. Marca de referência: Chamex, Report ou similar.",
+        "expected_keywords": [
+            "Papel Sulfite",
+            "A4",
+            "75g",
+            "Branca",
+            "500 folhas"
+        ],
+        "forbidden_keywords": [
+            "Marca de referência",
+            "Chamex",
+            "Report"
+        ]
+    },
+    {
+        "category": "Papelaria",
+        "item": "Caneta Esferográfica",
+        "raw_description": "CANETA ESFEROGRÁFICA COR AZUL. Ponta média 1.0mm. Corpo hexagonal transparente em resina termoplástica. Tampa ventilada antiasfixiante com clip. Carga de longa duração. Escrita macia e sem falhas. Caixa com 50 unidades.",
+        "expected_keywords": [
+            "Caneta Esferográfica",
+            "Azul",
+            "Ponta média",
+            "1.0mm",
+            "Corpo hexagonal"
+        ],
+        "forbidden_keywords": [
+            "Caixa com 50"
+        ]
+    },
+    {
+        "category": "Papelaria",
+        "item": "Grampeador Metal",
+        "raw_description": "GRAMPEADOR DE MESA MÉDIO. Capacidade para grampear até 25 folhas (papel 75g). Estrutura metálica com base emborrachada antiderrapante. Utiliza grampos 26/6. Mola de recolhimento resistente. Pintura eletrostática preta ou prata.",
+        "expected_keywords": [
+            "Grampeador",
+            "Mesa",
+            "Metal",
+            "25 folhas",
+            "grampos 26/6"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Papelaria",
+        "item": "Pasta Suspensa",
+        "raw_description": "PASTA SUSPENSA PARA ARQUIVO. Confeccionada em cartão kraft (mínimo 170g) ou marmorizado. Hastes plásticas ou metálicas removíveis com ponteiras de nylon. Acompanha visor transparente, etiqueta e grampo plástico. Dimensões aproximadas ofício.",
+        "expected_keywords": [
+            "Pasta Suspensa",
+            "cartão kraft",
+            "Hastes"
+        ],
+        "forbidden_keywords": [
+            "Acompanha visor",
+            "etiqueta",
+            "grampo plástico"
+        ]
+    },
+    {
+        "category": "Monitoramento",
+        "item": "Câmera IP Bullet",
+        "raw_description": "CÂMERA DE VÍDEO IP TIPO BULLET. Resolução Full HD 2MP (1080p). Lente fixa de 2.8mm ou 3.6mm. Visão noturna infravermelho (IR) alcance 30m. Proteção IP66 ou IP67 (uso externo). Compressão de vídeo H.265+. Alimentação PoE (802.3af) ou 12VDC. Função WDR digital.",
+        "expected_keywords": [
+            "Câmera IP",
+            "Bullet",
+            "Full HD",
+            "2MP",
+            "IR",
+            "30m",
+            "IP66",
+            "PoE"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Monitoramento",
+        "item": "DVR 16 Canais",
+        "raw_description": "GRAVADOR DIGITAL DE VÍDEO (DVR) 16 CANAIS. Híbrido (suporta câmeras HDCVI, HDTVI, AHD, IP e Analógica). Resolução de gravação 1080p Lite ou superior. Compressão H.265+. Capacidade para 01 ou 02 HDs SATA de até 10TB. Saídas de vídeo HDMI e VGA. Acesso remoto via aplicativo e nuvem.",
+        "expected_keywords": [
+            "Gravador Digital",
+            "DVR",
+            "16 Canais",
+            "Híbrido",
+            "1080p",
+            "H.265+",
+            "HDMI"
+        ],
+        "forbidden_keywords": [
+            "Acesso remoto",
+            "aplicativo"
+        ]
+    },
+    {
+        "category": "Monitoramento",
+        "item": "NVR 32 Canais",
+        "raw_description": "NETWORK VIDEO RECORDER (NVR) 32 CANAIS IP. Largura de banda de entrada > 160Mbps. Suporta câmeras de até 8MP (4K). Saída HDMI 4K. Compressão H.265/H.264. Suporte a 4 HDs SATA. Compatível com protocolo ONVIF Profile S/G. Fonte de alimentação interna bivolt.",
+        "expected_keywords": [
+            "NVR",
+            "32 Canais",
+            "IP",
+            "4K",
+            "ONVIF",
+            "H.265"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Monitoramento",
+        "item": "Cabo Coaxial CFTV",
+        "raw_description": "CABO COAXIAL FLEXÍVEL BIPOLAR PARA CFTV. Tipo 4mm ou RG59. Condutor central de cobre ou cobreado. Malha de blindagem 80% ou superior. 2 vias de alimentação (2x26AWG) integradas. Rolo ou caixa com 100 metros. Isolação em polietileno e capa externa em PVC branco.",
+        "expected_keywords": [
+            "Cabo Coaxial",
+            "Bipolar",
+            "CFTV",
+            "RG59",
+            "Blindagem",
+            "alimentação"
+        ],
+        "forbidden_keywords": [
+            "Rolo",
+            "caixa"
+        ]
+    },
+    {
+        "category": "Jardinagem",
+        "item": "Roçadeira Gasolina",
+        "raw_description": "ROÇADEIRA LATERAL A GASOLINA. Motor 2 tempos. Potência mínima 1.7 HP (ou 1.2 kW). Cilindrada > 40cc. Tanque de combustível > 0.8L. Guidão tipo bicicleta ergonômico. Sistema de partida fácil. Acompanha: Lâmina de 3 pontas, Carretel de nylon, Cinto de sustentação duplo e Kit de ferramentas.",
+        "expected_keywords": [
+            "Roçadeira",
+            "Gasolina",
+            "2 tempos",
+            "1.7 HP",
+            "40cc",
+            "Guidão tipo bicicleta"
+        ],
+        "forbidden_keywords": [
+            "Acompanha",
+            "Lâmina",
+            "Carretel",
+            "Cinto",
+            "Kit de ferramentas"
+        ]
+    },
+    {
+        "category": "Jardinagem",
+        "item": "Cortador Grama",
+        "raw_description": "CORTADOR DE GRAMA A GASOLINA COM TRAÇÃO. Motor 4 tempos 6HP a 6.5HP. Largura de corte aprox 50cm (20\"). Regulagem de altura de corte centralizada (5 a 7 posições). Recolhedor de grama traseiro (Cesto) > 40 Litros. Rodas com rolamentos. Chassi em aço. ",
+        "expected_keywords": [
+            "Cortador de Grama",
+            "Gasolina",
+            "4 tempos",
+            "6HP",
+            "50cm",
+            "Recolhedor"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Jardinagem",
+        "item": "Enxada Cabo",
+        "raw_description": "ENXADA LARGA 2.5 LIBRAS. Lâmina em aço forjado de alta resistência carbono, temperada. Olho de 38mm. Pintura eletrostática preta. Com cabo de madeira de lei lixado e encerado de 1,50m. Fixação por bucha plástica ou cunha.",
+        "expected_keywords": [
+            "Enxada",
+            "2.5 Libras",
+            "Aço forjado",
+            "cabo de madeira",
+            "1,50m"
+        ],
+        "forbidden_keywords": [
+            "Fixação por bucha"
+        ]
+    },
+    {
+        "category": "Jardinagem",
+        "item": "Ancinho Metálico",
+        "raw_description": "ANCINHO CURVO (RASTELO) 14 DENTES. Cabeça em aço carbono estampado ou forjado. Pintura anticorrosiva. Dentes curvos rígidos. Acompanha cabo de madeira de 1,20m a 1,50m. Utilização: Recolhimento de detritos e nivelamento de solo.",
+        "expected_keywords": [
+            "Ancinho",
+            "Rastelo",
+            "14 Dentes",
+            "Aço carbono",
+            "cabo de madeira"
+        ],
+        "forbidden_keywords": [
+            "Acompanha cabo",
+            "Utilização"
+        ]
+    },
+    {
+        "category": "Bebedouro",
+        "item": "Bebedouro Coluna",
+        "raw_description": "BEBEDOURO TIPO COLUNA (GARRAFÃO). Para garrafões de 10L ou 20L. Refrigeração por compressor (gás ecológico). Gabinete em chapa de aço pintada ou inox. Duas torneiras (gelada e natural). Bandeja coletora removível. Termostato ajustável. Voltagem 220V.",
+        "expected_keywords": [
+            "Bebedouro",
+            "Coluna",
+            "Garrafão",
+            "Compressor",
+            "Torneiras",
+            "220V"
+        ],
+        "forbidden_keywords": [
+            "Bandeja coletora"
+        ]
+    },
+    {
+        "category": "Bebedouro",
+        "item": "Purificador Pressão",
+        "raw_description": "BEBEDOURO DE PRESSÃO CONJUGADO INOX. Modelo industrial de coluna. Capacidade de refrigeração 25L a 50L/hora. Corpo e reservatório em aço inoxidável. 2 torneiras (1 jato + 1 copo). Filtro interno de carvão ativado. Tensão 127V ou 220V. Pés reguláveis. Atende norma NR-24.",
+        "expected_keywords": [
+            "Bebedouro",
+            "Pressão",
+            "Inox",
+            "Coluna",
+            "Torneiras",
+            "Filtro"
+        ],
+        "forbidden_keywords": [
+            "Pés reguláveis",
+            "NR-24"
+        ]
+    },
+    {
+        "category": "Bebedouro",
+        "item": "Bebedouro Industrial 100L",
+        "raw_description": "BEBEDOURO INDUSTRIAL 100 LITROS. Suspenso ou de Piso. Reservatório em aço inox 304 com isolamento em poliuretano. Refrigeração: Compressor hermético. Termostato para controle de temperatura. 03 ou 04 torneiras geladas. Tensão 220V. Apara-lixo/calha frontal em inox.",
+        "expected_keywords": [
+            "Bebedouro Industrial",
+            "100 Litros",
+            "Aço Inox",
+            "Compressor",
+            "Torneiras",
+            "220V"
+        ],
+        "forbidden_keywords": []
+    },
+    {
+        "category": "Bebedouro",
+        "item": "Purificador Parede",
+        "raw_description": "PURIFICADOR DE ÁGUA REFRIGERADO PAREDE/BANCADA. Sistema de refrigeração por compressor. Eficiência bacteriológica aprovada. Retenção de partículas Classe A. Redução de cloro livre. Bica articulável ou fixa. Botão misturador ou touch. Tensão Bivolt.",
+        "expected_keywords": [
+            "Purificador",
+            "Refrigerado",
+            "Compressor",
+            "Bacteriológica",
+            "Classe A"
+        ],
+        "forbidden_keywords": [
+            "Bica articulável",
+            "Botão"
+        ]
+    }
+]

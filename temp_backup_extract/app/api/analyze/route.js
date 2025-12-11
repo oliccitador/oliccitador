@@ -1,0 +1,49 @@
+import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
+import { createServerClient } from '@supabase/ssr';
+import { analyzeWithFlow } from '../../../lib/gemini';
+import { getCache, setCache } from '../../../lib/cache';
+
+export const dynamic = 'force-dynamic';
+
+export async function POST(request) {
+    if (process.env.NODE_ENV !== 'production') console.log('DEBUG: API POST /api/analyze called');
+    try {
+        const cookieStore = await cookies();
+        const supabase = createServerClient(
+            process.env.NEXT_PUBLIC_SUPABASE_URL,
+            process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+            { cookies: { get(name) { return cookieStore.get(name)?.value; } } }
+        );
+
+        // TEMPORARY: Auth disabled for testing
+        // const { data: { user }, error: authError } = await supabase.auth.getUser();
+        // if (authError || !user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        const user = { id: 'test-user' }; // Mock user for testing
+
+        const body = await request.json();
+        const { description, ca, catmat } = body;
+
+        if (process.env.NODE_ENV !== 'production') console.log('[API] Received:', { description: description.substring(0, 100), ca, catmat });
+
+        if (!description) return NextResponse.json({ error: 'Description is required' }, { status: 400 });
+
+        // CACHE DISABLED FOR DEBUGGING
+        // const cacheKey = `analyze:v2:${user.id}:${description}:${ca || 'no-ca'}:${catmat || 'no-catmat'}`;
+        // const cached = await getCache(cacheKey);
+        // if (cached) return NextResponse.json({ ...cached, cache: true });
+
+        // Use 3-flow system
+        if (process.env.NODE_ENV !== 'production') console.log(`[API] Analyzing with 3-flow system: CA=${ca}, CATMAT=${catmat}`);
+        const result = await analyzeWithFlow(description, ca, catmat);
+
+        // Cache result
+        // await setCache(cacheKey, result);
+
+        return NextResponse.json({ ...result, cache: false });
+
+    } catch (error) {
+        console.error('ERROR in /api/analyze:', error);
+        return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+}

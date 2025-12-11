@@ -1,0 +1,135 @@
+{
+  "timestamp": "2025-12-04T15:53:56.512Z",
+  "tests": [
+    {
+      "module": "cotacao",
+      "name": "Geladeira (Grid Layout)",
+      "query": "GELADEIRA FROST FREE 400L",
+      "results": 3,
+      "passed": true,
+      "topResult": {
+        "titulo": "Conjunto Interface Refrigerador Brastemp Brm54 W11228626 Cinza-escuro",
+        "preco": 514,
+        "preco_formatado": "R$ 514,00",
+        "loja": "mercadolivre.com.br",
+        "link": "https://www.mercadolivre.com.br/conjunto-interface-refrigerador-brastemp-brm54-w11228626/up/MLBU3357347607#polycard_client=search-nordic&amp;search_layout=stack&amp;position=12&amp;type=product&amp;tracking_id=ee9c49e4-5363-4ef7-b1ac-5fbd14adec76&amp;wid=MLB5578242568&amp;sid=search"
+      }
+    },
+    {
+      "module": "cotacao",
+      "name": "Notebook (Lista Layout)",
+      "query": "NOTEBOOK I5 8GB SSD",
+      "results": 3,
+      "passed": true,
+      "topResult": {
+        "titulo": "Notebook Dell Latitude 3450 Core I5 5th 8gb Ssd 240gb Nf Cinza (Recondicionado)",
+        "preco": 1274,
+        "preco_formatado": "R$ 1.274,00",
+        "loja": "mercadolivre.com.br",
+        "link": "https://www.mercadolivre.com.br/notebook-dell-latitude-3450-core-i5-5th-8gb-ssd-240gb-nf/up/MLBU3537161253#polycard_client=search-nordic&amp;search_layout=grid&amp;position=29&amp;type=product&amp;tracking_id=bdc13243-38dc-440f-9358-2c4283f0548d&amp;wid=MLB5905334284&amp;sid=search"
+      }
+    },
+    {
+      "module": "cotacao",
+      "name": "Cadeira Rodas (Medico)",
+      "query": "CADEIRA RODAS DOBRAVEL ADULTO",
+      "results": 3,
+      "passed": true,
+      "topResult": {
+        "titulo": "Protetor De Roupas Lavável Para Comer Adultos, Babador Imper",
+        "preco": 32.67,
+        "preco_formatado": "R$ 32,67",
+        "loja": "mercadolivre.com.br",
+        "link": "https://www.mercadolivre.com.br/protetor-de-roupas-lavavel-para-comer-adultos-babador-imper/p/MLB2048120081#polycard_client=search-nordic&amp;search_layout=stack&amp;position=12&amp;type=product&amp;tracking_id=0e8515c1-5153-4e7e-9f7b-8d67a4657b29&amp;wid=MLB5919477656&amp;sid=search"
+      }
+    },
+    {
+      "module": "cotacao",
+      "name": "Ar Condicionado (Eletro)",
+      "query": "AR CONDICIONADO SPLIT 12000 BTU",
+      "results": 3,
+      "passed": true,
+      "topResult": {
+        "titulo": "Ar Condicionado 12.000 Btus Frio Split Liv Inverter Top Agratto Cor Branca",
+        "preco": 1820,
+        "preco_formatado": "R$ 1.820,00",
+        "loja": "mercadolivre.com.br",
+        "link": "https://www.mercadolivre.com.br/ar-condicionado-12000-btus-frio-split-liv-inverter-top-agratto-cor-branca/p/MLB24540315#polycard_client=search-nordic&amp;search_layout=grid&amp;position=8&amp;type=product&amp;tracking_id=c85a68d5-8b3f-4f73-b4dd-4dbbf2ff6d47&amp;wid=MLB5807144894&amp;sid=search"
+      }
+    },
+    {
+      "module": "cotacao",
+      "name": "Impressora (Escritorio)",
+      "query": "IMPRESSORA MULTIFUNCIONAL LASER",
+      "results": 3,
+      "passed": true,
+      "topResult": {
+        "titulo": "Impressora multifuncional monocromática Pantum M6559NW",
+        "preco": 1149,
+        "preco_formatado": "R$ 1.149,00",
+        "loja": "mercadolivre.com.br",
+        "link": "https://www.mercadolivre.com.br/impressora-multifuncional-monocromatica-pantum-m6559nw/p/MLB18491808#polycard_client=search-nordic&amp;search_layout=grid&amp;position=21&amp;type=product&amp;tracking_id=52d10a5c-a75c-4984-909e-d344ad313e58&amp;wid=MLB5314971208&amp;sid=search"
+      }
+    },
+    {
+      "module": "query_semantica",
+      "name": "cleanAndExtract existe",
+      "passed": true
+    },
+    {
+      "module": "query_semantica",
+      "name": "Remove valores monetarios",
+      "passed": true
+    },
+    {
+      "module": "query_semantica",
+      "name": "Limite de palavras configurado",
+      "passed": true
+    },
+    {
+      "module": "query_semantica",
+      "name": "cleanForPNCP existe",
+      "passed": false
+    },
+    {
+      "module": "query_semantica",
+      "name": "Limite PNCP (25 palavras)",
+      "passed": true
+    },
+    {
+      "module": "price_search_structure",
+      "name": "Suporte a layout LI (Lista)",
+      "passed": true
+    },
+    {
+      "module": "price_search_structure",
+      "name": "Suporte a layout DIV (Grid)",
+      "passed": true
+    },
+    {
+      "module": "price_search_structure",
+      "name": "Fallback para titulo (poly + ui)",
+      "passed": true
+    },
+    {
+      "module": "price_search_structure",
+      "name": "Fallback para preco",
+      "passed": true
+    },
+    {
+      "module": "price_search_structure",
+      "name": "Fallback para link",
+      "passed": true
+    },
+    {
+      "module": "price_search_structure",
+      "name": "buscarMelhoresPrecos exportada",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 16,
+    "passed": 15,
+    "failed": 1
+  }
+}

@@ -1,0 +1,37 @@
+[
+    {
+        "category": "CAPACETE",
+        "raw_description": "Capacete de segurança em polietileno de alta densidade: rígido, TIPO ABA TOTAL, com nervura no casco, suspensão dupla e carneira de plástico macio de alta resistência, perfurado e com proteção de espuma plástica, com jugular e suor. Cor azul royal com logomarca da Cosanpa gravada na parte frontal.",
+        "ideal_clean_description": "Capacete de segurança polietileno alta densidade aba total suspensão dupla"
+    },
+    {
+        "category": "CAPACETE",
+        "raw_description": "Capacete de segurança (alpinista) para uso na indústria, classe B: tipo III (sem aba), material do casco em ABS, suspensão revestida com material analérgico (E.V.A), tira absorvente de suor na testa, ajuste através de catraca, coroa unificada e jugular de 3 pontos, placa reflexiva removível na parte de trás.",
+        "ideal_clean_description": "Capacete segurança alpinista classe B tipo III ABS suspensão catraca"
+    },
+    {
+        "category": "NOTEBOOK",
+        "raw_description": "Notebook com processador mínimo Intel Core i7 de 14ª geração (ou AMD Ryzen 5 série 5000), no mínimo 4 núcleos físicos e 8 threads, frequência base de 2.0 GHz ou superior. Memória RAM de no mínimo 16 GB DDR4 (ou DDR5), expansível até pelo menos 32 GB, frequência mínima de 2666 MHz. SSD de 512 GB tipo NVMe M.2 com leitura sequencial mínima de 2000 MB/s. Tela de 15 polegadas, LED, antirreflexiva, Full HD.",
+        "ideal_clean_description": "Notebook Intel Core i7 14ª geração 16GB RAM SSD 512GB Tela 15 Full HD"
+    },
+    {
+        "category": "NOTEBOOK",
+        "raw_description": "Notebook processador Intel® Core™ i7-1165G7 (2.8GHz até 4.7GHz, cache de 12MB, quad-core, 11ª geração), memória RAM de 16GB (2x8GB), DDR4, 3200MHz (velocidade máxima de 3200MHz); Expansível até 32GB (2 slots soDIMM), SSD de 512GB PCIe NVMe M.2, Placa de vídeo dedicada NVIDIA® GeForce® MX350 com 2GB de GDDR5, Tela Full HD WVA de 15.6 polegadas (1920 x 1080).",
+        "ideal_clean_description": "Notebook Intel i7-1165G7 16GB RAM SSD 512GB Placa de vídeo dedicada MX350 Tela 15.6 Full HD"
+    },
+    {
+        "category": "LUVA",
+        "raw_description": "Luva de segurança confeccionada em vaqueta curtida ao cromo, formato de cinco dedos, com reforço na palma interno, reforço de costura entre o polegar e o indicador e entre dedos anelares, com elástico de ajuste no dorso, acabamento em viés, costurada com linha de nylon, largura da palma 12,5 cm e comprimento total de 25 cm, CA válido.",
+        "ideal_clean_description": "Luva segurança vaqueta cromo reforço palma elástico dorso CA válido"
+    },
+    {
+        "category": "MONITOR",
+        "raw_description": "Monitor LED 24 polegadas. Especificações mínimas: Tamanho da tela: entre 23,6” e 24” polegadas. Formato 16:9 Widescreen. Iluminação de fundo em LED. Resolução: 1920x1080@60HZ (Full HD). Tempo de resposta menor ou igual a 8 ms. Conexões VGA e HDMI.",
+        "ideal_clean_description": "Monitor LED 24 polegadas Full HD 1920x1080 HDMI VGA"
+    },
+    {
+        "category": "MONITOR",
+        "raw_description": "Monitor 24 Polegadas. Especificação completa do objeto oferecido para permitir sua avaliação total, conforme descrito no Anexo 01 do Edital. Tela plana de cristal líquido de, no mínimo, 24 polegadas, widescreen, tela anti-glare, suporte a resolução 1920x1080 ou superior.",
+        "ideal_clean_description": "Monitor 24 polegadas widescreen anti-glare Full HD 1920x1080"
+    }
+]
