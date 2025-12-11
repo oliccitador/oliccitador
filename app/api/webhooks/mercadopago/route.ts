@@ -88,16 +88,52 @@ export async function POST(req: Request) {
 
             logger.info('WEBHOOK/MP', `Processing payment for ${email}, plan: ${planCode}`);
 
-            // Check if user exists
-            const { data: existingUsers } = await supabaseAdmin.auth.admin.listUsers();
-            const existingUser = existingUsers?.users?.find((u: any) => u.email === email);
+            // Check if user exists (with pagination loop to handle > 50 users)
+            let userId: string | undefined;
+            let page = 1;
+            const PER_PAGE = 100;
+            let hasMore = true;
 
-            let userId: string;
+            logger.debug('WEBHOOK/MP', `Searching for user ${email}...`);
+
+            while (hasMore && !userId) {
+                const { data: userPage, error: listError } = await supabaseAdmin.auth.admin.listUsers({
+                    page: page,
+                    perPage: PER_PAGE
+                });
+
+                if (listError) {
+                    console.error('Error listing users:', listError);
+                    break;
+                }
+
+                const users = userPage?.users || [];
+                const existingUser = users.find((u: any) => u.email === email);
+
+                if (existingUser) {
+                    userId = existingUser.id;
+                    logger.debug('WEBHOOK/MP', `User found: ${userId}`);
+                    break;
+                }
+
+                if (users.length < PER_PAGE) {
+                    hasMore = false;
+                } else {
+                    page++;
+                }
+
+                // Safety break to prevent infinite loops in huge DBs
+                if (page > 50) {
+                    console.warn('User search limit reached (5000 users scanned)');
+                    break;
+                }
+            }
+
             let isNewUser = false;
             let actionUrl = `${process.env.NEXT_PUBLIC_BASE_URL || 'https://oliccitador.com.br'}/login`;
 
-            if (existingUser) {
-                userId = existingUser.id;
+            if (userId) {
+                // User already exists
                 logger.debug('WEBHOOK/MP', `User already exists: ${userId}`);
             } else {
                 isNewUser = true;
