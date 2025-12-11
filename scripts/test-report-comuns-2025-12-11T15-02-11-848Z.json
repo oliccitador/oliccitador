@@ -1,0 +1,209 @@
+{
+  "total": 20,
+  "sucesso": 20,
+  "falha": 0,
+  "compativel": 7,
+  "incompativel": 13,
+  "detalhes": [
+    {
+      "codigo": "451899",
+      "nome": "Notebook",
+      "status": "OK",
+      "top1_titulo": "multilaser Notebook Chromebook Clamshell Chrome OS 14 Pol pc918aout",
+      "top1_preco": 1119.99,
+      "compatibilidade": false,
+      "compat_score": 7,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "451900",
+      "nome": "Notebook",
+      "status": "OK",
+      "top1_titulo": "Notebook Tela 14\" HD Windows 10 Ddr4 Processador Intel Celeron N4000 Dual-core 256gb 6gb Ram",
+      "top1_preco": 1237.95,
+      "compatibilidade": false,
+      "compat_score": 20,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "451901",
+      "nome": "Notebook",
+      "status": "OK",
+      "top1_titulo": "Notebook Positivo Vision C14 Intel Celeron 4GB eMMC HD Lumina BAR",
+      "top1_preco": 1199,
+      "compatibilidade": false,
+      "compat_score": 6,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "451903",
+      "nome": "Notebook",
+      "status": "OK",
+      "top1_titulo": "Notebook Positivo Vision C14 Intel Celeron 4GB eMMC HD Lumina BAR",
+      "top1_preco": 1199,
+      "compatibilidade": false,
+      "compat_score": 7,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "204951",
+      "nome": "IMPRESSORA LASER, TENSÃO ALIMENTAÇÃO:110/220 V, RESOLUÇÃO IMPRESSÃO:600 X 600 DPI, VELOCIDADE IMPRES",
+      "status": "OK",
+      "top1_titulo": "Impressora Laser Xerox Phaser 3020",
+      "top1_preco": 712.08,
+      "compatibilidade": true,
+      "compat_score": 50,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "204952",
+      "nome": "IMPRESSORA LASER, TENSÃO ALIMENTAÇÃO:110/220 V, RESOLUÇÃO IMPRESSÃO:600 X 600 DPI, VELOCIDADE IMPRES",
+      "status": "OK",
+      "top1_titulo": "Impressora Laser Xerox Phaser 3020",
+      "top1_preco": 712.08,
+      "compatibilidade": true,
+      "compat_score": 50,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "204954",
+      "nome": "Impressora Laser",
+      "status": "OK",
+      "top1_titulo": "Impressora HP Laser 107A",
+      "top1_preco": 859.89,
+      "compatibilidade": false,
+      "compat_score": 22,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "204959",
+      "nome": "Impressora Multifuncional Jato de Tinta",
+      "status": "OK",
+      "top1_titulo": "Impressora Canon Multifuncional Mega Tank G3110",
+      "top1_preco": 789.9,
+      "compatibilidade": false,
+      "compat_score": 15,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "202440",
+      "nome": "Apontador de lápis de mesa grande azul",
+      "status": "OK",
+      "top1_titulo": "Oval Apontador com Deposito 8132",
+      "top1_preco": 4.4,
+      "compatibilidade": false,
+      "compat_score": 17,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "202441",
+      "nome": "Apontador de Lápis de Mesa",
+      "status": "OK",
+      "top1_titulo": "Apontador Plástico Acrilex",
+      "top1_preco": 1.86,
+      "compatibilidade": true,
+      "compat_score": 33,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "202442",
+      "nome": "Apontador de Lápis de Mesa",
+      "status": "OK",
+      "top1_titulo": "Apontador De Plástico Simples 12200 FUTURO - Azul",
+      "top1_preco": 1,
+      "compatibilidade": true,
+      "compat_score": 50,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "202444",
+      "nome": "Apontador de Lápis de Mesa",
+      "status": "OK",
+      "top1_titulo": "Apontador redondo simples transparente verde",
+      "top1_preco": 0.3,
+      "compatibilidade": true,
+      "compat_score": 33,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "244448",
+      "nome": "VENTILADOR, COMPATIBILIDADE:PROCESSADOR ATHLON/DURON,FREQÜÊNCIA ACIMA DE 1.4, APLICAÇÃO:MICROCOMPUTA",
+      "status": "OK",
+      "top1_titulo": "revenger Cooler Pc Fan Para Gabinete 120mm Ventoinha 120mm 12v",
+      "top1_preco": 13.9,
+      "compatibilidade": false,
+      "compat_score": 0,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "245599",
+      "nome": "Processador Pentium III",
+      "status": "OK",
+      "top1_titulo": "Sl4zj Intel Cpu 866 Mhz Pentium Iii Processor",
+      "top1_preco": 82.38,
+      "compatibilidade": false,
+      "compat_score": 25,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "245736",
+      "nome": "Placa Mãe",
+      "status": "OK",
+      "top1_titulo": "Kit Asus P4sp-mx Socket 478 + Pentium 4 2.8 Ghz + 512 Mb Ddr Dourado-escuro (Usado)",
+      "top1_preco": 120,
+      "compatibilidade": true,
+      "compat_score": 33,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "247058",
+      "nome": "Processador Pentium IV",
+      "status": "OK",
+      "top1_titulo": "Intel Pentium 4 2.4 Ghz 2.40ghz/512/533, Sl6dv Socket 478",
+      "top1_preco": 24.66,
+      "compatibilidade": true,
+      "compat_score": 50,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "218215",
+      "nome": "Filmadora/Monitor Portátil",
+      "status": "OK",
+      "top1_titulo": "Filmadora Com Câmera de Vídeo UHD 4k Pequena, Tela Sensível Ao Toque de 2 Polegadas, Suporte para Cartão SD 512G, Filmadora Com Câmera Nini Vlog Com",
+      "top1_preco": 263.02,
+      "compatibilidade": false,
+      "compat_score": 8,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "218216",
+      "nome": "Filmadora/Monitor Portátil",
+      "status": "OK",
+      "top1_titulo": ". Câmera Filmadora Handycam Full Hd Zoom 16x comum Uso",
+      "top1_preco": 178.41,
+      "compatibilidade": false,
+      "compat_score": 22,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "218226",
+      "nome": "Filmadora/Monitor Portátil",
+      "status": "OK",
+      "top1_titulo": "vivitar Câmera Filmadora de Ação",
+      "top1_preco": 144.9,
+      "compatibilidade": false,
+      "compat_score": 7,
+      "estrategia": "full_specs_query"
+    },
+    {
+      "codigo": "218227",
+      "nome": "Filmadora Portátil VHS",
+      "status": "OK",
+      "top1_titulo": "HD1080P Mini Filmadora Com Tela Alto-Falante Portátil Retro Ultra Compacto VCR Suporte Cartão TF Até 128G",
+      "top1_preco": 103.9,
+      "compatibilidade": false,
+      "compat_score": 15,
+      "estrategia": "full_specs_query"
+    }
+  ]
+}

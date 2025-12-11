@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 // Load .env.local manually
 const envPath = path.join(__dirname, '..', '.env.local');
 // TESTING NEW KEY DIRECTLY
-let BRIGHTDATA_API_TOKEN = "3144e193fe458df29984fe8b07b8ba19ce0fc0f81591124da2b7714ee8caac2b";
+let BRIGHTDATA_API_TOKEN = "[KEY_REMOVED]";
 
 console.log('╔═══════════════════════════════════════════════════════════════════════════════╗');
 console.log('║          DEBUG: BRIGHT DATA SERP API TEST                                    ║');

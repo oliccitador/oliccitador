@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // TESTING KEY DIRECTLY
-const SERPAPI_KEY = "3144e193fe458df29984fe8b07b8ba19ce0fc0f81591124da2b7714ee8caac2b";
+const SERPAPI_KEY = process.env.SERPAPI_KEY || "YOUR_SERPAPI_KEY_HERE";
 const BASE_URL = 'https://serpapi.com/search.json';
 
 console.log('╔═══════════════════════════════════════════════════════════════════════════════╗');

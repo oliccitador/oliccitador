@@ -1,0 +1,229 @@
+{
+  "total": 20,
+  "sucesso": 20,
+  "falha": 0,
+  "compativel": 0,
+  "incompativel": 20,
+  "detalhes": [
+    {
+      "codigo": "125563",
+      "nome": "Distribuidor Interno Óptico (DIO)",
+      "query": "Distribuidor Interno Óptico",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Distribuidor Interno Óptico Descarregado 12 Portas Volt (Sem Acoplador) 9.13.012",
+      "top1_preco": 77.5,
+      "top1_loja": "GrupoTek"
+    },
+    {
+      "codigo": "204872",
+      "nome": "Cabo de Rede Cat5e",
+      "query": "Cabo de rede CAT5e, revestimento PVC, condutor cobre estanhado, 24 AWG, condutor retorcido, 2 pares,",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "megatron Cabo de Rede Cat5e Azul",
+      "top1_preco": 3.1,
+      "top1_loja": "Santil Comercial Elétrica"
+    },
+    {
+      "codigo": "204873",
+      "nome": "Cabo de Rede CAT5e",
+      "query": "Cabo de rede CAT5e, revestimento PVC, condutor cobre estanhado, bitola 24 AWG, condutor retorcido, 2",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Cabo de Rede CAT5e 24AWG",
+      "top1_preco": 8.5,
+      "top1_loja": "ED Cabos"
+    },
+    {
+      "codigo": "204874",
+      "nome": "Cabo de Rede",
+      "query": "Cabo de rede, revestimento PVC, condutor cobre estanhado, bitola 24 AWG, condutor retorcido, 2 pares",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Cabo de Rede Sinal 4 Pares 24 AWG Azul Kalps",
+      "top1_preco": 0.85,
+      "top1_loja": "Upperseg Segurança"
+    },
+    {
+      "codigo": "204875",
+      "nome": "Cabo de Rede CAT5e",
+      "query": "Cabo de rede CAT5e, revestimento PVC anti-chama, condutor cobre, bitola 24 AWG, condutor trançado, 4",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Cabo de Rede Cat5e Furukawa Multilan Azul CM",
+      "top1_preco": 2.85,
+      "top1_loja": "ED Cabos"
+    },
+    {
+      "codigo": "200331",
+      "nome": "Refil de Tinta Preta",
+      "query": "Refil de tinta, tinta preta, capacidade 20ml, para impressora ink jet",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Refil De Tinta Preto Para Impressora Hp 100ml",
+      "top1_preco": 15.81,
+      "top1_loja": "Leroy Merlin"
+    },
+    {
+      "codigo": "200685",
+      "nome": "Fita Teleimpressora",
+      "query": "Fita Teleimpressora, celulose vegetal, 275 metros, 0,174 metros largura",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "simplified_query",
+      "top1_titulo": "menno Fita Terminal p/ Impres. Cmi 600 Haste Longa MF 1064",
+      "top1_preco": 11.81,
+      "top1_loja": "fernet.com.br"
+    },
+    {
+      "codigo": "203504",
+      "nome": "Etiqueta Adesiva",
+      "query": "Etiqueta adesiva papel branca, 25,4 mm largura, 66,7 mm comprimento, para impressora jato de tinta, ",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Etiqueta CARTA 6180 25.4X66.7MM 30PF CX3000",
+      "top1_preco": 32.9,
+      "top1_loja": "OceanoB2B"
+    },
+    {
+      "codigo": "203505",
+      "nome": "Etiqueta Adesiva",
+      "query": "Etiqueta adesiva papel branca, 25,4 mm largura, 66,7 mm comprimento, para impressora laser, formato ",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Etiqueta Carta 6180 25.4X66.7MM 30PF CX3000 JUSSARA",
+      "top1_preco": 32.46,
+      "top1_loja": "Magazine Luiza"
+    },
+    {
+      "codigo": "203506",
+      "nome": "Etiqueta Adesiva Papel",
+      "query": "Etiqueta adesiva papel branca, 25,4 mm largura, 66,7 mm comprimento, aplicação impressora matricial,",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Etiqueta Laser CC280 25 folhas Colacril",
+      "top1_preco": 12.69,
+      "top1_loja": "Amazon.com.br - Retail"
+    },
+    {
+      "codigo": "123455",
+      "nome": "Peça/Componente para Módulo de Trabalho Escritório/Estação de Trabalho",
+      "query": "Peça/Componente para Módulo de Trabalho Escritório/Estação de Trabalho, Mobiliário, Especificar mate",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Placa 1 Módulo Para Móveis Inova Pro Class Black Piano Alumbra",
+      "top1_preco": 2.56,
+      "top1_loja": "Santil Comercial Elétrica"
+    },
+    {
+      "codigo": "204902",
+      "nome": "Estante de Aço Basculante 19 Polegadas",
+      "query": "Estante de aço, tipo chão, estrutura basculante, padrão montagem 19 polegadas, altura interna 17,8 c",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "ideallume Estante Armario De Aço 68cm Altura 3 Bandejas",
+      "top1_preco": 113.75,
+      "top1_loja": "Amazon.com.br - Seller"
+    },
+    {
+      "codigo": "204904",
+      "nome": "Estante Basculante Aço Padrão 19 Pol",
+      "query": "Estante parede aço basculante padrão montagem 19 polegadas, altura interna 17,8 cm, largura interna ",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Estante Aço 5 Prateleiras Livros Eaf005",
+      "top1_preco": 159.9,
+      "top1_loja": "Elite Aço"
+    },
+    {
+      "codigo": "205173",
+      "nome": "Cadeira de Escritório Camurça Azul",
+      "query": "Cadeira escritório, estrutura tubo de aço niquelado, revestimento assento e encosto em camurça azul,",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Cadeira De Escritório Secretária Base Cromada Com Rodinha Fortt Lisboa Preta",
+      "top1_preco": 145.71,
+      "top1_loja": "KaBuM!"
+    },
+    {
+      "codigo": "205175",
+      "nome": "Cadeira de Escritório",
+      "query": "Cadeira de escritório, estrutura tubo de aço niquelado, revestimento assento e encosto camurça marro",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Cadeira De Escritorio Begonia Tela Mesh",
+      "top1_preco": 169.99,
+      "top1_loja": "Leroy Merlin"
+    },
+    {
+      "codigo": "4782",
+      "nome": "Distribuidor de Asfalto",
+      "query": "Distribuidor de asfalto, capacidade do tanque de asfalto (litros), largura de distribuição (metros),",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "simplified_query",
+      "top1_titulo": "fh Asfalto Pronto Tapa Buraco",
+      "top1_preco": 43.9,
+      "top1_loja": "Comercial Carvalho"
+    },
+    {
+      "codigo": "58718",
+      "nome": "Acessório e Componente Ferroviário",
+      "query": "Acessório e Componente de Locomotiva e Vagão Ferroviário",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Clássico Train Rail Track Expansion Pack Acessórios para Ferroviária CHINA Right split rails",
+      "top1_preco": 2.97,
+      "top1_loja": "Mimilon - Alessandro Xavier"
+    },
+    {
+      "codigo": "95974",
+      "nome": "Película Refletiva Fotográfica",
+      "query": "Película Refletiva para Equipamentos Fotográficos, [Inserir especificações de tamanho (largura x alt",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "open star Película Adesiva Uv Profissional Refletiva Preto",
+      "top1_preco": 36.48,
+      "top1_loja": "Leroy Merlin"
+    },
+    {
+      "codigo": "105570",
+      "nome": "Casa de Vegetação / Estufa Agrícola",
+      "query": "Casa de Vegetação / Estufa Agrícola, dimensões especificar (largura, comprimento, altura), material ",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Estufa Para Cultivo Tenda Grow Cabine 60x60 Cultivo Em Casa Preto Master Plants",
+      "top1_preco": 569,
+      "top1_loja": "Mercado Livre"
+    },
+    {
+      "codigo": "119768",
+      "nome": "CRIOSCÓPIO ANALISADOR CONGELAMENTO LEITE",
+      "query": "CRIOSCÓPIO ANALISADOR CONGELAMENTO LEITE",
+      "status": "OK",
+      "precos_encontrados": 3,
+      "estrategia": "full_specs_query",
+      "top1_titulo": "Soluções para Crioscópio",
+      "top1_preco": 20,
+      "top1_loja": "Tex Tech Brasil"
+    }
+  ]
+}

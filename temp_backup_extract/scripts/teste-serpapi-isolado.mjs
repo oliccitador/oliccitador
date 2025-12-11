@@ -5,7 +5,7 @@
 
 import fetch from 'node-fetch';
 
-const CHAVE_TESTE = "3144e193fe458df29984fe8b07b8ba19ce0fc0f81591124da2b7714ee8caac2b";
+const CHAVE_TESTE = "[KEY_REMOVED]";
 
 async function testeSerpApi() {
     console.log(`🔎 Testando SerpApi com chave: ${CHAVE_TESTE.substring(0, 10)}...`);

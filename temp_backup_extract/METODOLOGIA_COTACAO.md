@@ -207,13 +207,13 @@ async function buscarMelhoresPrecos({ ca_descricao_tecnica, ca_nome_comercial, q
 
 #### Local (`.env.local`)
 ```bash
-SERPAPI_KEY=3144e193fe458df29984fe8b07b8ba19ce0fc0f81591124da2b7714ee8caac2b
+SERPAPI_KEY=[KEY_REMOVED_SEE_ENV]
 ```
 
 #### Produção (Netlify)
 ```
 Key: SERPAPI_KEY
-Value: 3144e193fe458df29984fe8b07b8ba19ce0fc0f81591124da2b7714ee8caac2b
+Value: [KEY_REMOVED_SEE_ENV]
 Scopes: All scopes
 ```
 
