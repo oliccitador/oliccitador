@@ -39,3 +39,6 @@ next-env.d.ts
 # Cache and logs
 .cache/
 logs/
+
+# Large CATMAT database (use local only)
+lib/catmat-db-full.json
