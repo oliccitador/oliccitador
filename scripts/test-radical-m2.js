@@ -23,7 +23,7 @@ if (!API_KEY || !CX) {
 
 // 2. Fazer chamada direta (sem bibliotecas)
 async function testDirect() {
-    const query = 'CA 40677';
+    const query = 'Brasil';
     const url = `https://www.googleapis.com/customsearch/v1?key=${API_KEY}&cx=${CX}&q=${encodeURIComponent(query)}`;
 
     console.log(`Testando URL: https://www.googleapis.com/customsearch/v1?key=...&cx=${CX}&q=...`);
