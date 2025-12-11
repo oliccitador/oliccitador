@@ -46,7 +46,8 @@ export default function Home() {
                 ca_numero: result.ca_module?.ca_detectado,
                 ca_nome_comercial: result.ca_module?.nome_comercial || result.produto_referencia?.modelo || '', // Removed 'Produto' fallback to allow smart search
                 ca_descricao_tecnica: descriptionForSearch, // CRITICAL FIX: Use AI Clean Description if no CA
-                query_semantica: result.query_semantica_limpa
+                query_semantica: result.query_semantica_limpa,
+                use_m24: true // Flag to use the new Hybrid M24 Engine
             };
 
             const response = await fetch('/api/prices', {
