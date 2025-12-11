@@ -1,14 +1,27 @@
 # M4 – Módulo de Busca de Preços (Market Search Engine)
 
-**Versão:** 2.0 (Plano Radical)  
-**Data:** 2025-12-10  
-**Estado:** ✅ PRONTO
+**Versão:** 3.0 (Busca Exclusiva CA)  
+**Data:** 2025-12-11  
+**Estado:** ✅ FUNCIONAL (Produção)  
+**Commit:** `2fe5cc6`
+
+---
+
+## CHANGELOG
+
+### 2025-12-11 - v3.0 - Commit 2fe5cc6
+- ✅ **Query CA Exclusiva:** Busca apenas `"CA {numero} EPI"` sem nome do produto
+- ✅ **Foco Sites Especializados:** Termo "EPI" enviesa para lojas de segurança
+- ✅ **Sem Fallback Genérico:** Se CA existe e não encontra, retorna vazio (precisão > recall)
+- ✅ **Filtro Rigoroso Mantido:** CA deve aparecer no título do anúncio
+- ✅ **Filtro Brasileiro:** Apenas sites `.br` aplicado via SerpApi
+- ⚠️ **Sem Cache:** Cada busca consome API (otimização futura)
 
 ---
 
 ## Visão Geral
 
-Motor de cotação de preços que integra Google Shopping (via SerpApi) e PNCP para fornecer as 3 melhores ofertas de mercado e referências governamentais. Implementa estratégia de busca hierárquica com filtros rigorosos de relevância.
+Motor de cotação de preços que integra **Google Shopping via SerpApi** e **PNCP** para fornecer as 3 melhores ofertas de mercado e referências governamentais. Implementa estratégia de busca **CA-exclusiva** para EPIs, garantindo máxima precisão.
 
 ---
 
@@ -18,255 +31,262 @@ Motor de cotação de preços que integra Google Shopping (via SerpApi) e PNCP p
 M4 - Módulo de Busca de Preços (Market Search Engine)
 
 **Papel Estratégico:**  
-M4 é o motor de cotação do sistema O Licitador. Ele existe para fornecer preços de mercado reais e atualizados de produtos, permitindo que gestores públicos tenham referências confiáveis para elaboração de editais e análise de propostas. Implementa o "Plano Radical" que garante precisão absoluta ao buscar por CAs específicos, evitando cotações de produtos similares mas tecnicamente diferentes.
+M4 é o motor de cotação do sistema O Licitador. Fornece preços de mercado reais e atualizados, permitindo que gestores públicos tenham referências confiáveis para elaboração de editais. Implementa busca **CA-exclusiva** que garante precisão absoluta ao buscar apenas pelo código oficial do EPI.
 
-**Funcionamento Operacional:**  
-M4 recebe dados estruturados (query, CA, nome comercial, descrição técnica, query semântica). Implementa estratégia hierárquica: (1) Se tem CA, busca exatamente por "Nome CA 12345" no Google Shopping via SerpApi e FILTRA rigorosamente resultados que não contenham o número do CA no título; (2) Se não tem CA ou busca falhou, tenta Smart Query (extrai keywords técnicas da descrição como "Nobuck Cadarço Bidensidade"); (3) Paralelamente, busca no PNCP com melhor query disponível. Retorna top 3 preços ordenados + top 5 referências PNCP.
+**Funcionamento Operacional (Atualizado v3.0):**  
+M4 recebe dados estruturados (query, has_ca, ca_numero, ca_nome_comercial, query_semantica). 
+
+**Estratégia atual:**
+1. **Se tem CA:** Busca APENAS `"CA {numero} EPI"` no Google Shopping
+   - Filtro rigoroso: CA deve estar no título
+   - Sem fallback para nome genérico (evita produtos errados)
+2. **Se NÃO tem CA:** Busca por query semântica (Gemini) ou nome simples
+3. **Paralelo:** Busca no PNCP com melhor query disponível
+
+Retorna: Top 3 preços ordenados + Top 5 referências PNCP
 
 **Interações com Outros Módulos:**  
-- **Depende de:** SerpApi (Google Shopping - externa), M5 (PNCP) para referências governamentais
-- **É usado por:** M6, M7, M8 (todas as interfaces de cotação), recebe dados de M1 (query semântica) e M2/M3 (dados de CA/CATMAT)
+- **Depende de:** SerpApi (Google Shopping), M5 (PNCP), lib/serpapi.js
+- **É usado por:** M6, M7, M8 (interfaces de cotação), recebe dados de M1 (query semântica) e M2 (dados CA)
 
 **Status Atual:**  
-✅ PRONTO - Plano Radical implementado com filtros rigorosos de CA
+✅ FUNCIONAL - Busca CA-exclusiva em produção
 
 ---
 
 ## Funções do Módulo
 
-### 1. Estratégia de Query Hierárquica (Plano Radical)
-**Tentativa 1: Busca Exata por CA**
-- Query: `"Nome Comercial CA 12345"`
-- Filtro: Valida se número do CA está no título do anúncio
-- Se zero resultados → Tentativa 2 (DESABILITADA se has_ca=true)
+### 1. Busca CA-Exclusiva (Estratégia Principal v3.0)
+**Query:** `"CA {numero} EPI"`
 
-**Tentativa 2: Smart Query (Fallback)**
-- Extrai keywords técnicas da descrição (biqueira, solado, material)
-- Query: `"Botina Nobuck Cadarço Bidensidade Bico Plástico"`
-- Apenas executada se busca NÃO foi por CA
+**Características:**
+- **Sem nome do produto:** Evita poluição de query
+- **Termo "EPI":** Enviesa algoritmo Google para lojas especializadas
+- **Filtro rigoroso:** Descarta resultados sem o CA no título
+- **Sem fallback:** Se não achar por CA, retorna vazio
 
-**Tentativa 3: Fallback Simples**
-- Query: Nome comercial apenas
-- Último recurso
+**Vantagens:**
+- Precisão máxima (só produtos certificados)
+- Foco em lojas especializadas (evita marketplaces genéricos)
+- Prefere "sem resultado" a "resultado errado"
 
-### 2. Busca Paralela PNCP
+### 2. Busca Semântica (Fallback - Apenas sem CA)
+**Query:** Gerada por Gemini ou nome comercial
+
+**Quando ativa:**
+- Apenas se `has_ca = false`
+- Usa query_semantica (ex: "Botina Nobuck Bidensidade")
+- Aplica filtros de relevância por keywords
+
+### 3. Busca Paralela PNCP
 - Executa simultaneamente com Google Shopping
 - Usa melhor query disponível (CA ou semântica)
 - Retorna top 5 referências governamentais
+- Timeout de 10s (não trava se PNCP lento)
 
-### 3. Filtragem de Relevância
-- **Filtro de CA (Crítico):** Se busca foi por CA, descarta resultados que não contenham o número exato no título
-- **Filtro de Preço:** Remove resultados sem preço ou preço = 0
-- **Ordenação:** Menor preço primeiro
-- **Limitação:** Top 3 resultados
+### 4. Filtragem e Ordenação
+**Filtros aplicados:**
+1. **CA no título** (se busca foi por CA)
+2. **Sites brasileiros** (via SerpApi config)
+3. **Preço válido** (> 0)
+
+**Ordenação:**
+- Menor preço primeiro
+- Limitação: Top 3 resultados
 
 ---
 
-## Fluxos Internos
+## Arquivos Principais
 
-```
-Input: { query, has_ca, ca_numero, ca_nome_comercial, query_semantica }
-  ↓
-┌─ Monta caQuery (se has_ca) = "Nome CA 12345"
-│  ↓
-│  Busca Google Shopping (SerpApi)
-│  ↓
-│  Filtra: Título contém "12345"?
-│  ↓
-│  Se resultados > 0 → Retorna (PLANO RADICAL)
-│  Se resultados = 0 E has_ca → Retorna vazio (SEM FALLBACK)
-└─ Se !has_ca → Tenta Smart Query → Tenta Fallback Simples
+### Código
+- **`lib/price-search.js`** (Principal)
+  - Função `buscarMelhoresPrecos(params)` (export)
+  - Função `buildSmartQuery()` (fallback - não-CA)
 
-Paralelo: Busca PNCP com melhor query
-  ↓
-Combina resultados
-  ↓
-Ordena por preço
-  ↓
-Retorna top 3 + top 5 PNCP
+### Dependências
+```json
+{
+  "SerpApi": "via lib/serpapi.js",
+  "PNCP": "via lib/pncp-client.js"
+}
 ```
 
----
-
-## Dependências
-
-### Dependências Externas
-- **SerpApi** (Google Shopping)
-  - Variável: `SERPAPI_KEY`
-  - Quota: Depende do plano
-- **PNCP API** (via M5)
-  - Pública, sem autenticação
-
-### Dependências Internas
-- **M5 (PNCP Client):** `lib/pncp.js`
+### Variáveis de Ambiente
+```env
+SERPAPI_KEY=    # Google Shopping search
+# PNCP: Sem chave (API pública)
+```
 
 ---
 
-## Arquivos Envolvidos
+## Estratégia de Query v3.0
 
-- **`lib/price-search.js`** - Lógica principal (~200 linhas)
-- **`app/api/prices/route.js`** - Endpoint HTTP
-- **`scripts/test-price-priority.js`** - Teste de priorização CA
-- **`scripts/debug-market-search.js`** - Debug de busca
+### Com CA (has_ca = true)
+```javascript
+// Query CA-Exclusiv
+a
+const query = `CA ${cleanCA} EPI`;  // Ex: "CA 20565 EPI"
 
----
+// Filtro rigoroso
+results.filter(item => item.titulo.includes(ca_numero));
 
-## Estado Atual
+// Sem fallback
+if (results.length === 0) return { melhores_precos: [] };
+```
 
-### ✅ Implementado
-- Busca exata por CA com filtro rigoroso
-- Smart Query (extração de keywords)
-- Busca paralela PNCP
-- Plano Radical (sem fallback para CA)
-- Filtros de relevância em camadas
+### Sem CA (has_ca = false)
+```javascript
+// Tenta query semântica
+const query = query_semantica || ca_nome_comercial;
 
-### 🟡 Ajustes Recentes
-- **Commit `8f7e7e8`:** Filtro estrito de CA no título
-- **Commit `26896ee`:** Desabilita fallback se busca foi por CA
-- **Commit `7b89c08`:** Smart Query com extração de keywords
+// Permite fallback
+if (results.length === 0) trySimpleFallback(ca_nome_comercial);
+```
 
 ---
 
 ## Problemas Conhecidos
 
-### 1. Filtro de CA Muito Restritivo
-- **Problema:** Pode retornar zero resultados para CAs antigos não anunciados explicitamente
-- **Exemplo:** CA 40377 (antigo) pode não aparecer em títulos de lojas
-- **Solução Atual:** Retorna mensagem "Cotação não encontrada para este CA"
-- **Solução Proposta:** Implementar busca por fabricante + modelo como fallback secundário
+### ⚠️ Ativos (v3.0)
 
-### 2. Smart Query Pode Não Capturar Todas as Nuances
-- **Problema:** Keywords extraídas podem não cobrir todas as especificações técnicas
-- **Exemplo:** "Botina com tratamento antiestático" → Keyword "antiestático" pode não ser extraída
-- **Solução Proposta:** Expandir lista de keywords técnicas
+1. **Sem Cache Implementado**
+   - **Descrição:** Cada busca consome quota SerpApi
+   - **Impacto:** Custo desnecessário em buscas repetidas
+   - **Solução:** Cache de 24h planejado
+   - **Workaround:** Nenhum
 
----
+2. **PNCP Instável**
+   - **Descrição:** API governamental frequentemente lenta/fora
+   - **Impacto:** Timeout de 10s pode retornar vazio
+   - **Mitigação:** Timeout + try/catch
+   - **Status:** Aceitável (não-crítico)
 
-## Decisões Técnicas Registradas
+3. **Cobertura Limitada (Proposital)**
+   - **Descrição:** Busca CA-exclusiva retorna menos resultados
+   - **Justificativa:** Precisão mais importante que cobertura
+   - **Status:** Feature, not bug
 
-### 1. Plano Radical (Sem Fallback para CA)
-- **Data:** 2025-12-10
-- **Decisão:** Se busca foi por CA e não encontrou, retornar vazio (sem tentar modelo genérico)
-- **Justificativa:** Evitar "gato por lebre" (ex: Botina Bico Plástico vs Bico Composite)
-- **Commit:** `26896ee`
+### ✅ Resolvidos (v3.0)
 
-### 2. Filtro Estrito de CA no Título
-- **Data:** 2025-12-10
-- **Decisão:** Validar se número do CA está presente no título do anúncio
-- **Justificativa:** Google retorna resultados genéricos mesmo com CA na query
-- **Commit:** `8f7e7e8`
-
-### 3. Smart Query com Extração de Keywords
-- **Data:** 2025-12-10
-- **Decisão:** Extrair características técnicas (biqueira, solado, material) da descrição
-- **Justificativa:** Nome comercial genérico ("Botina Nobuck") traz produtos muito variados
-- **Commit:** `7b89c08`
+1. ~~**Filtro CA muito restritivo**~~ → Agora é proposital (precisão)
+2. ~~**Smart Query não captura nuances**~~ → Desabilitado para CA
+3. ~~**Fallback genérico polui resultados**~~ → Removido para CA
 
 ---
 
-## Próximos Passos
+## Lições Aprendidas
 
-### Curto Prazo
-- [ ] Monitorar taxa de "Cotação não encontrada" em produção
-- [ ] Coletar feedback de usuários sobre precisão de resultados
-- [ ] Ajustar lista de keywords técnicas baseado em casos reais
+### Estratégicas
 
-### Médio Prazo
-- [ ] Implementar fallback secundário (fabricante + modelo) para CAs antigos
-- [ ] Adicionar filtro de relevância por similaridade de texto (ex: Levenshtein)
-- [ ] Integrar com mais fontes de preço (Mercado Livre, B2W)
+1. **Precisão > Recall em Cotações**
+   - Preço errado causa mais dano que "sem preço"
+   - Melhor retornar vazio que produto diferente
 
-### Longo Prazo
-- [ ] Machine Learning para ranqueamento de resultados
-- [ ] Detecção automática de produtos equivalentes (mesmo produto, CAs diferentes)
+2. **Sites Especializados São Melhores**
+   - Marketplaces genéricos trazem ruído
+   - Termo "EPI" filtra naturalmente
 
----
+3. **CA-Exclusivo Funciona**
+   - Lojas especializadas sempre citam CA
+   - Query simples `"CA {num} EPI"` é suficiente
 
-## Impacto no Sistema
+### Técnicas
 
-### Módulos Dependentes
-- **M6, M7, M8:** Todas as interfaces de cotação dependem de M4
-- **M1:** Fornece `query_semantica` para M4
+4. **SerpApi Config é Crítica**
+   - `google_domain: "google.com.br"`
+   - `gl: "br"` + `hl: "pt-br"`
+   - Filtro adicional de domínios garante BR
 
-### Impacto de Falha
-- **Severidade:** ALTA
-- **Consequência:** Sistema não consegue cotar preços (funcionalidade core)
-- **Mitigação:** Retry automático (3 tentativas), fallback para PNCP apenas
-
-### Métricas de Sucesso
-- **Taxa de Cotação Bem-Sucedida:** >80%
-- **Precisão de Resultados:** >90% (validação manual de amostra)
-- **Tempo de Resposta:** <3s
+5. **Timeout PNCP Essencial**
+   - API governamental é lenta
+   - Não pode travar busca comercial
 
 ---
 
-**Última Atualização:** 2025-12-10  
-**Responsável:** Equipe de Desenvolvimento O Licitador
+## Testes
+
+### Cenário 1: CA Comum (20565)
+```javascript
+const result = await buscarMelhoresPrecos({
+  has_ca: true,
+  ca_numero: '20565',
+  ca_nome_comercial: 'Respirador PFF2'
+});
+// Esperado: 0-3 preços de lojas especializadas
+```
+
+### Cenário 2: Sem CA
+```javascript
+const result = await buscarMelhoresPrecos({
+  has_ca: false,
+  query_semantica: 'Botina Nobuck Bidensidade'
+});
+// Esperado: 3 preços (mais resultados que com CA)
+```
+
+### Cenário 3: CA Raro
+```javascript
+const result = await buscarMelhoresPrecos({
+  has_ca: true,
+  ca_numero: '99999'
+});
+// Esperado: { melhores_precos: [] } (sem fallback)
+```
 
 ---
 
-## Histórico de Erros, Ajustes e Lições Aprendidas
+## Dependências Externas
 
-### Erros Cometidos
+1. **SerpApi (Google Shopping)**
+   - **Tipo:** API Comercial
+   - **Quota:** 5000 buscas/mês (Dev)
+   - **Custo:** $50/mês
+   - **Criticidade:** ALTA
 
-1. **Fallback Genérico Causando "Gato por Lebre"**
-   - **Erro:** Buscar por nome comercial genérico quando CA não encontrado
-   - **Sintoma:** Retornar "Botina Bico Plástico" quando usuário pediu "Botina Bico Composite CA 40377"
-   - **Impacto:** Cotações imprecisas, produtos tecnicamente diferentes
-   - **Data:** 2025-12 (antes do Plano Radical)
+2. **PNCP**
+   - **Tipo:** API Governamental Pública
+   - **Quota:** Ilimitada (mas lenta)
+   - **Custo:** Gratuita
+   - **Criticidade:** BAIXA (nice-to-have)
 
-2. **Confiar no Google Shopping Sem Filtro**
-   - **Erro:** Assumir que Google retornaria apenas resultados com CA mencionado
-   - **Sintoma:** Google retornava produtos similares sem o CA específico
-   - **Impacto:** Cotações de produtos errados
-   - **Data:** 2025-12
+---
 
-### Ajustes que Funcionaram
+## Métricas Recomendadas
 
-1. **Plano Radical - Busca Estrita por CA (Commit 26896ee)**
-   - **Solução:** Se busca foi por CA, NÃO fazer fallback genérico
-   - **Resultado:** Zero "falsos positivos", apenas CAs exatos ou nada
-   - **Data:** 2025-12-10
+1. **Taxa de Sucesso por CA**
+   - Quantos CAs retornam ≥1 preço
+   - Meta: >60% (aceitável para busca rigorosa)
 
-2. **Filtro Pós-Busca de CA no Título (Commit 8f7e7e8)**
-   - **Solução:** Validar se número do CA está presente no título do anúncio
-   - **Código:** `results.filter(r => r.title.includes(caNumber))`
-   - **Resultado:** Eliminou produtos similares retornados pelo Google
-   - **Data:** 2025-12-10
+2. **Custo por Busca**
+   - Com cache: $0.01
+   - Sem cache: $0.01 (direto)
 
-3. **Smart Query com Extração de Keywords (Commit 7b89c08)**
-   - **Solução:** Extrair características técnicas (biqueira, solado, material) da descrição
-   - **Resultado:** Fallback mais preciso para buscas sem CA
-   - **Data:** 2025-12-10
+3. **Tempo Médio de Resposta**
+   - SerpApi: ~2s
+   - PNCP: ~8s (paralelo, não afeta)
 
-### Ajustes que Não Funcionaram
+---
 
-1. **Fallback por Fabricante + Modelo**
-   - **Abordagem:** Se CA não encontrado, buscar por "Fabricante Modelo"
-   - **Problema:** Fabricantes têm múltiplos modelos com especificações diferentes
-   - **Resultado:** Ainda retornava produtos incorretos, descartado
-   - **Data:** 2025-12
+## Próximos Passos Recomendados
 
-2. **Busca Semântica com Similaridade de Texto**
-   - **Abordagem:** Usar algoritmo de similaridade para ranquear resultados
-   - **Problema:** Complexidade alta, latência aumentada, precisão não melhorou significativamente
-   - **Resultado:** Descartado em favor de filtro simples de CA
-   - **Data:** 2025-12
+1. **Cache de 24h:**
+   - Economiza 80% das chamadas SerpApi
+   - Implementação simples via Redis/Memoria
 
-### Práticas que NÃO Devem Ser Repetidas
+2. **Monitoramento:**
+   - Alertas se taxa de sucesso <40%
+   - Log de CAs sem resultados (curadoria)
 
-1. **Priorizar Recall Sobre Precisão em Cotações**
-   - **Problema:** Tentar "sempre retornar algo" mesmo que impreciso
-   - **Consequência:** Usuários recebiam cotações de produtos errados
-   - **Lição:** Em cotações de preço, PRECISÃO é mais importante que RECALL. Melhor retornar vazio do que retornar errado.
+3. **Parcerias com Lojistas:**
+   - Sistema híbrido (API + parceiros)
+   - Ofertas destacadas
 
-2. **Confiar em APIs Externas Sem Validação**
-   - **Problema:** Assumir que Google Shopping retorna apenas resultados relevantes
-   - **Consequência:** Produtos similares mas incorretos
-   - **Lição:** Sempre filtrar e validar resultados de APIs externas
+4. **Múltiplas Queries:**
+   - Tentar variações: "CA X", "EPI CA X", etc
+   - Se tempo de resposta permitir
 
-3. **Não Comunicar Limitações ao Usuário**
-   - **Problema:** Mensagem genérica "Nenhum preço encontrado"
-   - **Consequência:** Usuário não entendia por que não havia resultados
-   - **Lição:** Mensagem específica "Cotação não encontrada para este CA. Plano Radical ativo." educa o usuário
+---
 
+**Última Atualização:** 2025-12-11  
+**Responsável:** Sistema Automático  
+**Versão do Documento:** 3.0

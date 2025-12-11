@@ -50,29 +50,46 @@ Interface principal para análise de itens licitatórios. Fluxo completo: input 
 
 ## M7: Página de Consulta CA (Bypass IA)
 
-**Estado:** 🟡 PARCIAL (Bloqueado por M2)  
-**Arquivo:** `app/dashboard/consulta-ca/page.tsx`
+**Estado:** ✅ FUNCIONAL (Produção)  
+**Arquivo:** `app/dashboard/consulta-ca/page.tsx`  
+**Commit:** `2fe5cc6` (2025-12-11)
 
 ### Visão Geral
-Consulta direta de CA sem passar pela IA. Usuário digita número do CA, sistema busca dados oficiais e permite cotação direta.
+Consulta direta de CA sem passar pela IA. Usuário digita número do CA, sistema busca dados oficiais via scraping + fallback SerpApi, e permite cotação direta com estratégia CA-exclusiva.
 
 ### Funções
-- Input de número de CA
-- Botão "Analisar" (chama M2 via função local)
-- Exibição de ficha técnica (fabricante, validade, descrição)
-- Botão "Buscar Preços Agora" (chama M4 com "Plano Radical")
-- Exibição de cotação filtrada por CA exato
+- Input de número de CA (validação numérica)
+- Botão "Analisar" (chama `/api/ca-lookup` → M2)
+- Exibição de ficha técnica (fabricante, validade, descrição, link fonte)
+- Badge de status (Vigente/Vencido)
+- Botão "Buscar Preços Agora" (chama `/api/prices` → M4 com `has_ca: true`)
+- Exibição de cotação CA-exclusiva
+  - Top 3 preços filtrados (CA no título obrigatório)
+  - Referências PNCP (top 5)
+  - Mensagem educativa se vazio ("Plano Radical ativo")
+- **NOVO:** Botão "🔄 Nova Pesquisa" (reseta estados)
 
 ### Dependências
-- M2 (CA/EPI) - **BLOQUEADO**
-- M4 (Busca de Preços)
+- M2 (CA/EPI) - ✅ Funcional (scraping + fallback)
+- M4 (Busca de Preços) - ✅ Funcional (CA-exclusivo)
+- M5 (PNCP) - ✅ Funcional
 
-### Problemas
-- ❌ Retorna "CA not found" para todos os CAs (M2 bloqueado por API desativada)
+### UX/UI
+- Design com gradientes e sombras premium
+- Animações de entrada (fade-in, slide-in)
+- Loading states em todos botões
+- Cards responsivos (grid 2 colunas)
+- Cores codificadas: Verde (vigente), Vermelho (vencido), Azul (PNCP)
+
+### Limitações Conhecidas
+- ConsultaCA.com pode retornar 403 (fallback SerpApi ativo)
+- Preços podem estar vazios se CA raro (comportamento esperado)
+- Sem histórico de consultas (M21 futuro)
 
 ### Próximos Passos
-- [ ] Validar após ativação da Custom Search API
-- [ ] Testar com CA 40677 (caso de teste)
+- [ ] Implementar cache de consultas (reduzir API calls)
+- [ ] Adicionar botão "Exportar PDF"
+- [ ] Histórico de consultas (M21)
 
 ---
 

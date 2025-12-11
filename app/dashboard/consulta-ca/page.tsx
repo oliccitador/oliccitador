@@ -273,6 +273,21 @@ export default function ConsultaCAPage() {
                             )}
                         </div>
                     )}
+
+                    {/* Botão Nova Pesquisa */}
+                    <div className="mt-8">
+                        <button
+                            onClick={() => {
+                                setCa('');
+                                setResult(null);
+                                setPriceResult(null);
+                                setError('');
+                            }}
+                            className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-4 px-6 rounded-xl shadow-md transform transition hover:-translate-y-0.5 flex items-center justify-center gap-2 border border-slate-200"
+                        >
+                            🔄 Nova Pesquisa
+                        </button>
+                    </div>
                 </div>
             )}
         </div>
