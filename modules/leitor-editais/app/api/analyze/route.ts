@@ -36,8 +36,8 @@ export async function POST(request: NextRequest) {
             filesForAnalysis,
             [], // userQuestions (Sprint 2)
             {}, // userContext (Sprint 2)
-            null // CNPJ (Sprint 2)
-        );
+            undefined // CNPJ (Sprint 2)
+        ) as any; // TypeScript cast temporário para build
 
         // ✅ PERSISTIR NO DB
         const userId = 'dev'; // Placeholder até auth existir
