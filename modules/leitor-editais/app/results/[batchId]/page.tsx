@@ -1,21 +1,34 @@
 'use client';
 
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ResultsDashboard from '@/components/ResultsDashboard';
 import OCRQualityBanner from '@/components/OCRQualityBanner';
 // ✅ SPRINT 3: QuestionBox POST
 import QuestionBox from '@/components/QuestionBox';
 
-export default function ResultsPage({ params }: { params: Promise<{ batchId: string }> }) {
-    const { batchId } = use(params);
+export default function ResultsPage({ params }: { params: { batchId: string } }) {
+    const { batchId } = params;
     const [result, setResult] = useState<any>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        console.log('ResultsPage Mounted v2 - Fix #438 Applied');
         async function loadBatch() {
+            setLoading(true);
             try {
-                // ✅ CARREGAR DO DB (fonte da verdade)
+                // ✅ ESTRATÉGIA PREVIEW-FIRST: Tentar localStorage antes
+                // Como o deploy preview não tem DB, confiamos na persistência local do navegador
+                const cached = localStorage.getItem(`result_${batchId}`);
+                if (cached) {
+                    console.log('📦 Carregando resultado do cache local (Preview Mode)');
+                    const data = JSON.parse(cached);
+                    setResult(data);
+                    setLoading(false);
+                    return;
+                }
+
+                // Se não tiver local, tenta servidor (pode falhar no preview)
                 const response = await fetch(`/api/batches/${batchId}`);
 
                 if (!response.ok) {
@@ -31,12 +44,13 @@ export default function ResultsPage({ params }: { params: Promise<{ batchId: str
                 const data = await response.json();
                 setResult(data);
 
-                // 📦 localStorage como cache de UX (não fonte de verdade)
+                // Cachear para próximas vezes
                 localStorage.setItem(`result_${batchId}`, JSON.stringify(data));
                 localStorage.setItem('lastResult', JSON.stringify(data));
 
             } catch (err: any) {
                 console.error('Erro ao carregar batch:', err);
+                // Se falhar e não tinhamos cache, é erro real
                 setError('server_error');
             } finally {
                 setLoading(false);
