@@ -18,6 +18,7 @@ export default function HomePage() {
 
     // ✅ SPRINT 3: Estados adicionais
     const [companyProfileId, setCompanyProfileId] = useState<string | null>(null);
+    const [contextData, setContextData] = useState<any>(null); // Novo estado
 
     const handleFilesChange = (newFiles: File[]) => {
         setFiles(newFiles);
@@ -28,7 +29,7 @@ export default function HomePage() {
         if (files.length === 0) return;
 
         setStatus('running');
-        setProgress({ step: 'upload', message: 'Enviando arquivos...' });
+        setProgress({ step: 'upload', message: 'Enviando arquivos e contexto...' });
 
         try {
             const formData = new FormData();
@@ -37,6 +38,11 @@ export default function HomePage() {
             // ✅ SPRINT 3: Incluir company_profile_id se disponível
             if (companyProfileId) {
                 formData.append('company_profile_id', companyProfileId);
+            }
+
+            // ✅ SPRINT 3: Incluir Contexto Operacional se disponível
+            if (contextData) {
+                formData.append('context', JSON.stringify(contextData));
             }
 
             const response = await fetch('/api/analyze', {
@@ -116,6 +122,7 @@ export default function HomePage() {
                     <div className="mb-8">
                         <CompanyContextPanel
                             companyProfileId={companyProfileId}
+                            onContextChange={(ctx) => setContextData(ctx)} // Captura em tempo real
                         />
                     </div>
                 )}

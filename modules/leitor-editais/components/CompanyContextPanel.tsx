@@ -7,7 +7,8 @@
  * @sprint Sprint 3 - CNPJ/Contexto
  */
 
-import { useState } from 'react';
+// ... imports ...
+import { useState, useEffect } from 'react';
 
 export interface CompanyContext {
     companyProfileId?: string;
@@ -18,15 +19,14 @@ export interface CompanyContext {
 }
 
 interface CompanyContextPanelProps {
-    batchId?: string;
     companyProfileId?: string;
-    onContextSaved?: (context: CompanyContext) => void;
+    // Callback para enviar dados ao pai em tempo real
+    onContextChange?: (context: CompanyContext) => void;
 }
 
 export default function CompanyContextPanel({
-    batchId,
     companyProfileId,
-    onContextSaved
+    onContextChange
 }: CompanyContextPanelProps) {
     const [formData, setFormData] = useState<CompanyContext>({
         companyProfileId,
@@ -36,61 +36,18 @@ export default function CompanyContextPanel({
         observacoes: '',
     });
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-    const [success, setSuccess] = useState(false);
+    // Propagar mudanças para o componente pai sempre que o form mudar
+    useEffect(() => {
+        if (onContextChange) {
+            onContextChange({
+                ...formData,
+                companyProfileId // Garante que o ID atualizado vá junto
+            });
+        }
+    }, [formData, companyProfileId, onContextChange]);
 
     const handleChange = (field: keyof CompanyContext, value: any) => {
         setFormData(prev => ({ ...prev, [field]: value }));
-        setError(null);
-        setSuccess(false);
-    };
-
-    const handleSave = async () => {
-        if (!batchId) {
-            setError('Batch ID não fornecido');
-            return;
-        }
-
-        if (!companyProfileId && !formData.companyProfileId) {
-            setError('Consulte o CNPJ antes de salvar o contexto');
-            return;
-        }
-
-        setLoading(true);
-        setError(null);
-        setSuccess(false);
-
-        try {
-            const res = await fetch(`/api/batches/${batchId}/context`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    ...formData,
-                    companyProfileId: companyProfileId || formData.companyProfileId,
-                }),
-            });
-
-            if (!res.ok) {
-                const errorData = await res.json();
-                throw new Error(errorData.error || 'Erro ao salvar contexto');
-            }
-
-            const savedContext = await res.json();
-            setSuccess(true);
-
-            if (onContextSaved) {
-                onContextSaved(savedContext);
-            }
-
-            setTimeout(() => setSuccess(false), 3000);
-
-        } catch (err: any) {
-            console.error('Erro ao salvar contexto:', err);
-            setError(err.message || 'Erro ao salvar contexto operacional');
-        } finally {
-            setLoading(false);
-        }
     };
 
     return (
@@ -100,7 +57,8 @@ export default function CompanyContextPanel({
                     3. Contexto Operacional
                 </h2>
                 <p className="text-sm text-gray-600">
-                    Informe características operacionais que afetam sua capacidade de participar
+                    Informe características operacionais que afetam sua capacidade de participar.
+                    Estes dados serão usados na análise da licitação.
                 </p>
             </div>
 
@@ -151,8 +109,8 @@ export default function CompanyContextPanel({
                                 type="button"
                                 onClick={() => handleChange('apetiteRisco', nivel)}
                                 className={`px-4 py-3 rounded-md font-medium transition-all ${formData.apetiteRisco === nivel
-                                        ? 'bg-blue-600 text-white shadow-md scale-105'
-                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                    ? 'bg-blue-600 text-white shadow-md scale-105'
+                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                     }`}
                             >
                                 {nivel === 'BAIXO' && '🟢 Baixo'}
@@ -183,47 +141,12 @@ export default function CompanyContextPanel({
                 </div>
             </div>
 
-            {/* Feedback */}
-            {error && (
-                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md">
-                    <p className="text-sm text-red-700">
-                        <strong>❌ Erro:</strong> {error}
-                    </p>
-                </div>
-            )}
-
-            {success && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
-                    <p className="text-sm text-green-700">
-                        <strong>✅ Sucesso:</strong> Contexto salvo com sucesso!
-                    </p>
-                </div>
-            )}
-
-            {/* Botão Salvar */}
-            <div className="mt-6">
-                <button
-                    onClick={handleSave}
-                    disabled={loading || !companyProfileId}
-                    className={`w-full px-6 py-3 rounded-md font-semibold transition-all ${loading || !companyProfileId
-                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                            : 'bg-green-600 text-white hover:bg-green-700 active:scale-98 shadow-md'
-                        }`}
-                >
-                    {loading ? (
-                        <span className="flex items-center justify-center gap-2">
-                            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                            </svg>
-                            Salvando...
-                        </span>
-                    ) : companyProfileId ? (
-                        '💾 Salvar Contexto Operacional'
-                    ) : (
-                        '⚠️ Consulte o CNPJ primeiro'
-                    )}
-                </button>
+            {/* Nota de rodapé explicativa em vez de botão */}
+            <div className="mt-4 p-3 bg-blue-50 text-blue-700 text-sm rounded-md flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Estes dados serão salvos automaticamente ao clicar em "Analisar Licitação".
             </div>
         </div>
     );
