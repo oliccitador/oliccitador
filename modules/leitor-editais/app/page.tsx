@@ -56,9 +56,51 @@ export default function HomePage() {
 
             const data = await response.json();
 
-            // ✅ PERSISTIR RESULTADO EM LOCALSTORAGE
-            localStorage.setItem('lastResult', JSON.stringify(data));
-            localStorage.setItem(`result_${data.batch_id}`, JSON.stringify(data));
+            // ✅ OTIMIZAÇÃO DE STORAGE (Evitar Quota Exceeded)
+            // Removemos dados pesados que não são usados no Dashboard inicial
+            const optimizedData = { ...data };
+
+            if (optimizedData.corpo_integrado) {
+                // Remove detalhamento excessivo
+                delete optimizedData.corpo_integrado.globalLines;
+                delete optimizedData.corpo_integrado.segments;
+                delete optimizedData.corpo_integrado.lineMap;
+                delete optimizedData.corpo_integrado.textoCompleto; // Se muito grande
+            }
+
+            if (optimizedData._corpus) {
+                delete optimizedData._corpus.globalLines;
+                delete optimizedData._corpus.segments;
+                delete optimizedData._corpus.lineMap;
+                delete optimizedData._corpus.textoCompleto;
+            }
+
+            // Limita logs da caixa preta
+            if (optimizedData.black_box && optimizedData.black_box.logs) {
+                optimizedData.black_box.logs = optimizedData.black_box.logs.slice(0, 50);
+            }
+
+            try {
+                localStorage.setItem(`result_${data.batch_id}`, JSON.stringify(optimizedData));
+                localStorage.setItem('lastResult', JSON.stringify(optimizedData));
+            } catch (storageError) {
+                console.warn('Falha ao salvar no LocalStorage (Quota):', storageError);
+                // Fallback: Apenas IDs e resumo
+                const ultraLight = {
+                    batch_id: data.batch_id,
+                    status: data.status,
+                    pipeline_summary: data.pipeline_summary,
+                    results: data.results, // Pode ainda ser grande, mas essencial
+                    timestamp: data.timestamp
+                };
+                try {
+                    localStorage.clear(); // Tenta limpar velhos
+                    localStorage.setItem(`result_${data.batch_id}`, JSON.stringify(ultraLight));
+                    localStorage.setItem('lastResult', JSON.stringify(ultraLight));
+                } catch (e) {
+                    console.error('LocalStorage indisponível');
+                }
+            }
 
             setResult(data);
             setStatus(data.status === 'completed' ? 'success' : 'partial');
