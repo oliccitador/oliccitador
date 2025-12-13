@@ -18,29 +18,22 @@ export async function POST(request: Request) {
         const body = await request.json();
         const { cnpj } = body;
 
-        // Validação básica
         if (!cnpj) {
-            return NextResponse.json(
-                { error: 'CNPJ é obrigatório' },
-                { status: 400 }
-            );
+            return NextResponse.json({ error: 'CNPJ é obrigatório' }, { status: 400 });
         }
 
-        // Sanitizar
         const cnpjClean = sanitizeCNPJ(cnpj);
-
-        // Validar formato
         if (!isValidCNPJ(cnpjClean)) {
-            return NextResponse.json(
-                { error: 'CNPJ inválido. Deve conter 14 dígitos.' },
-                { status: 400 }
-            );
+            return NextResponse.json({ error: 'CNPJ inválido. Deve conter 14 dígitos.' }, { status: 400 });
         }
 
-        // ✅ Cache: verificar se já existe no DB
-        let profile = await prisma.companyProfile.findUnique({
-            where: { cnpj: cnpjClean }
-        });
+        // ✅ 1. Tentar Cache (DB) - Fail-safe
+        let profile = null;
+        try {
+            profile = await prisma.companyProfile.findUnique({ where: { cnpj: cnpjClean } });
+        } catch (dbError) {
+            console.warn('[API] Banco de dados indisponível ou erro de conexão. Pulando cache.', (dbError as any).message);
+        }
 
         if (profile) {
             console.log(`[API] CNPJ ${cnpjClean} encontrado no cache`);
@@ -51,9 +44,8 @@ export async function POST(request: Request) {
             });
         }
 
-        // ✅ Consultar Receita
+        // ✅ 2. Consultar Receita
         console.log(`[API] Consultando CNPJ ${cnpjClean} na Receita...`);
-
         let receitaData;
         try {
             receitaData = await consultarReceita(cnpjClean);
@@ -69,19 +61,34 @@ export async function POST(request: Request) {
             );
         }
 
-        // ✅ Persistir no DB
-        profile = await prisma.companyProfile.create({
-            data: {
+        // ✅ 3. Tentar Persistir (DB) - Fail-safe
+        try {
+            profile = await prisma.companyProfile.create({
+                data: {
+                    cnpj: cnpjClean,
+                    razaoSocial: receitaData.razaoSocial,
+                    cnaes: JSON.stringify(receitaData.cnaes),
+                    porte: receitaData.porte,
+                    situacaoCadastral: receitaData.situacaoCadastral,
+                    source: 'receita',
+                }
+            });
+            console.log(`[API] CNPJ ${cnpjClean} salvo no DB com sucesso`);
+        } catch (dbError) {
+            console.warn('[API] Não foi possível salvar no banco de dados (provável falta de conexão). Retornando dados em memória.', (dbError as any).message);
+            // Cria um objeto fake do profile para retorno
+            profile = {
+                id: 'preview-id',
                 cnpj: cnpjClean,
                 razaoSocial: receitaData.razaoSocial,
                 cnaes: JSON.stringify(receitaData.cnaes),
                 porte: receitaData.porte,
                 situacaoCadastral: receitaData.situacaoCadastral,
                 source: 'receita',
-            }
-        });
-
-        console.log(`[API] CNPJ ${cnpjClean} salvo no DB com sucesso`);
+                createdAt: new Date(),
+                updatedAt: new Date()
+            };
+        }
 
         return NextResponse.json({
             ...profile,
