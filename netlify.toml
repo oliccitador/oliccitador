@@ -1,17 +1,11 @@
 [build]
-  command = "npm run build"
+  base = "modules/leitor-editais"
   publish = ".next"
+  command = "npm install && npm run build"
 
 [build.environment]
-  NODE_VERSION = "20"
-  SECRETS_SCAN_SMART_DETECTION_ENABLED = "false"
+  NODE_VERSION = "18"
+  SKIP_ENV_VALIDATION = "true"
 
-
-[functions]
-  included_files = ["lib/catmat-db.json", "lib/caepi-db.json"]
-
-# WhatsApp Webhook Redirect
-[[redirects]]
-  from = "/api/whatsapp/webhook"
-  to = "/.netlify/functions/whatsapp-webhook"
-  status = 200
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

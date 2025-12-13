@@ -1,0 +1,182 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+
+  organizations   Organization[]
+  analysisBatches AnalysisBatch[]
+
+  @@map("users")
+}
+
+model Organization {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  cnpj      String
+  cnaes     String   // JSON array serializado
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user            User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysisBatches AnalysisBatch[]
+
+  @@unique([userId, cnpj])
+  @@index([userId])
+  @@map("organizations")
+}
+
+// ✅ SPRINT 3: Nova tabela CompanyProfile
+model CompanyProfile {
+  id                String   @id @default(uuid())
+  cnpj              String   @unique
+  razaoSocial       String?  @map("razao_social")
+  cnaes             String?  // JSON array
+  porte             String?
+  situacaoCadastral String?  @map("situacao_cadastral")
+  source            String   @default("receita")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  batchCompanyContexts BatchCompanyContext[]
+
+  @@index([cnpj])
+  @@map("company_profiles")
+}
+
+// ✅ SPRINT 3: Nova tabela BatchCompanyContext
+model BatchCompanyContext {
+  id                 String   @id @default(uuid())
+  batchId            String   @map("batch_id")
+  companyProfileId   String   @map("company_profile_id")
+  estoque            String   // PRONTO|SOB_ENCOMENDA|NAO_TENHO
+  alcanceLogisticoKm Int?     @map("alcance_logistico_km")
+  apetiteRisco       String   @map("apetite_risco") // BAIXO|MEDIO|ALTO
+  observacoes        String?
+  createdAt          DateTime @default(now()) @map("created_at")
+
+  batch          AnalysisBatch  @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  companyProfile CompanyProfile @relation(fields: [companyProfileId], references: [id], onDelete: Cascade)
+
+  @@unique([batchId]) // 1 contexto por batch
+  @@index([batchId])
+  @@index([companyProfileId])
+  @@map("batch_company_contexts")
+}
+
+// ✅ SPRINT 3: Nova tabela BatchQuestion (renomeando UserQuestion)
+model BatchQuestion {
+  id           String   @id @default(uuid())
+  batchId      String   @map("batch_id")
+  mode         String   // PRE|POST
+  category     String   // equivalencia_marca, habilitacao, etc
+  questionText String   @map("question_text")
+  answerText   String?  @map("answer_text")
+  answerFormat String?  @map("answer_format") // TEXT|LEGAL_DRAFT
+  evidence     String?  // JSON array
+  status       String?  // OK|LOW_CONFIDENCE|NO_DATA
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  batch AnalysisBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+
+  @@index([batchId, mode, createdAt(sort: Desc)])
+  @@map("batch_questions")
+}
+
+model AnalysisBatch {
+  id                   String   @id @default(uuid()) // = batch_id
+  userId               String   @map("user_id")
+  organizationId       String?  @map("organization_id")
+  status               String   // success|warning|partial|error
+  createdAt            DateTime @default(now()) @map("created_at")
+  totalDurationSeconds Float    @map("total_duration_seconds")
+  pipelineSummary      String   @map("pipeline_summary") // JSON
+  pipelineWarnings     String   @map("pipeline_warnings") // JSON array
+  preAnalise           String   @map("pre_analise") // JSON
+  results              String   // JSON (agents 02-09)
+  agents               String   // JSON (map AGENT_02-09)
+  blackBox             String   @map("black_box") // JSON
+  ocrQualityAvg        Float    @map("ocr_quality_avg")
+  documentsTotal       Int      @map("documents_total")
+  documentsProcessed   Int      @map("documents_processed")
+  pipelineVersion      String?  @map("pipeline_version")
+  inputFingerprint     String?  @map("input_fingerprint")
+
+  user                  User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization          Organization?          @relation(fields: [organizationId], references: [id], onDelete: SetNull)
+  uploadedDocuments     UploadedDocument[]
+  integratedCorpus      IntegratedCorpus?
+  batchQuestions        BatchQuestion[]        // ✅ Relacionamento atualizado
+  batchCompanyContext   BatchCompanyContext?  // ✅ Novo relacionamento
+  generatedArtifacts    GeneratedArtifact[]
+
+  @@index([userId, createdAt(sort: Desc)])
+  @@index([status])
+  @@index([organizationId, createdAt(sort: Desc)])
+  @@map("analysis_batches")
+}
+
+model UploadedDocument {
+  id               String   @id @default(uuid())
+  batchId          String   @map("batch_id")
+  filenameOriginal String   @map("filename_original")
+  docType          String   @map("doc_type") // nucleo_certame, tr, etc
+  storageUrl       String   @map("storage_url")
+  filesize         Int
+  sha256           String
+  uploadedAt       DateTime @default(now()) @map("uploaded_at")
+  ocrQuality       Float?   @map("ocr_quality")
+  needsReview      Boolean  @default(false) @map("needs_review")
+
+  batch AnalysisBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+
+  @@index([batchId, docType])
+  @@index([sha256])
+  @@index([uploadedAt(sort: Desc)])
+  @@map("uploaded_documents")
+}
+
+model IntegratedCorpus {
+  id                    String   @id @default(uuid())
+  batchId               String   @unique @map("batch_id")
+  textoCompleto         String?  @map("texto_completo")
+  storageUrlTexto       String?  @map("storage_url_texto")
+  globalLines           String?  @map("global_lines")
+  storageUrlGlobalLines String?  @map("storage_url_global_lines")
+  segments              String?
+  storageUrlSegments    String?  @map("storage_url_segments")
+  lineMap               String?  @map("line_map")
+  storageUrlLineMap     String?  @map("storage_url_line_map")
+  metadata              String
+  createdAt             DateTime @default(now()) @map("created_at")
+
+  batch AnalysisBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+
+  @@map("integrated_corpus")
+}
+
+model GeneratedArtifact {
+  id             String   @id @default(uuid())
+  batchId        String   @map("batch_id")
+  type           String   // report_pdf, annex_i_pdf, etc
+  storageUrl     String   @map("storage_url")
+  createdAt      DateTime @default(now()) @map("created_at")
+  sizeBytes      Int      @map("size_bytes")
+  checksumSha256 String   @map("checksum_sha256")
+
+  batch AnalysisBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+
+  @@index([batchId, type, createdAt(sort: Desc)])
+  @@map("generated_artifacts")
+}

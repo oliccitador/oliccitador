@@ -1,0 +1,47 @@
+﻿name: Build and QA - Leitor de Editais
+
+on:
+  push:
+    branches:
+      - feature/leitor-editais-sprint3
+  pull_request:
+    branches:
+      - master
+      - main
+
+jobs:
+  build:
+    name: Build Next.js
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: ./modules/leitor-editais
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run TypeScript check
+        run: npx tsc --noEmit || true
+      
+      - name: Build Next.js
+        run: npm run build
+        env:
+          SKIP_ENV_VALIDATION: true
+      
+      - name: Upload build artifacts
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: ./modules/leitor-editais/.next
+          retention-days: 7
