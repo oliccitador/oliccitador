@@ -53,9 +53,12 @@ export default function CNPJPanel({ onProfileLoaded }: CNPJPanelProps) {
         if (isLocked) return;
 
         let value = e.target.value.replace(/\D/g, ''); // Somente dígitos
+
+        // Limitar a 14 dígitos
         if (value.length > 14) {
             value = value.substring(0, 14);
         }
+
         setCnpj(value);
         setError(null);
     };
@@ -70,27 +73,44 @@ export default function CNPJPanel({ onProfileLoaded }: CNPJPanelProps) {
         setError(null);
 
         try {
-            const res = await fetch('/api/company/lookup', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ cnpj }),
-            });
+            // 🔄 CHANGE: Fetch direto via Client-Side (BrasilAPI)
+            // Validado via teste CORS (test-cors.html) - Funciona Verde ✅
+            const res = await fetch(`https://brasilapi.com.br/api/cnpj/v1/${cnpj}`);
 
             if (!res.ok) {
-                const errorData = await res.json();
-                throw new Error(errorData.error || 'Erro ao consultar CNPJ');
+                if (res.status === 404) throw new Error('CNPJ não encontrado na base da Receita');
+                if (res.status === 429) throw new Error('Muitas consultas. Aguarde alguns instantes.');
+                throw new Error(`Erro na consulta: ${res.statusText}`);
             }
 
-            const data: CompanyProfile = await res.json();
-            setProfile(data);
+            const data = await res.json();
+
+            // Mapeamento Client-Side (BrasilAPI)
+            const cnaesLista: string[] = [];
+            if (data.cnae_fiscal) cnaesLista.push(`${data.cnae_fiscal} - ${data.cnae_fiscal_descricao}`);
+            if (data.cnaes_secundarios) {
+                data.cnaes_secundarios.forEach((c: any) => cnaesLista.push(`${c.codigo} - ${c.descricao}`));
+            }
+
+            const profileData: CompanyProfile = {
+                id: 'client-side-id',
+                cnpj: cnpj,
+                razaoSocial: data.razao_social,
+                cnaes: cnaesLista,
+                porte: data.porte,
+                situacaoCadastral: data.situacao_cadastral,
+                cached: false
+            };
+
+            setProfile(profileData);
 
             // ✅ TRAVAR E PERSISTIR
             setIsLocked(true);
             localStorage.setItem('lico_user_cnpj', cnpj);
-            localStorage.setItem('lico_user_profile', JSON.stringify(data));
+            localStorage.setItem('lico_user_profile', JSON.stringify(profileData));
 
             if (onProfileLoaded) {
-                onProfileLoaded(data);
+                onProfileLoaded(profileData);
             }
 
         } catch (err: any) {
