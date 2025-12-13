@@ -46,28 +46,49 @@ export async function consultarReceita(cnpj: string): Promise<ReceitaResponse> {
 
     const cnpjClean = sanitizeCNPJ(cnpj);
 
-    // TODO: Integração real
-    // Opções:
-    // 1. API Receita Federal (se disponível)
-    // 2. ReceitaWS.com.br (grátis, limites)
-    // 3. BrasilAPI (grátis, open source)
-    // 4. Serviço pago (SerpAPI, etc)
+    try {
+        // Tentar API Pública BrasilAPI
+        const response = await fetch(`https://brasilapi.com.br/api/cnpj/v1/${cnpjClean}`);
 
-    // MOCK PARA MVP:
-    // Simula dados realistas baseados no CNPJ
-    const mockData: ReceitaResponse = {
-        cnpj: cnpjClean,
-        razaoSocial: `EMPRESA EXEMPLO ${cnpjClean.substring(0, 4)} LTDA`,
-        cnaes: ['4744-0/01', '4741-5/00'], // Comércio varejista
-        porte: 'ME', // ME, EPP, NORMAL
-        situacaoCadastral: 'ATIVA',
-    };
+        if (response.ok) {
+            const data = await response.json();
 
-    // Simular delay de rede
-    await new Promise(resolve => setTimeout(resolve, 500));
+            // Mapear CNAEs (BrasilAPI retorna array de objetos)
+            const cnaes = [];
+            if (data.cnae_fiscal) {
+                cnaes.push(`${data.cnae_fiscal} - ${data.cnae_fiscal_descricao}`);
+            }
+            if (data.cnaes_secundarios && Array.isArray(data.cnaes_secundarios)) {
+                data.cnaes_secundarios.forEach((c: any) => {
+                    cnaes.push(`${c.codigo} - ${c.descricao}`);
+                });
+            }
 
-    console.log(`[Receita Mock] CNPJ ${cnpjClean} consultado com sucesso`);
-    return mockData;
+            return {
+                cnpj: cnpjClean,
+                razaoSocial: data.razao_social,
+                cnaes: cnaes,
+                porte: data.porte,
+                situacaoCadastral: data.situacao_cadastral, // Retorna código numérico ou string dependendo da versão
+            };
+        } else {
+            console.warn(`[Receita] Erro na BrasilAPI: ${response.status} ${response.statusText}`);
+            // Fallback para mock em caso de erro da API
+            throw new Error('BrasilAPI retornou erro');
+        }
+    } catch (error) {
+        console.warn('[Receita] Falha na consulta externa, usando mock fallback', error);
+
+        // Mock fallback apenas se API falhar
+        const mockData: ReceitaResponse = {
+            cnpj: cnpjClean,
+            razaoSocial: `EMPRESA MOCK TEMPORÁRIA (FALHA API)`,
+            cnaes: ['9999-9/99 - FALHA NA CONSULTA EXTERNA'],
+            porte: 'INDUSTRIA',
+            situacaoCadastral: 'ATIVA',
+        };
+        return mockData;
+    }
 }
 
 /**
