@@ -1,4 +1,4 @@
-﻿[build]
+[build]
   base = "modules/leitor-editais"
   publish = ".next"
   command = "npm install && npm run build"
